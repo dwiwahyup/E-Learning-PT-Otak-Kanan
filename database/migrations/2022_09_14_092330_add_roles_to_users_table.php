@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('content_videos', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('contents_id');
-            $table->string('video');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('roles', 10)->after('email')->default('USER');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content_videos');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('roles');
+        });
     }
 };

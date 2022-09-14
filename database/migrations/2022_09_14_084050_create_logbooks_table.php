@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('logbooks', function (Blueprint $table) {
             $table->id();
-            $table->user_id();
+            $table->bigInteger('users');
+            $table->date('date');
+            $table->longText('description');
             $table->timestamps();
         });
     }
