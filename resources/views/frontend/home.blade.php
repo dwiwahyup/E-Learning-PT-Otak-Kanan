@@ -1,7 +1,6 @@
 @extends('frontend/layouts.template')
 
 @section('content')
-{{ url('')}}
 <main>
     <section class="header-video">
         <div id="hero_video">
