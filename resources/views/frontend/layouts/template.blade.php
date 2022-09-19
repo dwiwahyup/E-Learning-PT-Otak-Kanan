@@ -8,7 +8,8 @@
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
     {{-- <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title> --}}
-    <title> {{config('app.name')}}</title>
+    <title>PT OTAK KANAN</title>
+	{{-- <title> {{config('app.name')}}</title> --}}
     <!-- Favicons-->
     <link href="{{ url('frontend/img/favicon.ico')}}"rel="shortcut icon"  type="image/x-icon">
     <link href="{{ url('frontend/img/apple-touch-icon-57x57-precomposed.png')}}"rel="apple-touch-icon" type="image/x-icon">
