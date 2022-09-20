@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('chapters_id');
             $table->text('question');
             $table->text('answer');
-            $table->bigInteger('users_id');
             $table->timestamps();
         });
     }

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('user_courses', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('users_id');
-            $table->bigInteger('course_categories_id');
             $table->timestamps();
         });
     }

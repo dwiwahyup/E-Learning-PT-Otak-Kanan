@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->varchar('name');
+            $table->string('name');
+            $table->bigInteger('course_categories_id');
             $table->timestamps();
         });
     }
