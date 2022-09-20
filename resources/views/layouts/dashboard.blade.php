@@ -82,6 +82,7 @@
     <script src="{{url('assets/dashboard/js/admin.js')}}"></script>
     <!-- Custom scripts for this page-->
     <script src="{{url('assets/dashboard/js/admin-charts.js')}}"></script>
+    <script src="{{url('assets/dashboard/js/admin-datatables.js')}}"></script>
 
 </body>
 
