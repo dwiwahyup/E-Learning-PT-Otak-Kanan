@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
+            $table->varchar('name');
             $table->timestamps();
         });
     }
