@@ -27,3 +27,5 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/content', [ContentController::class, 'index']);
+Route::get('/content/create', [ContentController::class, 'create']);
+Route::get('/content/update', [ContentController::class, 'update']);

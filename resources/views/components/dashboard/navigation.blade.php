@@ -11,7 +11,7 @@
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="messages.html">
                     <i class="fa fa-fw fa-envelope-open"></i>
                     <span class="nav-link-text">Messages</span>
@@ -22,25 +22,19 @@
                     <i class="fa fa-fw fa-calendar-check-o"></i>
                     <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">6 New</span></span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
                     <i class="fa fa-fw fa-list"></i>
-                    <span class="nav-link-text">My listings</span>
+                    <span class="nav-link-text">Data Mahasiswa</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMylistings">
                     <li>
-                        <a href="listings.html">Pending <span class="badge badge-pill badge-primary">6</span></a>
+                        <a href="listings.html">Mahasiswa <span class="badge badge-pill badge-primary"></span></a>
                     </li>
-                    <li>
-                        <a href="listings.html">Active <span class="badge badge-pill badge-success">6</span></a>
-                    </li>
-                    <li>
-                        <a href="listings.html">Expired <span class="badge badge-pill badge-danger">6</span></a>
-                    </li>
-                </ul>
+                    </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
+            {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
                 <a class="nav-link" href="reviews.html">
                     <i class="fa fa-fw fa-star"></i>
                     <span class="nav-link-text">Reviews</span>
@@ -51,30 +45,30 @@
                     <i class="fa fa-fw fa-heart"></i>
                     <span class="nav-link-text">Bookmarks</span>
                 </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+            </li> --}}
+            {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
                 <a class="nav-link" href="add-listing.html">
                     <i class="fa fa-fw fa-plus-circle"></i>
                     <span class="nav-link-text">Add listing</span>
                 </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            </li> --}}
+            {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a class="nav-link" href="user-profile.html">
                     <i class="fa fa-fw fa-user"></i>
                     <span class="nav-link-text">My Profile</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#Components">
-                    <i class="fa fa-fw fa-gear"></i>
-                    <span class="nav-link-text">Components</span>
+                    <i class="fa fa-fw fa-list"></i>
+                    <span class="nav-link-text">Materi</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="charts.html">Charts</a>
+                        <a href="charts.html">Data Materi</a>
                     </li>
                     <li>
-                        <a href="tables.html">Tables</a>
+                        <a href="tables.html">Tambah Materi</a>
                     </li>
                 </ul>
             </li>
@@ -88,7 +82,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{-- <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-fw fa-envelope"></i>
                     <span class="d-lg-none">Messages
                         <span class="badge badge-pill badge-primary">12 New</span>
@@ -96,8 +90,8 @@
                     <span class="indicator text-primary d-none d-lg-block">
                         <i class="fa fa-fw fa-circle"></i>
                     </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                </a> --}}
+                {{-- <div class="dropdown-menu" aria-labelledby="messagesDropdown">
                     <h6 class="dropdown-header">New Messages:</h6>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">
@@ -119,9 +113,9 @@
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item small" href="#">View all messages</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
+                </div> --}}
+            {{-- </li> --}}
+            {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-fw fa-bell"></i>
                     <span class="d-lg-none">Alerts
@@ -163,8 +157,8 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item small" href="#">View all alerts</a>
                 </div>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0 mr-lg-2">
                     <div class="input-group">
                         <input class="form-control search-top" type="text" placeholder="Search for...">
@@ -175,7 +169,7 @@
                         </span>
                     </div>
                 </form>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
