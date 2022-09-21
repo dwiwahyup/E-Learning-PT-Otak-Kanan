@@ -29,12 +29,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/content', [ContentController::class, 'index']);
 Route::get('/content/create', [ContentController::class, 'create']);
-<<<<<<< HEAD
-Route::post('/content/store', [ContentController::class, 'store']);
-Route::get('/content/update', [ContentController::class, 'update']);
-=======
 Route::get('/content/update', [ContentController::class, 'update']);
 
 Route::get('/logbook', [LogbookController::class, 'index']);
 Route::get('/logbook/create', [LogbookController::class, 'create']);
->>>>>>> a98b3dd39b37e5b4c0439b685e3a58be65ac66fa
