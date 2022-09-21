@@ -28,4 +28,5 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/content', [ContentController::class, 'index']);
 Route::get('/content/create', [ContentController::class, 'create']);
+Route::post('/content/store', [ContentController::class, 'store']);
 Route::get('/content/update', [ContentController::class, 'update']);
