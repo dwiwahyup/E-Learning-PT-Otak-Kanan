@@ -54,8 +54,8 @@
                                 <td>
                                     {{-- <a type="button" class="btn btn-success">Danger</a> --}}
                                     <div class="d-flex">
-                                        <a class="p-2" href="">Edit</a>
-                                        <a class="p-2" href="">Hapus</a>
+                                        <a class="p-2" href="content/edit/{{$data->id}}">Edit</a>
+                                        <a class="p-2" href="content/delete/{{$data->id}}">Hapus</a>
                                     </div>
                                 </td>
                             </tr>

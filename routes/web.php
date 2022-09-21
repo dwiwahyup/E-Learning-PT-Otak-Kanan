@@ -29,9 +29,10 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/content', [ContentController::class, 'index']);
 Route::get('/content/create', [ContentController::class, 'create']);
-
 Route::post('/content/store', [ContentController::class, 'store']);
-Route::get('/content/update', [ContentController::class, 'update']);
+Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
+Route::post('/content/update', [ContentController::class, 'update']);
+Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
 
 Route::get('/logbook', [LogbookController::class, 'index']);
 Route::get('/logbook/create', [LogbookController::class, 'create']);

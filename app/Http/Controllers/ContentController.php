@@ -36,8 +36,28 @@ class ContentController extends Controller
         return redirect('/content')->with('success', 'new content has been added');
     }
 
-    public function update()
+    public function edit($id)
     {
-        return view('dashboard.content.update');
+        $data = DB::table('contents')->where('id', $id)->get();
+
+        return view('dashboard.content.edit', ['data' => $data]);
+    }
+
+    public function update(Request $request)
+    {
+        // dd($request);
+        DB::table('contents')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'text' => $request->text
+        ]);
+
+        return redirect('/content');
+    }
+
+    public function delete($id)
+    {
+        DB::table('contents')->where('id', $id)->delete();
+
+        return redirect('/content');
     }
 }
