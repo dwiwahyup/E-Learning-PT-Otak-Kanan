@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -29,3 +30,6 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/content', [ContentController::class, 'index']);
 Route::get('/content/create', [ContentController::class, 'create']);
 Route::get('/content/update', [ContentController::class, 'update']);
+
+Route::get('/logbook', [LogbookController::class, 'index']);
+Route::get('/logbook/create', [LogbookController::class, 'create']);
