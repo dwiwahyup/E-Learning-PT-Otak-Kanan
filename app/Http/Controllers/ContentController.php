@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
 {
     public function index()
     {
-        return view('dashboard.content.index');
+        $data = DB::table('contents')->get();
+
+        // dd($data);
+        return view('dashboard.content.index', ['data' => $data]);
     }
 
     public function create()
