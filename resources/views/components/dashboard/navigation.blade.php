@@ -14,19 +14,19 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="#">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
-                <span class="nav-link-text">user</span>
+                <span class="nav-link-text">User</span>
                 </a>
             </li>   
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="#">
                     <i class="fa fa-address-card-o" aria-hidden="true"></i>
-                <span class="nav-link-text">user courses</span>
+                <span class="nav-link-text">User Courses</span>
                 </a>
             </li>   
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="#">
                     <i class="fa fa-window-restore" aria-hidden="true"></i>
-                <span class="nav-link-text">course categories</span>
+                <span class="nav-link-text">Course Categories</span>
                 </a>
             </li>    
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
@@ -53,7 +53,7 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                     <a class="nav-link" href="#">
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
-                    <span class="nav-link-text">quizzes</span>
+                    <span class="nav-link-text">Quizzes</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
