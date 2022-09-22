@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item">
                     <a href="#">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Log Book</li>
+                <li class="breadcrumb-item active">Course Category</li>
             </ol>
 
             @if ($errors->any())
@@ -29,25 +29,16 @@
 
             <div class="box_general padding_bottom">
                 <div class="header_box version_2">
-                    <h2><i class="fa fa-file"></i>Log Book</h2>
+                    <h2><i class="fa fa-file"></i>Course Category</h2>
                 </div>
 
-                <form action="/dashboard/logbook/store" method="post" enctype="multipart/form-data">
+                <form action="/dashboard/coursecategory/store" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Muhammad Fadhil">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /row-->
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Date</label>
-                                <input type="date" name="date" class="form-control datetimepicker" name="Appointment_time">
+                                <label>Name Course</label>
+                                <input type="text" name="name" class="form-control" placeholder="Course Category Name">
                             </div>
                         </div>
                     </div>
@@ -56,22 +47,11 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Description</label>
-                                {{-- <input type="text" name="description" style="height: 150px" class="form-control"> --}}
-                                <br>
-                                <textarea class="editor" name="description"></textarea>
+                                <textarea class="editor" name="introduction"></textarea>
                             </div>
                         </div>
                     </div>
                     <!-- /row-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>File</label>
-                                <ol><input type="file" name="berkas" /></ol>
-                                {{-- <form action="/file-upload" class="dropzone"></form> --}}
-                            </div>
-                        </div>
-                    </div>
                     <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                 </form>
             </div>

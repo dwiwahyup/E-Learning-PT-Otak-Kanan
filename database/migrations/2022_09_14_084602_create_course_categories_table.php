@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('course_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('introduction', 146);
             $table->timestamps();
         });
     }
