@@ -54,21 +54,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Deskripsi Materi</label>
                                 <input type="text" name="text" class="form-control" style="height:150px">
                             </div>
                         </div>
+                    </div> --}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" name="description" style="height: 150px" class="form-control">
+                            <br>
+                                <div class="editor"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Upload File Materi</label>
-                        {{-- <form action="upload.php" method="post" enctype="multipart/form-data">
-                        </form> --}}
-                        Pilih file: <input type="file" name="berkas" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>File</label>
+                                <ol><input type="file" name="berkas" /></ol>
+                                {{-- <form action="/file-upload" class="dropzone"></form> --}}
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary plus float-right">Save</button>
+                    <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                 </form>
             </div>
 

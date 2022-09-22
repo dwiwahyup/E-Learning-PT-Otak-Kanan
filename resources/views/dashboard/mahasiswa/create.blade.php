@@ -66,12 +66,9 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary plus float-right">Register</button>
-                    
+                    <p><button type="submit" class="btn btn-primary plus float-right">Register</button></p>
                 </form>
             </div>
-
-
             <!-- /tables-->
         </div>
     </div>
