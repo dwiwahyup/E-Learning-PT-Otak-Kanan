@@ -89,7 +89,7 @@
 			</div>
 			<!-- /isotope-wrapper -->
 			<p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Add Course Category</a></p>
-		
+      <a class="btn btn-primary" href="/dashboard/chapter/{{$data->id}}">Detail</a>
 		</div>
 	</div>
 </div>

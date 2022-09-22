@@ -54,9 +54,13 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/class/class3', [ClassController::class, 'class3']);
     Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
 
-    Route::get('/coursecategory', [CourseCategoryController::class, 'index']);
     // route for chapter
     Route::get('/chapter/{id}', [ChapterController::class, 'index']);
     Route::get('/chapter/create/{id}', [ChapterController::class, 'create']);
     Route::post('/chapter/store', [ChapterController::class, 'store']);
+
+    // route for course catagory
+    Route::get('/coursecategory', [CourseCategoryController::class, 'index']);
+    Route::get('/coursecategory/create', [CourseCategoryController::class, 'create']);
+    Route::post('/coursecategory/store', [CourseCategoryController::class, 'store']);
 });
