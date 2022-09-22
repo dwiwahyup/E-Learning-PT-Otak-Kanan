@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseCategoryController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
@@ -31,6 +32,7 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
+    // route for contents
     Route::get('/content', [ContentController::class, 'index']);
     Route::get('/content/create', [ContentController::class, 'create']);
     Route::post('/content/store', [ContentController::class, 'store']);
@@ -38,6 +40,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/content/update', [ContentController::class, 'update']);
     Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
 
+    // route for logbook
     Route::get('/logbook', [LogbookController::class, 'index']);
     Route::get('/logbook/create', [LogbookController::class, 'create']);
     Route::post('/logbook/store', [LogbookController::class, 'store']);
@@ -52,4 +55,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
 
     Route::get('/coursecategory', [CourseCategoryController::class, 'index']);
+    // route for chapter
+    Route::get('/chapter', [ChapterController::class, 'index']);
 });
