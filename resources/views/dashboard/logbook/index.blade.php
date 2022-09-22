@@ -28,7 +28,9 @@
     <div class="card-header">
       <i class="fa fa-table"></i> Logbook Data</div>
     <div class="card-body">
+      <p><a href="/dashboard/logbook/create" class="btn btn-secondary plus"> Add Logbook</a></p>
       <div class="table-responsive">
+        
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>

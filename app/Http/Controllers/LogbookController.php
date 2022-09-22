@@ -56,13 +56,13 @@ class LogbookController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('/dashboard/logbook');
+        return redirect('/dashboard/logbook')->with('success', 'logbook has been updated');
     }
 
     public function delete($id)
     {
         DB::table('logbooks')->where('id', $id)->delete();
 
-        return redirect('/dashboard/logbook');
+        return redirect('/dashboard/logbook')->with('success', 'logbook has been deleted');
     }
 }
