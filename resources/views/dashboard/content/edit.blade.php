@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
                 @foreach ($data as $data)
-                <form action="/content/update" method="POST">
+                <form action="/dashboard/content/update" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

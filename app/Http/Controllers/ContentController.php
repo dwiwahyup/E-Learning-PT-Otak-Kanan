@@ -33,7 +33,7 @@ class ContentController extends Controller
             'text' => $request->text
         ]);
 
-        return redirect('/content')->with('success', 'new content has been added');
+        return redirect('/dashboard/content')->with('success', 'new content has been added');
     }
 
     public function edit($id)
@@ -51,13 +51,13 @@ class ContentController extends Controller
             'text' => $request->text
         ]);
 
-        return redirect('/content');
+        return redirect('/dashboard/content')->with('success', 'content has been updated');
     }
 
     public function delete($id)
     {
         DB::table('contents')->where('id', $id)->delete();
 
-        return redirect('/content');
+        return redirect('/dashboard/content')->with('success', 'content has been deleted');
     }
 }

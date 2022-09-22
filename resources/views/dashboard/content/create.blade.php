@@ -32,7 +32,7 @@
                 <i></i> Tambah Materi Baru
             </div>
             <div class="card-body">
-                <form action="/content/store" method="post" enctype="multipart/form-data">
+                <form action="/dashboard/content/store" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
