@@ -32,7 +32,7 @@
             <h2><i class="fa fa-file"></i>Log Book</h2>
         </div>
 
-    <form action="/logbook/store" method="post" enctype="multipart/form-data">
+    <form action="/dashboard/logbook/store" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6">
@@ -56,9 +56,9 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" name="description" style="height: 150px" class="form-control">
-                <br>
-                    <div class="editor"></div>
+                    {{-- <input type="text" name="description" style="height: 150px" class="form-control"> --}}
+                    <br>
+                    <textarea class="editor" name="description"></textarea>
                 </div>
             </div>
         </div>

@@ -37,7 +37,7 @@ class LogbookController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('/logbook')->with('success', 'new logbook has been added');
+        return redirect('/dashboard/logbook')->with('success', 'new logbook has been added');
     }
 
     public function edit($id)
@@ -56,13 +56,13 @@ class LogbookController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('/logbook');
+        return redirect('/dashboard/logbook');
     }
 
     public function delete($id)
     {
         DB::table('logbooks')->where('id', $id)->delete();
 
-        return redirect('/logbook');
+        return redirect('/dashboard/logbook');
     }
 }

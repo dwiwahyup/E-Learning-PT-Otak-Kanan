@@ -12,13 +12,12 @@
         </li>
         <li class="breadcrumb-item active">Log Book</li>
     </ol>
-
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
             <h2><i class="fa fa-file"></i> Edit Log Book</h2>
         </div>
     @foreach ($data as $data)
-    <form action="/logbook/update" method="POST">
+    <form action="/dashboard/logbook/update" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-6">
@@ -43,8 +42,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Description</label>
-                    <input value="{{$data->description}}" type="text" name="description" style="height: 150px" class="form-control">
-                <div class="editor"></div>
+                    <input value="{{$data->description}}" type="text" name="description" style="height: 150px" class="form-control"> 
                 </div>
             </div>
         </div>
