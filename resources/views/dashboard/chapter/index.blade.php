@@ -34,6 +34,20 @@
                             <i class="fa fa-angle-right"></i>
                         </span>
                     </a>
+                    <a class="card-footer text-white clearfix small z-1" href="/dashboard/chapter/edit/{{$data->id}}">
+                        <span class="float-left">Edit</span>
+                        {{-- <a href="">asdasd</a> --}}
+                        <span class="float-right">
+                            <i class="fa fa-angle-right"></i>
+                        </span>
+                    </a>
+                    <a class="card-footer text-white clearfix small z-1" href="/dashboard/chapter/delete/{{$data->id}}">
+                        <span class="float-left">Delete</span>
+                        {{-- <a href="">asdasd</a> --}}
+                        <span class="float-right">
+                            <i class="fa fa-angle-right"></i>
+                        </span>
+                    </a>
                 </div>
             </div>
             @endforeach
