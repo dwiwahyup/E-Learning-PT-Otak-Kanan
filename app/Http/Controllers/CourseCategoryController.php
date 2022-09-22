@@ -15,7 +15,7 @@ class CourseCategoryController extends Controller
 
     public function create()
     {
-        return view('dashboaard.coursecategory.create');
+        return view('dashboard.coursecategory.create');
     }
 
     public function store(Request $request)
@@ -25,11 +25,36 @@ class CourseCategoryController extends Controller
             'introduction' => 'required'
         ]);
 
-        DB::table('logbooks')->insert([
+        DB::table('course_categories')->insert([
             'name' => $request->name,
             'introduction' => $request->introduction
         ]);
 
-        return redirect('/dashboard/coursecategory')->with('success', 'new logbook has been added');
+        return redirect('/dashboard/coursecategory')->with('success', 'new course category has been added');
+    }
+
+    public function edit($id)
+    {
+        $data = DB::table('course_categories')->where('id', $id)
+            ->get();
+
+        return view('dashboard.coursecategory.edit', ['data' => $data]);
+    }
+
+    public function update(Request $request)
+    {
+        DB::table('course_categories')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'introduction' => $request->introduction
+        ]);
+
+        return redirect('/dashboard/coursecategory')->with('success', 'course category has been updated');
+    }
+
+    public function delete($id)
+    {
+        DB::table('course_categories')->where('id', $id)->delete();
+
+        return redirect('/dashboard/coursecategory')->with('success', 'course category has been deleted');
     }
 }

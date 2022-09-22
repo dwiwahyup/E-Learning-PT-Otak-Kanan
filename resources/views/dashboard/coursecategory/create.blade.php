@@ -46,8 +46,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="editor" name="introduction"></textarea>
+                                <label>Introduction</label>
+                                <textarea type="text" class="form-control" name="introduction"></textarea>
                             </div>
                         </div>
                     </div>

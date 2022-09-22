@@ -27,9 +27,15 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">Logbook</li>
+      <li class="breadcrumb-item active">Course Category</li>
     </ol>
-
+    @if ($message = Session::get('success'))
+    <div class="mb-10">
+        <div class="alert alert-success" role="alert">
+            <p>{{$message}}</p>
+          </div>
+    </div>
+    @endif
 		<div class="container margin_60_35">
 			<!-- /custom-search-input-2 -->
 			<div class="isotope-wrapper">
@@ -47,7 +53,7 @@
 						<div class="wrapper">
 							{{-- <h3><a href="hotel-detail.html">Front-End Web Developer</a></h3> --}}
               <h3><a href="hotel-detail.html">{{$data->name}}</a></h3>
-							<p class="text-justify">Front-end web development is the development of the graphical user interface of a website, using HTML, CSS, and JavaScript hhhhhhhhhhhhhhhsssssse.</p>
+							<p class="text-justify">{!! Str::limit($data->introduction, 146) !!}</p>
 							<span class="price"> <strong>25</strong> Chapter</span>
 						</div>
 						<ul>
@@ -55,8 +61,8 @@
 							<li>
                 <div class="score">
                   <a href=""><strong>Show</strong></a> <span></span>
-                  <a href=""><strong>Edit</strong></a> <span></span>
-                  <a href=""><strong>Delete</strong></a>
+                  <a href="coursecategory/edit/{{($data->id)}}"><strong>Edit</strong></a> <span></span>
+                  <a href="coursecategory/delete/{{$data->id}}"><strong>Delete</strong></a>
                 </div>
               </li>
 						</ul>
@@ -88,7 +94,7 @@
 			<!-- /row -->
 			</div>
 			<!-- /isotope-wrapper -->
-			<p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Add Course Category</a></p>
+			<p class="text-center"><a href="coursecategory/create" class="btn_1 rounded add_top_30">Add Course Category</a></p>
       <a class="btn btn-primary" href="/dashboard/chapter/{{$data->id}}">Detail</a>
 		</div>
 	</div>
