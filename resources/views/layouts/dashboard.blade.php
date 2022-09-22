@@ -84,6 +84,34 @@
     <script src="{{url('assets/dashboard/js/admin-charts.js')}}"></script>
     <script src="{{url('assets/dashboard/js/admin-datatables.js')}}"></script>
 
+    	<!-- Custom scripts for this page-->
+	<script src="{{url('assets/dashboard/vendor/dropzone.min.js')}}"></script>
+	<script src="{{url('assets/dashboard/vendor/bootstrap-datepicker.js')}}"></script>
+	<script>$('input.date-pick').datepicker();</script>
+  <!-- WYSIWYG Editor -->
+  <script src="{{url('assets/dashboard/js/editor/summernote-bs4.min.js')}}"></script>
+ <!-- Custom scripts for this page-->
+ <script src="{{url('assets/dashboard/vendor/dropzone.min.js')}}"></script>
+ <script src="{{url('assets/dashboard/vendor/bootstrap-datepicker.js')}}"></script>
+ <script>$('input.date-pick').datepicker();</script>
+<!-- WYSIWYG Editor -->
+<script src="{{url('assets/dashboard/js/editor/summernote-bs4.min.js')}}"></script>
+<script>
+   $('.editor').summernote({
+ fontSizes: ['10', '14'],
+ toolbar: [
+   // [groupName, [list of button]]
+   ['style', ['bold', 'italic', 'underline', 'clear']],
+   ['font', ['strikethrough']],
+   ['fontsize', ['fontsize']],
+   ['para', ['ul', 'ol', 'paragraph']]
+   ],
+     placeholder: 'Write here your description....',
+     tabsize: 2,
+     height: 200
+   });
+ </script>
+ 
 </body>
 
 </html>

@@ -11,6 +11,7 @@ class LogbookController extends Controller
     {
         $data = DB::table('logbooks')->get();
 
+        // dd($data);
         return view('dashboard.logbook.index', ['data' => $data]);
     }
 
