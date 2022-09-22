@@ -10,6 +10,19 @@
     </li>
     <li class="breadcrumb-item active">Logbook</li>
   </ol>
+  @if ($message = Session::get('success'))
+    <div class="mb-10">
+        <div class="alert alert-success" role="alert">
+            <p>{{$message}}</p>
+          </div>
+        {{-- <div class="bg-blue-500 text-white font-bold rounded-t px-4 py-2">
+            Berhasil
+        </div>
+        <div class="border border-t-0 border-blue-400 rounded-b bg-blue-100 px-4 py-3 text-blue-700">
+            <p>{{$message}}</p>
+        </div> --}}
+    </div>
+  @endif
 <!-- Example DataTables Card-->
   <div class="card mb-3">
     <div class="card-header">
@@ -39,7 +52,12 @@
               <td>{{$data->users}}</td>
               <td>{{$data->date}}</td>
               <td>{!! Str::limit($data->description, 150) !!}</td>
-              <td>Edinburgh</td>
+              <td>
+                <div class="d-flex">
+                  <a class="btn btn-info" href="logbook/edit/{{($data->id)}}">Edit</a>
+                  <a class="btn btn-primary" href="logbook/delete/{{$data->id}}">Delete</a>
+                </div>  
+              </td>
             </tr>
             @endforeach
           </tbody>

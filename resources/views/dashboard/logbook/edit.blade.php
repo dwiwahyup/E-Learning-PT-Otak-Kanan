@@ -13,32 +13,19 @@
         <li class="breadcrumb-item active">Log Book</li>
     </ol>
 
-    @if ($errors->any())
-    <div class="mb-5" role="alert">
-        <div class="alert alert-danger" role="alert">
-            <p>
-                <ul>
-                    @foreach ($errors->all() as $eror)
-                        <li>{{$eror}}</li>
-                    @endforeach
-                </ul>
-            </p>
-        </div>
-    </div>
-    @endif
-
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
-            <h2><i class="fa fa-file"></i>Log Book</h2>
+            <h2><i class="fa fa-file"></i> Edit Log Book</h2>
         </div>
-
-    <form action="/logbook/store" method="post" enctype="multipart/form-data">
+    @foreach ($data as $data)
+    <form action="/logbook/update" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-6">
+                <input type="hidden" name="id" value="{{ $data->id }}"> <br />
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Muhammad Fadhil">
+                    <input value="{{$data->users}}" type="text" name="name" class="form-control">
                 </div>
             </div>
         </div>
@@ -47,7 +34,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="date" name="date" class="form-control datetimepicker" name="Appointment_time">
+                    <input value="{{$data->date}}" type="date" name="date" class="form-control datetimepicker" name="Appointment_time">
                 </div>
             </div>
         </div>
@@ -56,9 +43,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" name="description" style="height: 150px" class="form-control">
-                <br>
-                    <div class="editor"></div>
+                    <input value="{{$data->description}}" type="text" name="description" style="height: 150px" class="form-control">
+                <div class="editor"></div>
                 </div>
             </div>
         </div>
@@ -72,8 +58,9 @@
                 </div>
             </div>
         </div>
-            <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
+            <p><button type="submit" class="btn btn-primary plus float-right">Update</button></p>
         </form>
+        @endforeach
     </div>	
     </div>
 <!-- /.container-fluid-->
