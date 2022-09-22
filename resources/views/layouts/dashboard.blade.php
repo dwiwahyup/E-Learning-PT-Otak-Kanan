@@ -27,9 +27,14 @@
     <link href="{{url('assets/dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <!-- Plugin styles -->
     <link href="{{url('assets/dashboard/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link href="{{url('assets/dashboard/vendor/dropzone.css')}}" rel="stylesheet">
+    <link href="{{url('assets/dashboard/css/date_picker.css')}}" rel="stylesheet">
+    
     <!-- Your custom styles -->
     <link href="{{url('assets/dashboard/css/custom.css')}}" rel="stylesheet">
 
+    <!-- WYSIWYG Editor -->
+    <link rel="stylesheet" href="{{url('assets/dashboard/js/editor/summernote-bs4.css')}}">
 </head>
 
 <body class="fixed-nav sticky-footer" id="page-top">
@@ -72,6 +77,7 @@
     <!-- Core plugin JavaScript-->
     <script src="{{url('assets/dashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
+    <script src="{{url('assets/dashboard/vendor/chart.js/Chart.min.js')}}"></script>
     <script src="{{url('assets/dashboard/vendor/chart.js/Chart.js')}}"></script>
     <script src="{{url('assets/dashboard/vendor/datatables/jquery.dataTables.js')}}"></script>
     <script src="{{url('assets/dashboard/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
@@ -84,33 +90,26 @@
     <script src="{{url('assets/dashboard/js/admin-charts.js')}}"></script>
     <script src="{{url('assets/dashboard/js/admin-datatables.js')}}"></script>
 
-    	<!-- Custom scripts for this page-->
-	<script src="{{url('assets/dashboard/vendor/dropzone.min.js')}}"></script>
-	<script src="{{url('assets/dashboard/vendor/bootstrap-datepicker.js')}}"></script>
-	<script>$('input.date-pick').datepicker();</script>
-  <!-- WYSIWYG Editor -->
-  <script src="{{url('assets/dashboard/js/editor/summernote-bs4.min.js')}}"></script>
- <!-- Custom scripts for this page-->
- <script src="{{url('assets/dashboard/vendor/dropzone.min.js')}}"></script>
- <script src="{{url('assets/dashboard/vendor/bootstrap-datepicker.js')}}"></script>
- <script>$('input.date-pick').datepicker();</script>
-<!-- WYSIWYG Editor -->
-<script src="{{url('assets/dashboard/js/editor/summernote-bs4.min.js')}}"></script>
-<script>
-   $('.editor').summernote({
- fontSizes: ['10', '14'],
- toolbar: [
-   // [groupName, [list of button]]
-   ['style', ['bold', 'italic', 'underline', 'clear']],
-   ['font', ['strikethrough']],
-   ['fontsize', ['fontsize']],
-   ['para', ['ul', 'ol', 'paragraph']]
-   ],
-     placeholder: 'Write here your description....',
-     tabsize: 2,
-     height: 200
-   });
- </script>
+    <script src="{{url('assets/dashboard/vendor/dropzone.min.js')}}"></script>
+    <script src="{{url('assets/dashboard/vendor/bootstrap-datepicker.js')}}"></script>
+    <script>$('input.date-pick').datepicker();</script>
+    <!-- WYSIWYG Editor -->
+    <script src="{{url('assets/dashboard/js/editor/summernote-bs4.min.js')}}"></script>
+    <script>
+    $('.editor').summernote({
+    fontSizes: ['10', '14'],
+    toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough']],
+    ['fontsize', ['fontsize']],
+    ['para', ['ul', 'ol', 'paragraph']]
+    ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+    });
+    </script>
  
 </body>
 
