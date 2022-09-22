@@ -50,6 +50,7 @@
           </tfoot>
           <tbody>
             @foreach ($data as $data)
+            {{-- @dd($data) --}}
             <tr>
               <td>{{$data->name}}</td>
               {{-- <td>{{$data->date}}</td>
@@ -58,6 +59,7 @@
                 <div class="d-flex">
                   <a class="btn btn-info" href="coursecategory/edit/{{($data->id)}}">Edit</a>
                   <a class="btn btn-primary" href="coursecategory/delete/{{$data->id}}">Delete</a>
+                  <a class="btn btn-primary" href="/dashboard/chapter/{{$data->id}}">Detail</a>
                 </div>  
               </td>
             </tr>

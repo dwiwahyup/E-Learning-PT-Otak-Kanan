@@ -56,5 +56,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('/coursecategory', [CourseCategoryController::class, 'index']);
     // route for chapter
-    Route::get('/chapter', [ChapterController::class, 'index']);
+    Route::get('/chapter/{id}', [ChapterController::class, 'index']);
+    Route::get('/chapter/create/{id}', [ChapterController::class, 'create']);
+    Route::post('/chapter/store', [ChapterController::class, 'store']);
 });
