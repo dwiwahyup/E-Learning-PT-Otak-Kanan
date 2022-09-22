@@ -54,24 +54,16 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-md-12">
+                    {{-- <div class="row"> --}}
+                        <div class="col-md-14">
                             <div class="form-group">
-                                <label>Deskripsi Materi</label>
-                                <input type="text" name="text" class="form-control" style="height:150px">
-                            </div>
-                        </div>
-                    </div> --}}
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Description</label>
-                                <input type="text" name="description" style="height: 150px" class="form-control">
+                                {{-- <label>Description</label>
+                                <input type="text" name="description" style="height: 150px" class="form-control"> --}}
                             <br>
-                                <div class="editor"></div>
+                            <textarea class="editor" name="text"></textarea>
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -84,8 +76,7 @@
                     <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                 </form>
             </div>
-
-
+            
             <!-- /tables-->
         </div>
     </div>
