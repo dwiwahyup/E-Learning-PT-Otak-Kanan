@@ -28,7 +28,7 @@
                             <h5>Digital Marketing</h5>
                         </div>
                     </div>
-                <a class="card-footer text-white clearfix small z-1" href="{{url('/class/class1')}}">
+                <a class="card-footer text-white clearfix small z-1" href="{{url('/dashboard/class/class1')}}">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                             <i class="fa fa-angle-right"></i>
@@ -46,7 +46,7 @@
                             <h5>Digital & Online Business</h5>
                         </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{url('/class/class2')}}">
+                    <a class="card-footer text-white clearfix small z-1" href="{{url('/dashboard/class/class2')}}">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                             <i class="fa fa-angle-right"></i>
@@ -64,7 +64,7 @@
                             <h5>Business Support</h5>
                         </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{url('/class/class3')}}">
+                    <a class="card-footer text-white clearfix small z-1" href="{{url('/dashboard/class/class3')}}">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                             <i class="fa fa-angle-right"></i>

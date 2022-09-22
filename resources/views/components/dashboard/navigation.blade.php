@@ -18,7 +18,7 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMylistings">
                     <li>
-                        <a href="{{url('/mahasiswa/create')}}">Mahasiswa <span class="badge badge-pill badge-primary"></span></a>
+                        <a href="{{url('/dashboard/mahasiswa/create')}}">Mahasiswa <span class="badge badge-pill badge-primary"></span></a>
                     </li>
                     </ul>
             </li>
@@ -29,10 +29,10 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMateri">
                     <li>
-                        <a href="{{url('/content')}}">Data Materi</a>
+                        <a href="{{url('/dashboard/content')}}">Data Materi</a>
                     </li>
                     <li>
-                        <a href="{{url('/content/create')}}">Tambah Materi</a>
+                        <a href="{{url('/dashboard/content/create')}}">Tambah Materi</a>
                     </li>
                 </ul>
             </li>
@@ -43,7 +43,7 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseKelas">
                     <li>
-                        <a href="{{url('/class')}}">Data Kelas</a>
+                        <a href="{{url('/dashboard/class')}}">Data Kelas</a>
                     </li>
                     </ul>
             </li>
