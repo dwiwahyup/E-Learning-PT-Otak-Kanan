@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <body class="fixed-nav sticky-footer" id="page-top"> --}}
+
 <div class="content-wrapper">
     <div class="container-fluid">
     <!-- Breadcrumbs-->
