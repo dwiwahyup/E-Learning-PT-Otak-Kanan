@@ -60,7 +60,7 @@
 							<li><i class="person"></i> <strong>164</strong>  Student</li>
 							<li>
                 <div class="score">
-                  <a href=""><strong>Show</strong></a> <span></span>
+                  <a href="/dashboard/chapter/{{$data->id}}"><strong>Show</strong></a> <span></span>
                   <a href="coursecategory/edit/{{($data->id)}}"><strong>Edit</strong></a> <span></span>
                   <a href="coursecategory/delete/{{$data->id}}"><strong>Delete</strong></a>
                 </div>
@@ -95,7 +95,7 @@
 			</div>
 			<!-- /isotope-wrapper -->
 			<p class="text-center"><a href="coursecategory/create" class="btn_1 rounded add_top_30">Add Course Category</a></p>
-      <a class="btn btn-primary" href="/dashboard/chapter/{{$data->id}}">Detail</a>
+      {{-- <a class="btn btn-primary" href="/dashboard/chapter/{{$data->id}}">Detail</a> --}}
 		</div>
 	</div>
 </div>
