@@ -25,18 +25,19 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/content', [ContentController::class, 'index']);
-Route::get('/content/create', [ContentController::class, 'create']);
-Route::post('/content/store', [ContentController::class, 'store']);
-Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
-Route::post('/content/update', [ContentController::class, 'update']);
-Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
-
-Route::get('/logbook', [LogbookController::class, 'index']);
-Route::get('/logbook/create', [LogbookController::class, 'create']);
-Route::post('/logbook/store', [LogbookController::class, 'store']);
-Route::get('/logbook/edit/{id}', [LogbookController::class, 'edit']);
-Route::post('/logbook/update', [LogbookController::class, 'update']);
-Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/content', [ContentController::class, 'index']);
+    Route::get('/content/create', [ContentController::class, 'create']);
+    Route::post('/content/store', [ContentController::class, 'store']);
+    Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
+    Route::post('/content/update', [ContentController::class, 'update']);
+    Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
+    Route::get('/logbook', [LogbookController::class, 'index']);
+    Route::get('/logbook/create', [LogbookController::class, 'create']);
+    Route::post('/logbook/store', [LogbookController::class, 'store']);
+    Route::get('/logbook/edit/{id}', [LogbookController::class, 'edit']);
+    Route::post('/logbook/update', [LogbookController::class, 'update']);
+    Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
+});
