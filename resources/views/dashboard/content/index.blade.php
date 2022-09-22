@@ -59,7 +59,7 @@
                                         {{-- <a class="p-2" href="content/edit/{{$data->id}}">Edit</a> --}}
                                         {{-- <a class="p-2" href="content/delete/{{$data->id}}">Hapus</a> --}}
                                         {{-- <button type="button" class="btn btn-warning btn-md" href="content/delete/{{$data->id}}"=>Hapus</button> --}}
-                                        <a href="content/delete/{{$data->id}}" class="btn btn-warning btn-md ml-2" >Hapus</a>
+                                        <a href="content/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Hapus</a>
                                     </div>
                                 </td>
                             </tr>
