@@ -4,8 +4,9 @@ use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 
+<<<<<<< Updated upstream
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
@@ -40,4 +42,24 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/logbook/edit/{id}', [LogbookController::class, 'edit']);
     Route::post('/logbook/update', [LogbookController::class, 'update']);
     Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
+    Route::get('/class', [ClassController::class, 'index']);
+    Route::get('/class/class1', [ClassController::class, 'class1']);
+    Route::get('/class/class2', [ClassController::class, 'class2']);
+    Route::get('/class/class3', [ClassController::class, 'class3']);
+    Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
 });
+=======
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/content', [ContentController::class, 'index']);
+Route::get('/content/create', [ContentController::class, 'create']);
+Route::post('/content/store', [ContentController::class, 'store']);
+Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
+Route::post('/content/update', [ContentController::class, 'update']);
+Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
+
+Route::get('/logbook', [LogbookController::class, 'index']);
+Route::get('/logbook/create', [LogbookController::class, 'create']);
+
+
+>>>>>>> Stashed changes
