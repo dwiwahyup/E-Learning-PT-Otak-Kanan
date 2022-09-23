@@ -58,7 +58,7 @@
                     <label>Description</label>
                     {{-- <input type="text" name="description" style="height: 150px" class="form-control"> --}}
                     <br>
-                    <textarea class="editor" name="description"></textarea>
+                    <textarea type="text" class="form-control" name="description"></textarea>
                 </div>
             </div>
         </div>

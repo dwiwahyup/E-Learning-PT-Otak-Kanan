@@ -24,7 +24,7 @@
                 </a>
             </li>   
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{url('/dashboard/coursecategory')}}">
                     <i class="fa fa-window-restore" aria-hidden="true"></i>
                 <span class="nav-link-text">Course Categories</span>
                 </a>
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{url('/dashboard/logbook')}}">
                         <i class="fa fa-book" aria-hidden="true"></i>
                     <span class="nav-link-text">Logbook</span>
                     </a>

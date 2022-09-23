@@ -42,7 +42,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Description</label>
-                    <input value="{{$data->description}}" type="text" name="description" style="height: 150px" class="form-control"> 
+                    <textarea type="text" class="editor" name="description">{{$data->description}}</textarea>
                 </div>
             </div>
         </div>
