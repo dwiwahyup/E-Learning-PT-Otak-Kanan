@@ -33,8 +33,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
     // route for contents
-    Route::get('/content', [ContentController::class, 'index']);
-    Route::get('/content/create', [ContentController::class, 'create']);
+    Route::get('/content/{id}', [ContentController::class, 'index']);
+    Route::get('/content/create/{id}', [ContentController::class, 'create']);
     Route::post('/content/store', [ContentController::class, 'store']);
     Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
     Route::post('/content/update', [ContentController::class, 'update']);

@@ -21,21 +21,23 @@
 
 <div id="page">
 <div class="content-wrapper">
-  <div class="container-fluid">
+	<div class="container-fluid">
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Dashboard</a>
-      </li>
-      <li class="breadcrumb-item active">Course Category</li>
+		<li class="breadcrumb-item">
+		<a href="#">Dashboard</a>
+		</li>
+		<li class="breadcrumb-item active">Course Category</li>
     </ol>
+
     @if ($message = Session::get('success'))
     <div class="mb-10">
         <div class="alert alert-success" role="alert">
             <p>{{$message}}</p>
-          </div>
+        </div>
     </div>
     @endif
+
 		<div class="container margin_60_35">
 			<!-- /custom-search-input-2 -->
 			<div class="isotope-wrapper">
@@ -47,84 +49,60 @@
 					<div class="box_grid">
 						<figure>
 							<a href="hotel-detail.html"><img src="{{ url('frontend/img/frontend.jpg')}}" class="img-fluid" alt="" width="800" height="533"></a>
-							{{-- <small>Front-End Web Developer</small> --}}
-              <small>{{$data->name}}</small>
+        					<small>{{$data->name}}</small>
 						</figure>
 						<div class="wrapper">
-							{{-- <h3><a href="hotel-detail.html">Front-End Web Developer</a></h3> --}}
-              <h3><a href="hotel-detail.html">{{$data->name}}</a></h3>
+							<h3><a href="hotel-detail.html">{{$data->name}}</a></h3>
 							<p class="text-justify">{!! Str::limit($data->introduction, 146) !!}</p>
 							<span class="price"> <strong>25</strong> Chapter</span>
 						</div>
 						<ul>
 							<li><i class="person"></i> <strong>164</strong>  Student</li>
 							<li>
-                <div class="score">
-                  <a href="/dashboard/chapter/{{$data->id}}"><strong>Show</strong></a> <span></span>
-                  <a href="coursecategory/edit/{{($data->id)}}"><strong>Edit</strong></a> <span></span>
-                  <a href="coursecategory/delete/{{$data->id}}"><strong>Delete</strong></a>
-                </div>
-              </li>
+								<div class="score">
+								<a href="/dashboard/chapter/{{$data->id}}"><strong>Show</strong></a> <span></span>
+								<a href="coursecategory/edit/{{($data->id)}}"><strong>Edit</strong></a> <span></span>
+								<a href="coursecategory/delete/{{$data->id}}"><strong>Delete</strong></a>
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
         @endforeach
-				<!-- /box_grid -->
-				{{-- <div class="col-xl-4 col-lg-6 col-md-6 isotope-item latest">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="hotel-detail.html"><img src="{{ url('frontend/img/hotel_2.jpg')}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Paris Centre</small>
-						</figure>
-						<div class="wrapper">
-							<div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-							<h3><a href="hotel-detail.html">Mariott Hotel</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$124</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="ti-eye"></i> 164 views</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
-					</div>
-				</div> --}}
-				<!-- /box_grid -->
+
 			</div>
 			<!-- /row -->
 			</div>
 			<!-- /isotope-wrapper -->
 			<p class="text-center"><a href="coursecategory/create" class="btn_1 rounded add_top_30">Add Course Category</a></p>
-      {{-- <a class="btn btn-primary" href="/dashboard/chapter/{{$data->id}}">Detail</a> --}}
-		</div>
 	</div>
 </div>
-	<!--/footer-->
-	</div>
-	<!-- COMMON SCRIPTS -->
-  {{ url('frontend/')}}
-  <script src="{{ url('frontend/js/common_scripts.js')}}"></script>
-  <script src="{{ url('frontend/js/main.js')}}"></script>
-  <script src="{{ url('frontend/assets/validate.js')}}"></script>
+<!--/footer-->
+</div>
+<!-- COMMON SCRIPTS -->
+{{ url('frontend/')}}
+<script src="{{ url('frontend/js/common_scripts.js')}}"></script>
+<script src="{{ url('frontend/js/main.js')}}"></script>
+<script src="{{ url('frontend/assets/validate.js')}}"></script>
 
-  <!-- Map -->
-  <script src="http://maps.googleapis.com/maps/api/js"></script>
-  <script src="{{ url('frontend/js/markerclusterer.js')}}"></script>
-  <script src="{{ url('frontend/js/map_hotels.js')}}"></script>
-  <script src="{{ url('frontend/js/infobox.')}}"></script>
+<!-- Map -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="{{ url('frontend/js/markerclusterer.js')}}"></script>
+<script src="{{ url('frontend/js/map_hotels.js')}}"></script>
+<script src="{{ url('frontend/js/infobox.')}}"></script>
 
-  <!-- Masonry Filtering -->
-  <script src="{{ url('frontend/js/isotope.min.js')}}"></script>
-  <script>
-  $(window).on('load', function(){
-    var $container = $('.isotope-wrapper');
-    $container.isotope({ itemSelector: '.isotope-item', layoutMode: 'masonry' });
-  });
+<!-- Masonry Filtering -->
+<script src="{{ url('frontend/js/isotope.min.js')}}"></script>
+<script>
+$(window).on('load', function(){
+var $container = $('.isotope-wrapper');
+$container.isotope({ itemSelector: '.isotope-item', layoutMode: 'masonry' });
+});
 
-  $('.filters_listing').on( 'click', 'input', 'change', function(){
-    var selector = $(this).attr('data-filter');
-    $('.isotope-wrapper').isotope({ filter: selector });
-  });
-  </script>
+$('.filters_listing').on( 'click', 'input', 'change', function(){
+var selector = $(this).attr('data-filter');
+$('.isotope-wrapper').isotope({ filter: selector });
+});
+</script>
 
 @endsection

@@ -15,7 +15,7 @@
                     <div class="mb-10">
                         <div class="alert alert-success" role="alert">
                             <p>{{$message}}</p>
-                          </div>
+                        </div>
                         {{-- <div class="bg-blue-500 text-white font-bold rounded-t px-4 py-2">
                             Berhasil
                         </div>
@@ -31,6 +31,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    <p><a href="/dashboard/content/create/{{$id}}" class="btn btn-secondary plus"> Add Content</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>

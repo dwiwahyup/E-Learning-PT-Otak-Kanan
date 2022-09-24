@@ -27,7 +27,7 @@
                             <h5>{{$data->name}}</h5>
                         </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="">
+                    <a class="card-footer text-white clearfix small z-1" href="/dashboard/content/{{$data->id}}">
                         <span class="float-left">View Details Materi</span>
                         {{-- <a href="">asdasd</a> --}}
                         <span class="float-right">
