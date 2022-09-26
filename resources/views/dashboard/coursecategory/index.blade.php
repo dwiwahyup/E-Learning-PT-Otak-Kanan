@@ -1,108 +1,71 @@
 @extends('layouts.dashboard')
 @section('content')
 
-<!-- Favicons-->
-<link rel="shortcut icon" href="{{ url('frontend/img/favicon.ico')}}" type="image/x-icon">
-<link rel="apple-touch-icon" type="image/x-icon" href="{{ url('frontend/')}}img/apple-touch-icon-57x57-precomposed.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ url('frontend/img/apple-touch-icon-72x72-precomposed.png')}}">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ url('frontend/img/apple-touch-icon-114x114-precomposed.png')}}">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ url('frontend/img/apple-touch-icon-144x144-precomposed.png')}}">
-
-<!-- GOOGLE WEB FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- BASE CSS -->
-<link href="{{ url('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{ url('frontend/css/style.css')}}" rel="stylesheet">
-<link href="{{ url('frontend/css/vendors.css')}}" rel="stylesheet">
-
-<!-- YOUR CUSTOM CSS -->
-<link href="{{ url('frontend/css/custom.css')}}" rel="stylesheet">
-
-<div id="page">
 <div class="content-wrapper">
-	<div class="container-fluid">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Course</li>
+        </ol>
 
-    <ol class="breadcrumb">
-		<li class="breadcrumb-item">
-		<a href="#">Dashboard</a>
-		</li>
-		<li class="breadcrumb-item active">Course Category</li>
-    </ol>
+        @if ($message = Session::get('success'))
+                    <div class="mb-10">
+                        <div class="alert alert-success" role="alert">
+                            <p>{{$message}}</p>
+                    </div>
+                @endif
 
-    @if ($message = Session::get('success'))
-    <div class="mb-10">
-        <div class="alert alert-success" role="alert">
-            <p>{{$message}}</p>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> Course Data
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <p><a href="/dashboard/coursecategori/create/" class="btn btn-secondary plus"> Add Course</a></p>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Introduction</th>
+								<th>Chapter</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Introduction</th>
+								<th>Chapter</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach ($data as $data)
+                            <tr>
+                                <td>{{$data->name}}</td>
+                                <td>{!! Str::limit($data->introduction, 120) !!}</td>
+								<td>25 Chapter</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="/dashboard/chapter/{{$data->id}}" class="btn btn-success btn-md">Show</a>
+                                        <a href="content/edit/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Edit</a>
+                                        <a href="content/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
+        <!-- /tables-->
     </div>
-    @endif
-
-		<div class="container margin_60_35">
-			<!-- /custom-search-input-2 -->
-			<div class="isotope-wrapper">
-			<div class="row">
-
-        <!-- /box_grid -->
-        @foreach ($data as $data)
-				<div class="col-xl-4 col-lg-6 col-md-6 isotope-item popular">
-					<div class="box_grid">
-						<figure>
-							<a href="hotel-detail.html"><img src="{{ url('frontend/img/frontend.jpg')}}" class="img-fluid" alt="" width="800" height="533"></a>
-        					<small>{{$data->name}}</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="hotel-detail.html">{{$data->name}}</a></h3>
-							<p class="text-justify">{!! Str::limit($data->introduction, 146) !!}</p>
-							<span class="price"> <strong>25</strong> Chapter</span>
-						</div>
-						<ul>
-							<li><i class="person"></i> <strong>164</strong>  Student</li>
-							<li>
-								<div class="score">
-								<a href="/dashboard/chapter/{{$data->id}}"><strong>Show</strong></a> <span></span>
-								<a href="coursecategory/edit/{{($data->id)}}"><strong>Edit</strong></a> <span></span>
-								<a href="coursecategory/delete/{{$data->id}}"><strong>Delete</strong></a>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-        @endforeach
-
-			</div>
-			<!-- /row -->
-			</div>
-			<!-- /isotope-wrapper -->
-			<p class="text-center"><a href="coursecategory/create" class="btn_1 rounded add_top_30">Add Course Category</a></p>
-	</div>
+    <!-- /container-fluid-->
 </div>
-<!--/footer-->
-</div>
-<!-- COMMON SCRIPTS -->
-{{ url('frontend/')}}
-<script src="{{ url('frontend/js/common_scripts.js')}}"></script>
-<script src="{{ url('frontend/js/main.js')}}"></script>
-<script src="{{ url('frontend/assets/validate.js')}}"></script>
-
-<!-- Map -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script src="{{ url('frontend/js/markerclusterer.js')}}"></script>
-<script src="{{ url('frontend/js/map_hotels.js')}}"></script>
-<script src="{{ url('frontend/js/infobox.')}}"></script>
-
-<!-- Masonry Filtering -->
-<script src="{{ url('frontend/js/isotope.min.js')}}"></script>
-<script>
-$(window).on('load', function(){
-var $container = $('.isotope-wrapper');
-$container.isotope({ itemSelector: '.isotope-item', layoutMode: 'masonry' });
-});
-
-$('.filters_listing').on( 'click', 'input', 'change', function(){
-var selector = $(this).attr('data-filter');
-$('.isotope-wrapper').isotope({ filter: selector });
-});
-</script>
-
 @endsection

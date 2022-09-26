@@ -42,7 +42,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea type="text" class="editor" name="description">{{$data->description}}</textarea>
+                    <textarea type="text" class="form-control" name="description">{{$data->description}}</textarea>
+                    {{-- <textarea type="text" class="editor" name="description">{{$data->description}}</textarea> --}}
                 </div>
             </div>
         </div>
