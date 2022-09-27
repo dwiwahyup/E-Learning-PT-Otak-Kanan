@@ -17,40 +17,37 @@
         <p>
             <a href="/dashboard/chapter/create/{{$id}}" class="btn btn-secondary plus"> Add Chapter</a>
         </p>
+        {{-- @dd($data) --}}
         <!-- Icon Cards-->
-        <div class="row">
-            @foreach ($data as $data)
-            <div class="col-xl-6 col-sm-6 mb-3">
-                <div class="card dashboard text-white bg-success o-hidden h-100">
-                    <div class="card-body">
-                        <div class="mr-5">
-                            <h5>{{$data->name}}</h5>
-                        </div>
+        @foreach ($data as $index => $data)
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between" id="headingOne">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#data{{$data->id}}" aria-expanded="true" aria-controls="collapseOne">
+                          {{$index+1}}. {{$data->name}}
+                        </button>
+                        {{-- </h5>
+                        <h5 class="mb-0">
+                            <a class="btn btn-link">
+                                Total Content : 
+                            </a>
+                        </h5> --}}
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="/dashboard/content/{{$data->id}}">
-                        <span class="float-left">View Details Materi</span>
-                        {{-- <a href="">asdasd</a> --}}
-                        <span class="float-right">
-                            <i class="fa fa-angle-right"></i>
-                        </span>
-                    </a>
-                    <a class="card-footer text-white clearfix small z-1" href="/dashboard/chapter/edit/{{$data->id}}">
-                        <span class="float-left">Edit</span>
-                        {{-- <a href="">asdasd</a> --}}
-                        <span class="float-right">
-                            <i class="fa fa-angle-right"></i>
-                        </span>
-                    </a>
-                    <a class="card-footer text-white clearfix small z-1" href="/dashboard/chapter/delete/{{$data->id}}">
-                        <span class="float-left">Delete</span>
-                        {{-- <a href="">asdasd</a> --}}
-                        <span class="float-right">
-                            <i class="fa fa-angle-right"></i>
-                        </span>
-                    </a>
+            
+                    <div id="data{{$data->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                        {{$data->abstract}}
+                        </div>
+                        <div class="ml-3 mb-1 font-weight-normal" role="group" aria-label="Basic mixed styles example">
+                            <a type="button" href="/dashboard/chapter/edit/{{$data->id}}" >Edit</a>
+                            <a type="button" class="mx-2" href="/dashboard/content/{{$data->id}}">Content List</a>
+                            <a type="button" href="/dashboard/chapter/delete/{{$data->id}}">Delete</a>
+                          </div>
+                    </div>
                 </div>
-            </div>
-            @endforeach
-        </div>     
-
+            </div>  
+        @endforeach
+    </div>
+</div>
 @endsection

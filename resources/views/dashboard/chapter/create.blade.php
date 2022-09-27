@@ -42,6 +42,10 @@
                     <label>Chapter Name</label>
                     <input type="text" name="name" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label>Abstract</label>
+                    <textarea type="text" class="form-control" name="abstract"></textarea>
+                </div>
             </div>
         </div>
         <!-- /row-->

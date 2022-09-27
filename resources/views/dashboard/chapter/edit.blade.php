@@ -44,6 +44,10 @@
                         <label>Chapter Name</label>
                         <input type="text" name="name" value="{{$data->name}}" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label>Abstract</label>
+                        <textarea type="text" class="form-control" name="abstract">{{$data->abstract}}</textarea>
+                    </div>
                 </div>
             </div>
             <!-- /row-->
