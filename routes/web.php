@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +71,12 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/coursecategory/edit/{id}', [CourseCategoryController::class, 'edit']);
     Route::post('/coursecategory/update', [CourseCategoryController::class, 'update']);
     Route::get('/coursecategory/delete/{id}', [CourseCategoryController::class, 'delete']);
+
+    //route for quiz
+    Route::get('/quiz', [QuizController::class, 'index']);
+    Route::get('/quiz/create', [QuizController::class, 'create']);
+    Route::post('/quiz/store', [QuizController::class, 'store']);
+    Route::get('/quiz/edit/{id}', [QuizController::class, 'edit']);
+    Route::post('/quiz/update', [QuizController::class, 'update']);
+    Route::get('/quiz/delete/{id}', [QuizController::class, 'delete']);
 });
