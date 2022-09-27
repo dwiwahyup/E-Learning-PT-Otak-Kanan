@@ -52,6 +52,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/class/class1', [ClassController::class, 'class1']);
     Route::get('/class/class2', [ClassController::class, 'class2']);
     Route::get('/class/class3', [ClassController::class, 'class3']);
+    Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
     Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
 
     // route for chapter

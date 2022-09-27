@@ -38,7 +38,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Muhammad Fadhil">
+                    <input type="text" name="name" class="form-control" placeholder="">
                 </div>
             </div>
         </div>

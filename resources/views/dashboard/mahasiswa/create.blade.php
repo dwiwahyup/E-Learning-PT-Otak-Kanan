@@ -40,33 +40,17 @@
                                 <label>Email</label>
                                 <input type="text" name="email" class="form-control">
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Kelas</label>
-                                <div class="styled-select">
-                                    <select>
-                                        <option>IT & Multimedia</option>
-                                        <option>Digital & Online Business</option>
-                                        <option>Business Support</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
                                 <input type="text" name="name" class="form-control">
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" name="password" class="form-control">
                             </div>
                         </div>
                     </div>
-                    <p><button type="submit" class="btn btn-primary plus float-right">Register</button></p>
+                   <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                 </form>
             </div>
             <!-- /tables-->

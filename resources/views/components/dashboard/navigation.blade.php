@@ -12,7 +12,7 @@
                 </a>
             </li>      
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{('/dashboard/mahasiswa/create')}}">
+                <a class="nav-link" href="{{('/dashboard/mahasiswa')}}">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                 <span class="nav-link-text">User</span>
                 </a>
