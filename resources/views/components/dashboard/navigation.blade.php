@@ -18,7 +18,7 @@
                 </a>
             </li>   
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{('/dashboard/coursecategory/create')}}">
+                <a class="nav-link" href="{{('/dashboard/coursecategory')}}">
                     <i class="fa fa-address-card-o" aria-hidden="true"></i>
                 <span class="nav-link-text">Courses</span>
                 </a>
