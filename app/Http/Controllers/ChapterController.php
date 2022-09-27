@@ -14,7 +14,7 @@ class ChapterController extends Controller
         $countContent = DB::table('chapters')
             ->rightJoin('contents', 'contents.chapters_id', '=', 'chapters.id')
             ->count();
-        dd($countContent);
+        // dd($countContent);
 
         return view('dashboard.chapter.index', ['data' => $data, 'id' => $id]);
     }
