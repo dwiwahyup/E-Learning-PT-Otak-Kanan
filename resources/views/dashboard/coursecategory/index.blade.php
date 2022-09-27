@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
 
-<link href="{{ url('frontend/css/style.css')}}" rel="stylesheet">
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
@@ -25,7 +25,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="/dashboard/coursecategori/create/" class="btn btn-secondary plus"> Add Course</a></p>
+                    <p><a href="/dashboard/coursecategory/create/" class="btn btn-secondary plus"> Add Course</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
