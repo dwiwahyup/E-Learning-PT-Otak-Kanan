@@ -10,7 +10,11 @@ class ChapterController extends Controller
     public function index($id)
     {
         $data = DB::table('chapters')->where('course_categories_id', $id)->get();
-        // dd($data);
+
+        $countContent = DB::table('chapters')
+            ->rightJoin('contents', 'contents.chapters_id', '=', 'chapters.id')
+            ->count();
+        dd($countContent);
 
         return view('dashboard.chapter.index', ['data' => $data, 'id' => $id]);
     }
@@ -25,10 +29,11 @@ class ChapterController extends Controller
     public function store(Request $request)
     {
         $id = $request->course_categories_id;
-        // dd($id);
+        // dd($request);
 
         DB::table('chapters')->insert([
             'name' => $request->name,
+            'abstract' => $request->abstract,
             'course_categories_id' => $request->course_categories_id
         ]);
 
@@ -54,6 +59,7 @@ class ChapterController extends Controller
 
         DB::table('chapters')->where('id', $request->id)->update([
             'name' => $request->name,
+            'abstract' => $request->abstract,
             'course_categories_id' => $request->course_categories_id
         ]);
 
