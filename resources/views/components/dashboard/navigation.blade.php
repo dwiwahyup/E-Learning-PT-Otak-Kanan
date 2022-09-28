@@ -23,12 +23,12 @@
                 <span class="nav-link-text">Courses</span>
                 </a>
             </li>   
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="#">
                     <i class="fa fa-window-restore" aria-hidden="true"></i>
                 <span class="nav-link-text">Quiz</span>
                 </a>
-            </li>    
+            </li>     --}}
             {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="#">
                     <i class="fa fa-archive" aria-hidden="true"></i>
