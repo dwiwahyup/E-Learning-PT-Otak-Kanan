@@ -49,12 +49,12 @@
                 </li>
             </ul> --}}
             </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                {{-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                     <a class="nav-link" href="{{url('/dashboard/quiz')}}">
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
                     <span class="nav-link-text">Quizzes</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                     <a class="nav-link" href="{{url('/dashboard/logbook')}}">
                         <i class="fa fa-book" aria-hidden="true"></i>

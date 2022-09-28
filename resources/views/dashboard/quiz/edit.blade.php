@@ -17,7 +17,7 @@
             <h2><i class="fa fa-file"></i> Edit Quiz</h2>
         </div>
     @foreach ($data as $data)
-    <form action="/dashboard/quiz/update" method="post">
+    <form action="/dashboard/quiz/update" method="POST">
         @csrf
         <!-- /row-->
         <div class="row">

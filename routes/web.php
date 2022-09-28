@@ -73,8 +73,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/coursecategory/delete/{id}', [CourseCategoryController::class, 'delete']);
 
     //route for quiz
-    Route::get('/quiz', [QuizController::class, 'index']);
-    Route::get('/quiz/create', [QuizController::class, 'create']);
+    Route::get('/quiz/{id}', [QuizController::class, 'index']);
+    Route::get('/quiz/create/{id}', [QuizController::class, 'create']);
     Route::post('/quiz/store', [QuizController::class, 'store']);
     Route::get('/quiz/edit/{id}', [QuizController::class, 'edit']);
     Route::post('/quiz/update', [QuizController::class, 'update']);
