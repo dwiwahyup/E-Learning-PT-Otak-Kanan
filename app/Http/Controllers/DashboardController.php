@@ -10,8 +10,12 @@ class DashboardController extends Controller
     public function index()
     {
         $materi = DB::table('contents')->count();
-        return view('dashboard.index', compact('materi'));
+        $userr = DB::table('users')->count();
+        $courses = DB::table('course_categories')->count();
+        return view('dashboard.index', compact('materi','userr','courses'));
+
         }
     
+
 
 }

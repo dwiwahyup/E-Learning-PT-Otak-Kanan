@@ -33,15 +33,15 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tfoot>
+                      {{-- <tfoot>
                         <tr>
                           <th>Name</th>
                           <th>Email</th>
                           <th>Action</th>
                         </tr>
-                      </tfoot>
-                        <tbody>
-                            {{-- @foreach ($data as $data)
+                      </tfoot> --}}
+                        {{-- <tbody>
+                             @foreach ($data as $data)
                             <tr>
                               <td>{{$data->users}}</td>
                               <td>{{$data->date}}</td>
@@ -53,8 +53,8 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach --}}
-                        </tbody>
+                            @endforeach 
+                        </tbody> --}}
                     </table>
                 </div>
             </div>
