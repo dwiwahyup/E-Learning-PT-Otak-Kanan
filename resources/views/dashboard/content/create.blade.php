@@ -34,23 +34,12 @@
             <div class="card-body">
                 <form action="/dashboard/content/store" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="chapters_id" value="{{ $id }}"> <br />
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Materi</label>
                                 <input type="text" name="name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Kelas</label>
-                                <div class="styled-select">
-                                    <select>
-                                        <option>IT & Multimedia</option>
-                                        <option>Digital & Online Business</option>
-                                        <option>Business Support</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
                     </div>

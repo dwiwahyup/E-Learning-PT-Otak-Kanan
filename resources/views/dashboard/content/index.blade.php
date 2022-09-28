@@ -53,14 +53,9 @@
                                 <td>{{$data->name}}</td>
                                 <td>{!! Str::limit($data->text, 150) !!}</td>
                                 <td>
-                                    {{-- <a type="button" class="btn btn-success">Danger</a> --}}
                                     <div class="d-flex">
-                                        <a href="content/edit/{{$data->id}}" class="btn btn-success btn-md">Edit</a>
-                                        {{-- <button type="submit" class="btn btn-success btn-md" href="content/edit/{{$data->id}}"=>Edit</button> --}}
-                                        {{-- <a class="p-2" href="content/edit/{{$data->id}}">Edit</a> --}}
-                                        {{-- <a class="p-2" href="content/delete/{{$data->id}}">Hapus</a> --}}
-                                        {{-- <button type="button" class="btn btn-warning btn-md" href="content/delete/{{$data->id}}"=>Hapus</button> --}}
-                                        <a href="content/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Hapus</a>
+                                        <a href="/dashboard/content/edit/{{$data->id}}" class="btn btn-success btn-md">Edit</a>
+                                        <a href="/dashboard/content/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Hapus</a>
                                     </div>
                                 </td>
                             </tr>

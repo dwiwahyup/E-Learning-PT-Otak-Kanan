@@ -22,7 +22,7 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
-        // // dd($request);
+        // dd($request);
         // $this->validate($request, [
         //     'name' => 'required',
         //     'text' => 'required'
@@ -32,7 +32,7 @@ class ContentController extends Controller
         DB::table('contents')->insert([
             'name' => $request->name,
             'text' => $request->text,
-            $request->chapters_id
+            'chapters_id' => $request->chapters_id
         ]);
 
         return redirect()->action(
