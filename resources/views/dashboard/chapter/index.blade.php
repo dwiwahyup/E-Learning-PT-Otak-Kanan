@@ -19,7 +19,7 @@
         </p>
         {{-- @dd($data) --}}
         <!-- Icon Cards-->
-        @foreach ($data as $index => $data)
+        @foreach ($query as $index => $data)
             <div id="accordion">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between" id="headingOne">
@@ -27,12 +27,12 @@
                         <button class="btn btn-link" data-toggle="collapse" data-target="#data{{$data->id}}" aria-expanded="true" aria-controls="collapseOne">
                           {{$index+1}}. {{$data->name}}
                         </button>
-                        {{-- </h5>
+                        </h5>
                         <h5 class="mb-0">
                             <a class="btn btn-link">
-                                Total Content : 
+                                Total Content : {{$data->contents_count}}
                             </a>
-                        </h5> --}}
+                        </h5>
                     </div>
             
                     <div id="data{{$data->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">

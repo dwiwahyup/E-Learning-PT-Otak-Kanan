@@ -9,14 +9,20 @@ class ChapterController extends Controller
 {
     public function index($id)
     {
-        $data = DB::table('chapters')->where('course_categories_id', $id)->get();
+        $query = DB::table('chapters')
+            ->join('course_categories', function ($join) use ($id) {
+                $join->on('chapters.course_categories_id', '=', 'course_categories.id')
+                    ->where('chapters.course_categories_id', '=', $id);
+            })
+            ->leftJoin('contents', function ($join) {
+                $join->on('contents.chapters_id', '=', 'chapters.id');
+            })
+            ->select('chapters.id', 'chapters.name', 'chapters.abstract', DB::raw('COUNT(contents.chapters_id) as contents_count'))
+            ->groupBy('chapters.id')
+            ->get();
+        // dd($query);
 
-        $countContent = DB::table('chapters')
-            ->rightJoin('contents', 'contents.chapters_id', '=', 'chapters.id')
-            ->count();
-        // dd($countContent);
-
-        return view('dashboard.chapter.index', ['data' => $data, 'id' => $id]);
+        return view('dashboard.chapter.index', ['query' => $query, 'id' => $id]);
     }
 
     public function create($id)
