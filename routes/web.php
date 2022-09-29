@@ -10,6 +10,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,12 +26,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 Route::get('/home', [HomeController::class, 'index']);
 
-
-Route::prefix('dashboard')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
     // route for contents
@@ -73,10 +77,12 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/coursecategory/delete/{id}', [CourseCategoryController::class, 'delete']);
 
     //route for quiz
-    Route::get('/quiz', [QuizController::class, 'index']);
-    Route::get('/quiz/create', [QuizController::class, 'create']);
+    Route::get('/quiz/{id}', [QuizController::class, 'index']);
+    Route::get('/quiz/create/{id}', [QuizController::class, 'create']);
     Route::post('/quiz/store', [QuizController::class, 'store']);
     Route::get('/quiz/edit/{id}', [QuizController::class, 'edit']);
     Route::post('/quiz/update', [QuizController::class, 'update']);
     Route::get('/quiz/delete/{id}', [QuizController::class, 'delete']);
 });
+
+require __DIR__ . '/auth.php';

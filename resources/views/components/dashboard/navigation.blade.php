@@ -72,8 +72,11 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
             </li>
         </ul>
     </div>
