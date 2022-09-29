@@ -25,7 +25,7 @@
                     <div class="card-header d-flex justify-content-between" id="headingOne">
                         <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#data{{$data->id}}" aria-expanded="true" aria-controls="collapseOne">
-                          {{$index+1}}. {{$data->name}}
+                        {{$index+1}}. {{$data->name}}
                         </button>
                         </h5>
                         <h5 class="mb-0">
@@ -42,8 +42,9 @@
                         <div class="ml-3 mb-1 font-weight-normal" role="group" aria-label="Basic mixed styles example">
                             <a type="button" href="/dashboard/chapter/edit/{{$data->id}}" >Edit</a>
                             <a type="button" class="mx-2" href="/dashboard/content/{{$data->id}}">Content List</a>
+                            <a type="button" class="mx-2" href="/dashboard/quiz/{{$data->id}}">Quiz</a>
                             <a type="button" href="/dashboard/chapter/delete/{{$data->id}}">Delete</a>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>  

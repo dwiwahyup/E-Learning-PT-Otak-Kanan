@@ -34,10 +34,11 @@
 
     <form action="/dashboard/quiz/store" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="chapter_id" value="{{$id}}"> <br/>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Quistion</label>
+                    <label>Question</label>
                     {{-- <input type="text" name="description" style="height: 150px" class="form-control"> --}}
                     <br>
                     <textarea type="text" class="form-control" name="question"></textarea>
