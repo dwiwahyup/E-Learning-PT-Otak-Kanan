@@ -37,6 +37,12 @@ class ChapterController extends Controller
         $id = $request->course_categories_id;
         // dd($request);
 
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'abstract' => 'required',
+            'course_categories_id' => 'required'
+        ]);
+
         DB::table('chapters')->insert([
             'name' => $request->name,
             'abstract' => $request->abstract,
@@ -46,7 +52,7 @@ class ChapterController extends Controller
         return redirect()->action(
             [ChapterController::class, 'index'],
             ['id' => $id]
-        );
+        )->with('success', 'new chapter has been added');;
     }
 
     public function edit($id)
@@ -62,6 +68,12 @@ class ChapterController extends Controller
     {
         // dd($request);
         $id = $request->course_categories_id;
+
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'abstract' => 'required',
+            'course_categories_id' => 'required'
+        ]);
 
         DB::table('chapters')->where('id', $request->id)->update([
             'name' => $request->name,
@@ -80,6 +92,6 @@ class ChapterController extends Controller
         // $id = $request->course_categories_id;
         DB::table('chapters')->where('id', $id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'chapter has been deleted');
     }
 }

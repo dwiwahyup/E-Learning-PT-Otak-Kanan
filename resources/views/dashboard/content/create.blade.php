@@ -36,34 +36,29 @@
                     @csrf
                     <input type="hidden" name="chapters_id" value="{{ $id }}"> <br />
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Materi</label>
                                 <input type="text" name="name" class="form-control">
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="row"> --}}
                         <div class="col-md-14">
                             <div class="form-group">
-                                {{-- <label>Description</label>
-                                <input type="text" name="description" style="height: 150px" class="form-control"> --}}
                             <br>
                             <textarea class="editor" name="text"></textarea>
                             </div>
                         </div>
-                    {{-- </div> --}}
+                        <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
+                    </form>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12"> 
                             <div class="form-group">
-                                <label>File</label>
-                                <ol><input type="file" name="berkas" /></ol>
-                                {{-- <form action="/file-upload" class="dropzone"></form> --}}
+                                <label>Photos</label>
+                                <form  action="/file-upload" class="dropzone"> </form>
                             </div>
                         </div>
                     </div>
-                    <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
-                </form>
             </div>
             
             <!-- /tables-->
