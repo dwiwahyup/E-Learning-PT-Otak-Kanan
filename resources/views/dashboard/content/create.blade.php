@@ -45,20 +45,12 @@
                     </div>
                         <div class="col-md-14">
                             <div class="form-group">
-                            <br>
+                            <label>Text</label>
                             <textarea class="editor" name="text"></textarea>
                             </div>
                         </div>
                         <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                     </form>
-                    <div class="row">
-                        <div class="col-md-12"> 
-                            <div class="form-group">
-                                <label>Photos</label>
-                                <form  action="/file-upload" class="dropzone"> </form>
-                            </div>
-                        </div>
-                    </div>
             </div>
             
             <!-- /tables-->

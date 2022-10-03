@@ -13,17 +13,34 @@
             </li>
             <li class="breadcrumb-item active">Update</li>
         </ol>
+
+        @if ($errors->any())
+            <div class="mb-5" role="alert">
+                <div class="alert alert-danger" role="alert">
+                    <p>
+                        <ul>
+                            @foreach ($errors->all() as $eror)
+                                <li>{{$eror}}</li>
+                            @endforeach
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        @endif
+
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
                 <i></i>Update Data Materi
             </div>
             <div class="card-body">
+                {{-- @dd($data); --}}
                 @foreach ($data as $data)
                 <form action="/dashboard/content/update" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
+                            <input type="hidden" name="chapters_id" value="{{$data->chapters_id}}"><br>
                             <input type="hidden" name="id" value="{{ $data->id }}"> <br />
                             <div class="form-group">
                                 <label>Nama Materi</label>

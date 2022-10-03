@@ -52,7 +52,7 @@ class ChapterController extends Controller
         return redirect()->action(
             [ChapterController::class, 'index'],
             ['id' => $id]
-        )->with('success', 'new chapter has been added');;
+        )->with('success', 'new chapter has been added');
     }
 
     public function edit($id)
@@ -84,7 +84,7 @@ class ChapterController extends Controller
         return redirect()->action(
             [ChapterController::class, 'index'],
             ['id' => $id]
-        );
+        )->with('success', 'this chapter has been update');
     }
 
     public function delete($id)

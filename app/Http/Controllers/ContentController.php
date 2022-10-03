@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,23 +24,26 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
-        // $this->validate($request, [
-        //     'name' => 'required',
-        //     'text' => 'required'
-        // ]);
+        // dd($request);
         $id = $request->chapters_id;
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'text' => 'required',
+            'chapters_id' => 'required'
+        ]);
 
         DB::table('contents')->insert([
             'name' => $request->name,
             'text' => $request->text,
-            'chapters_id' => $request->chapters_id
+            'chapters_id' => $request->chapters_id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->action(
             [ContentController::class, 'index'],
             ['id' => $id]
-        );
+        )->with('success', 'new content has been added');
     }
 
     public function edit($id)
@@ -53,16 +58,23 @@ class ContentController extends Controller
         // dd($request);
         $id = $request->chapters_id;
 
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'text' => 'required',
+            'chapters_id' => 'required'
+        ]);
+
         DB::table('contents')->where('id', $request->id)->update([
             'name' => $request->name,
             'text' => $request->text,
-            $request->chapters_id
+            'chapters_id' => $request->chapters_id,
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->action(
             [ContentController::class, 'index'],
             ['id' => $id]
-        );
+        )->with('success', 'this chapter has been update');
     }
 
     public function delete($id)
