@@ -26,7 +26,7 @@
                             <h5>Users {{$userr}}</h5>
                         </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{url('dashboard/mahasiswa')}}">
+                    <a class="card-footer text-white clearfix small z-1" href="{{url('dashboard/user')}}">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                             <i class="fa fa-angle-right"></i>
