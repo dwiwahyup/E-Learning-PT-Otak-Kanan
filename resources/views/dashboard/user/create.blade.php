@@ -9,7 +9,7 @@
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Tambah Mahasiswa</li>
+            <li class="breadcrumb-item active">Add User</li>
         </ol>
 
         @if ($errors->any())
@@ -28,21 +28,18 @@
 
         <!-- Example DataTables Card-->
         <div class="card mb-3">
-            <div class="card-header">
-                <i></i> Tambah Mahasiswa Baru
-            </div>
             <div class="card-body">
-                <form action="/content/store" method="post" enctype="multipart/form-data">
+                <form action="/dashboard/user/store" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" name="email" class="form-control">
-                            </div>
-                            <div class="form-group">
                                 <label>Nama Lengkap</label>
                                 <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" name="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Password</label>

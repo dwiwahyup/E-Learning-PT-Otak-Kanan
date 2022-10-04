@@ -6,8 +6,7 @@ use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ClassController;
-use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,13 +54,14 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::post('/logbook/update', [LogbookController::class, 'update']);
         Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
 
-        Route::get('/class', [ClassController::class, 'index']);
-        Route::get('/class/class1', [ClassController::class, 'class1']);
-        Route::get('/class/class2', [ClassController::class, 'class2']);
-        Route::get('/class/class3', [ClassController::class, 'class3']);
-        Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-        Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
-
+        // route for user
+        Route::get('/user', [UserController::class, 'index']);
+        Route::get('/user/create', [UserController::class, 'create']);
+        Route::get('/user/edit/{id}', [UserController::class, 'edit']);
+        Route::post('/user/update', [UserController::class, 'update']);
+        Route::get('/user/delete/{id}', [UserController::class, 'delete']);
+        Route::post('/user/store', [UserController::class, 'store']);
+     
         // route for chapter
         Route::get('/chapter/{id}', [ChapterController::class, 'index']);
         Route::get('/chapter/create/{id}', [ChapterController::class, 'create']);
