@@ -9,6 +9,7 @@ class ChapterController extends Controller
 {
     public function index($id)
     {
+        // dd($id);
         $query = DB::table('chapters')
             ->join('course_categories', function ($join) use ($id) {
                 $join->on('chapters.course_categories_id', '=', 'course_categories.id')

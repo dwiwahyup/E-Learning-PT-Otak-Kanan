@@ -8,6 +8,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ContentGalleryController;
+use App\Http\Controllers\ContentParagraphController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
@@ -48,6 +50,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
         Route::post('/content/update', [ContentController::class, 'update']);
         Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
+        Route::get('/content/preview/{id}', [ContentController::class, 'preview']);
 
         // route for logbook
         Route::get('/logbook', [LogbookController::class, 'index']);
@@ -91,6 +94,16 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 
         //route for profile
         route::get('/profile', [ProfileController::class, 'index']);
+        // route for content pictures
+        Route::post('/contentGallery/store', [ContentGalleryController::class, 'store']);
+
+        // route for paragraph content
+        Route::get('/paragraph/{id}', [ContentParagraphController::class, 'index']);
+        Route::get('/paragraph/create/{id}', [ContentParagraphController::class, 'create']);
+        Route::post('/paragraph/store', [ContentParagraphController::class, 'store']);
+        Route::get('/paragraph/edit/{id}', [ContentParagraphController::class, 'edit']);
+        Route::post('/paragraph/update/{id}', [ContentParagraphController::class, 'update']);
+        Route::get('/paragraph/delete/{id}', [ContentParagraphController::class, 'delete']);
     });
 });
 

@@ -28,6 +28,9 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ url('frontend/css/custom.css')}}" rel="stylesheet">
+
+	 <!-- SPECIFIC CSS -->
+	 <link href="{{url('frontend/css/blog.css')}}" rel="stylesheet">
 	
 	<!-- Modernizr -->
 	<script src="{{ url('frontend/js/modernizr.js')}}"></script>

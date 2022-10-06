@@ -77,6 +77,18 @@ class ContentController extends Controller
         )->with('success', 'this chapter has been update');
     }
 
+    public function preview($id)
+    {
+        $query = DB::table('content_paragraphs')
+            ->where('content_paragraphs.contents_id', $id)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        // dd($query);
+
+        return view('dashboard.content.preview', ['query' => $query]);
+    }
+
     public function delete($id)
     {
         DB::table('contents')->where('id', $id)->delete();
