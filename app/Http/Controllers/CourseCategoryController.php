@@ -14,7 +14,7 @@ class CourseCategoryController extends Controller
                 $join->on('course_categories.id', '=', 'chapters.course_categories_id');
             })
             ->select('course_categories.id', 'course_categories.name', 'course_categories.introduction', DB::raw('COUNT(chapters.course_categories_id) as chapters_count'))
-            ->groupBy('chapters.course_categories_id')
+            ->groupBy('course_categories.id')
             ->get();
         // dd($query);
         // $data = DB::table('course_categories')->get();
