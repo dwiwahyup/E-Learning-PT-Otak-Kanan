@@ -44,14 +44,14 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach ($data as $data)
+                            @foreach ($query as $data)
                             <tr>
                                 <td>{{$data->name}}</td>
                                 <td>{!! Str::limit($data->introduction, 120) !!}</td>
-								<td>25 Chapter</td>
+								<td>{{$data->chapters_count}} Chapter</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/chapter/{{$data->id}}" class="btn btn-success btn-md">Show</a>
+                                        <a href="/dashboard/chapter/{{$data->id}}" class="btn btn-success btn-md">Chapter</a>
                                         <a href="coursecategory/edit/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Edit</a>
                                         <a href="coursecategory/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
                                     </div>

@@ -9,8 +9,16 @@ class CourseCategoryController extends Controller
 {
     public function index()
     {
-        $data = DB::table('course_categories')->get();
-        return view('dashboard.coursecategory.index', ['data' => $data]);
+        $query = DB::table('course_categories')
+            ->leftJoin('chapters', function ($join) {
+                $join->on('course_categories.id', '=', 'chapters.course_categories_id');
+            })
+            ->select('course_categories.id', 'course_categories.name', 'course_categories.introduction', DB::raw('COUNT(chapters.course_categories_id) as chapters_count'))
+            ->groupBy('chapters.course_categories_id')
+            ->get();
+        // dd($query);
+        // $data = DB::table('course_categories')->get();
+        return view('dashboard.coursecategory.index', ['query' => $query]);
     }
 
     public function create()
