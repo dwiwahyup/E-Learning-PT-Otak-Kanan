@@ -24,7 +24,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="/dashboard/logbook/create/" class="btn btn-secondary plus"> Add Log Book</a></p>
+                    <p><a href="/dashboard/logbook/create/{{ $id }}" class="btn btn-secondary plus"> Add Log Book</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
@@ -45,7 +45,7 @@
                         <tbody>
                             @foreach ($data as $data)
                             <tr>
-                              <td>{{$data->users}}</td>
+                              <td>{{$data->name}}</td>
                               <td>{{$data->date}}</td>
                               <td>{!! Str::limit($data->description, 70) !!}</td>
                                 <td>

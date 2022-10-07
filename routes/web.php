@@ -53,8 +53,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/content/preview/{id}', [ContentController::class, 'preview']);
 
         // route for logbook
-        Route::get('/logbook', [LogbookController::class, 'index']);
-        Route::get('/logbook/create', [LogbookController::class, 'create']);
+        Route::get('/logbook/{id}', [LogbookController::class, 'index']);
+        Route::get('/logbook/create/{id}', [LogbookController::class, 'create']);
         Route::post('/logbook/store', [LogbookController::class, 'store']);
         Route::get('/logbook/edit/{id}', [LogbookController::class, 'edit']);
         Route::post('/logbook/update', [LogbookController::class, 'update']);
@@ -83,6 +83,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/coursecategory/edit/{id}', [CourseCategoryController::class, 'edit']);
         Route::post('/coursecategory/update', [CourseCategoryController::class, 'update']);
         Route::get('/coursecategory/delete/{id}', [CourseCategoryController::class, 'delete']);
+        Route::get('/coursecategory/student/{id}', [CourseCategoryController::class, 'preview']);
 
         //route for quiz
         Route::get('/quiz/{id}', [QuizController::class, 'index']);

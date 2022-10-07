@@ -30,16 +30,12 @@
                         <thead>
                             <tr>
                                 <th>Course Name</th>
-                                <th>Introduction</th>
-								<th>Chapter</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Course Name</th>
-                                <th>Introduction</th>
-								<th>Chapter</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
@@ -47,14 +43,9 @@
                             @foreach ($query as $data)
                             <tr>
                                 <td>{{$data->name}}</td>
-                                <td>{!! Str::limit($data->introduction, 120) !!}</td>
-								<td>{{$data->chapters_count}} Chapter</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/chapter/{{$data->id}}" class="btn btn-success btn-md">Chapter</a>
-                                        <a href="coursecategory/edit/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Edit</a>
-                                        <a href="coursecategory/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
-                                        <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Student</a>
+                                        <a href="/dashboard/logbook/{{$data->id}}" class="btn btn-success btn-md">Logbook</a>
                                     </div>
                                 </td>
                             </tr>

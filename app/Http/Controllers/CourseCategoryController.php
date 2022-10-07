@@ -65,4 +65,16 @@ class CourseCategoryController extends Controller
 
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been deleted');
     }
+
+    public function preview($id)
+    {
+        $query = DB::table('users')
+            ->where('users.course_categories_id', $id)
+            ->orderBy('id')
+            ->get();
+
+        // dd($query);
+
+        return view('dashboard.coursecategory.student', ['query' => $query]);
+    }
 }

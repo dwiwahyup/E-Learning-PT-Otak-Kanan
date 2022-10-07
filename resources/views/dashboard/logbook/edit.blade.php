@@ -19,12 +19,16 @@
     @foreach ($data as $data)
     <form action="/dashboard/logbook/update" method="POST">
         @csrf
+    
+        <input type="hidden" name="users_id" value="{{$data->users_id}}"> <br />
+        {{-- <input type="hidden" name="users_id" value="{{ $id }}"> <br /> --}}
+
         <div class="row">
             <div class="col-md-6">
                 <input type="hidden" name="id" value="{{ $data->id }}"> <br />
                 <div class="form-group">
                     <label>Name</label>
-                    <input value="{{$data->users}}" type="text" name="name" class="form-control">
+                    <input value="{{$data->name}}" type="text" name="name" class="form-control">
                 </div>
             </div>
         </div>

@@ -34,11 +34,14 @@
 
     <form action="/dashboard/logbook/store" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="users_id" value="{{ $id }}"> <br />
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="">
+                    <input type="text" name="name"  class="form-control" placeholder="">
+                    {{-- <input type="text" name="name" value="{{Auth::user()->name}}" class="form-control" placeholder=""> --}}
                 </div>
             </div>
         </div>
@@ -63,15 +66,15 @@
             </div>
         </div>
         <!-- /row-->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label>File</label>
                     <ol><input type="file" name="berkas" /></ol>
                     {{-- <form action="/file-upload" class="dropzone"></form> --}}
-                </div>
+                {{-- </div>
             </div>
-        </div>
+        </div> --}}
             <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
         </form>
     </div>	
