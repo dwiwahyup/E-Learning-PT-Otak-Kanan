@@ -45,13 +45,25 @@
                         <div class="card-body">
                         {{$data->abstract}}
                         </div>
-                        <div class="ml-3 mb-1 font-weight-normal" role="group" aria-label="Basic mixed styles example">
-                            <a type="button" href="/dashboard/chapter/edit/{{$data->id}}" >Edit</a>
+                            <div class="ml-3 mb-1 font-weight-normal" role="group" aria-label="Basic mixed styles example">
+                                <a href="/dashboard/chapter/edit/{{$data->id}}">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                <a href="/dashboard/content/{{$data->id}}">
+                                    <i class="fa fa-list-alt" aria-hidden="true"></i> Content List</a>
+                                <a href="/dashboard/quiz/{{$data->id}}">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i> Quiz</a>
+                                <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            </div>
+                           
+                    
+                            {{-- <div class="ml-3 mb-1 font-weight-normal" role="group" aria-label="Basic mixed styles example"> --}}
+                            {{-- <a type="button" href="/dashboard/chapter/edit/{{$data->id}}" >Edit</a>
                             <a type="button" class="mx-2" href="/dashboard/content/{{$data->id}}">Content List</a>
                             <a type="button" class="mx-2" href="/dashboard/quiz/{{$data->id}}">Quiz</a>
-                            {{-- <a type="button" href="/dashboard/chapter/delete/{{$data->id}}">Delete</a> --}}
-                            <a href="" type="button" data-toggle="modal" data-target="#exampleModal">Delete</a>
-                        </div>
+                            <a href="" type="button" data-toggle="modal" data-target="#exampleModal">Delete</a> --}}
+                             {{-- <a type="button" href="/dashboard/chapter/delete/{{$data->id}}">Delete</a> --}}
+                        {{-- </div> --}}
                     </div>
                 </div>
             </div>  
@@ -61,7 +73,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Delete chapter</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
+                                <span aria-hidden="true"></span>
                             </button>
                         </div>
                         <div class="modal-body">
