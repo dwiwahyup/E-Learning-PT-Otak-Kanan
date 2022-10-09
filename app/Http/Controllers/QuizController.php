@@ -56,7 +56,7 @@ class QuizController extends Controller
         DB::table('quizzes')->where('id', $request->id)->update([
             'question' => $request->question,
             'answer' => $request->answer,
-            $request->chapters_id
+            'chapters_id' => $request->chapters_id
         ]);
 
         return redirect()->action(

@@ -9,7 +9,7 @@
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Course</li>
+            <li class="breadcrumb-item active">Course Student</li>
         </ol>
 
         @if ($message = Session::get('success'))
@@ -21,11 +21,10 @@
 
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Course Data
+                <i class="fa fa-table"></i> Course Student Data
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="/dashboard/coursecategory/create/" class="btn btn-secondary plus"> Add Course</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>

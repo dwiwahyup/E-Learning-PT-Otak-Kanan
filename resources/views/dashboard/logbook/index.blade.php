@@ -24,7 +24,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="/dashboard/logbook/create/{{ $id }}" class="btn btn-secondary plus"> Add Log Book</a></p>
+                    {{-- <p><a href="/dashboard/logbook/create/{{ $id }}" class="btn btn-secondary plus"> Add Log Book</a></p> --}}
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>

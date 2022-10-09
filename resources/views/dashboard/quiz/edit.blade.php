@@ -21,7 +21,7 @@
         @csrf
         <!-- /row-->
         <div class="row">
-            <input type="hidden" name="id" value="{{ $data->id }}"> <br />
+            <input type="hidden" name="chapters_id" value="{{ $data->id }}"> <br />
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Question</label>
