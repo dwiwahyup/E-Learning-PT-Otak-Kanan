@@ -30,12 +30,24 @@ class CourseCategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'introduction' => 'required'
+            'introduction' => 'required',
+            'images' => 'image'
         ]);
+
+        $images = $request->file('image');
+
+        if ($request->hasFile('image')) {
+            $filename = $images->getClientOriginalName();
+            $images->move(public_path('/coursecategory/courseimage/'), $filename);
+            // $path = $images->store('public/imagecontent');
+        } else {
+            $filename = null;
+        }
 
         DB::table('course_categories')->insert([
             'name' => $request->name,
-            'introduction' => $request->introduction
+            'introduction' => $request->introduction,
+            'image_url' => $filename
         ]);
 
         return redirect('/dashboard/coursecategory')->with('success', 'new course category has been added');
@@ -51,17 +63,43 @@ class CourseCategoryController extends Controller
 
     public function update(Request $request)
     {
-        DB::table('course_categories')->where('id', $request->id)->update([
-            'name' => $request->name,
-            'introduction' => $request->introduction
-        ]);
+        $data = DB::table('course_categories')->get();
 
+        if ($request->hasFile('image')) {
+            $path = public_path() . '/coursecategory/courseimage/';
+            // dd($path);
+
+            if ($data->image_url != '' && $data->image_url) {
+                $file_old = $path . $data->image_url;
+                unlink($file_old);
+            }
+
+            $images = $request->file('image');
+            $filename = $images->getClientOriginalName();
+            $images->move(public_path('/coursecategory/courseimage/'), $filename);
+
+            DB::table('course_categories')
+                ->where('id', $request->id)
+                ->update([
+                    'name' => $request->name,
+                    'introduction' => $request->introduction,
+                    'image' => $filename
+                ]);
+        }
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been updated');
     }
 
     public function delete($id)
     {
+        $data = DB::table('course_categories')->get();
+
         DB::table('course_categories')->where('id', $id)->delete();
+
+        if ($data->image_url != null) {
+            $path = public_path() . '/paragraph/imagecontent/';
+            $file_old = $path . $data->image_url;
+            unlink($file_old);
+        }
 
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been deleted');
     }

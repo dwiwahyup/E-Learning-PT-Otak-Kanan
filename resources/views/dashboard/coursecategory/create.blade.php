@@ -51,6 +51,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Images</label>
+                                <input type="file" name="image" class="form-control">
+                                <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
+                            </div>
+                        </div>
+                    </div>
                     <!-- /row-->
                     <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                 </form>

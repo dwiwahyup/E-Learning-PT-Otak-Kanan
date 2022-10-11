@@ -32,6 +32,7 @@
                                 <th>Course Name</th>
                                 <th>Introduction</th>
 								<th>Chapter</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,6 +41,7 @@
                                 <th>Course Name</th>
                                 <th>Introduction</th>
 								<th>Chapter</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
@@ -49,6 +51,12 @@
                                 <td>{{$data->name}}</td>
                                 <td>{!! Str::limit($data->introduction, 120) !!}</td>
 								<td>{{$data->chapters_count}} Chapter</td>
+                                <td>
+                                    @if ($data->image_url != null)
+                                        <img src="{{url('/coursecategory/courseimage/'.$data->image_url)}}" alt="" width="200px" height="100px">
+                                    @else
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="/dashboard/chapter/{{$data->id}}" class="btn btn-success btn-md">Chapter</a>

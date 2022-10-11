@@ -38,6 +38,16 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label>images</label>
+            <input type="file" name="image" class="form-control">
+            <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
+            @if ($data->image_url != null)
+                <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{url('coursecategory/courseimage/'.$data->image_url)}}"></p>
+            @else
+                
+            @endif
+        </div>
             <p><button type="submit" class="btn btn-primary plus float-right">Update</button></p>
         </form>
         @endforeach
