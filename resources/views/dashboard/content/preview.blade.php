@@ -16,12 +16,11 @@
                 <div class="bloglist singlepost">
 
                     {{-- @dd($query); --}}
-
-                        @foreach ($query as $data)
+                            @foreach ($query as $data)
                         
                         @if ($data->vidio_url == null)
                         @else
-                        <iframe style="width : 765px; height: 405px; border: none;"
+                        <iframe style="height: 405px; overflow-x:auto; "
                             src="{{$data->vidio_url}}">
                         </iframe>   
                         @endif
@@ -31,7 +30,7 @@
                         @else
                             <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{url('paragraph/imagecontent/'.$data->image_url)}}"></p>
                         @endif
-            
+                                                     
                         {{-- <h1>Your blog article title</h1> --}}
                         {{-- <div class="postmeta">
                             <ul>
