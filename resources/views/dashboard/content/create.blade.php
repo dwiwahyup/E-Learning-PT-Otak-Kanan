@@ -38,17 +38,25 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Materi</label>
+                                <label>Name</label>
                                 <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Link Vidio</label>
+                                <input type="text" name="vidio" class="form-control">
+                                <small class="form-text text-danger">Please input link form youtube like : https://www.youtube.com/embed/tgbNymZ7vqY</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Thumbnile</label>
+                                <input type="file" name="thumbnaile" class="form-control">
+                                <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Text</label>
+                                <textarea class="editor" name="text"></textarea>
                             </div>
                         </div>
                     </div>
-                        <div class="col-md-14">
-                            <div class="form-group">
-                            <label>Text</label>
-                            <textarea class="editor" name="text"></textarea>
-                            </div>
-                        </div>
                         <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
                     </form>
             </div>

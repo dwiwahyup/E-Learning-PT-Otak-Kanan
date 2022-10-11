@@ -15,30 +15,20 @@
             <div class="col-lg-9">
                 <div class="bloglist singlepost">
 
-                    {{-- @dd($query); --}}
-                            @foreach ($query as $data)
+                    @foreach ($query as $data)
                         
-                        {{-- @if ($data->vidio_url == null)
+                        @if ($data->vidio == null)
                         @else
-                        <iframe style="height: 405px; overflow-x:auto; "
-                            src="{{$data->vidio_url}}">
-                        </iframe>   
-                        @endif --}}
-                            
-                        {{-- @if ($data->image_url == null) --}}
-                            
-                        @else
-                            <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{url('paragraph/imagecontent/'.$data->image_url)}}"></p>
+                            <iframe style="height: 405px; overflow-x:auto; "
+                                src="{{$data->vidio}}">
+                            </iframe>   
                         @endif
-                        {{-- <h1>Your blog article title</h1> --}}
-                        {{-- <div class="postmeta">
-                            <ul>
-                                <li><a href="#"><i class="icon_folder-alt"></i> Collections</a></li>
-                                <li><a href="#"><i class="icon_clock_alt"></i> 23/12/2015</a></li>
-                                <li><a href="#"><i class="icon_pencil-edit"></i> Admin</a></li>
-                                <li><a href="#"><i class="icon_comment_alt"></i> (14) Comments</a></li>
-                            </ul>
-                        </div> --}}
+                            
+                        @if ($data->thumbnaile == null)
+                            
+                        @else
+                            <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{url('/content/thumbnaile/'.$data->thumbnaile)}}"></p>
+                        @endif
                         <!-- /post meta -->
                         <div class="post-content">
                             <p>{!! $data->text !!}</p>

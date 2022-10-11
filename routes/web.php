@@ -48,7 +48,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/content/create/{id}', [ContentController::class, 'create']);
         Route::post('/content/store', [ContentController::class, 'store']);
         Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
-        Route::post('/content/update', [ContentController::class, 'update']);
+        Route::post('/content/update/{id}', [ContentController::class, 'update']);
         Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
         Route::get('/content/preview/{id}', [ContentController::class, 'preview']);
 

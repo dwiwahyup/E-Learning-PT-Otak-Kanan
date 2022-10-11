@@ -36,23 +36,41 @@
             <div class="card-body">
                 {{-- @dd($data); --}}
                 @foreach ($data as $data)
-                <form action="/dashboard/content/update" method="POST">
+                <form action="/dashboard/content/update/{{$data->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6">
-                            <input type="hidden" name="chapters_id" value="{{$data->chapters_id}}"><br>
-                            <input type="hidden" name="id" value="{{ $data->id }}"> <br />
+                        <div class="col-md-12">
+                            <input type="hidden" name="chapters_id" value="{{$data->chapters_id}}">
+                            <input type="hidden" name="id" value="{{ $data->id }}">
                             <div class="form-group">
-                                <label>Nama Materi</label>
+                                <label>Content Name</label>
                                 <input name="name" value="{{$data->name}}" type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Deskripsi Materi</label>
-                                        <input type="text" value="{{$data->text}}" name="text" class="form-control" style="height:150px">
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Link Vidio</label>
+                                <input type="text" name="vidio" value="{{$data->vidio}}" class="form-control">
+                                <small class="form-text mb-3 text-danger">Please input link form youtube like : https://www.youtube.com/embed/tgbNymZ7vqY</small>
+                                @if ($data->vidio != null)
+                                    <iframe style="width : 765px; height: 405px; border: none;"
+                                    src="{{$data->vidio}}">
+                                    </iframe>
+                                @else
+                                    
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Thumbnaile</label>
+                                <input type="file" name="thumbnaile" class="form-control">
+                                <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
+                                @if ($data->thumbnaile != null)
+                                    <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{url('/content/thumbnaile/'.$data->thumbnaile)}}"></p>
+                                @else
+                                    
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Text</label>
+                                <textarea class="editor" name="text">{{$data->text}}</textarea>
                             </div>
                         </div>
                         

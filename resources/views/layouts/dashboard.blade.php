@@ -103,14 +103,14 @@
     ['style', ['bold', 'italic', 'underline', 'clear']],
     ['font', ['strikethrough']],
     ['fontsize', ['fontsize']],
+    ['insert', ['link', 'picture', 'video']],
     ['para', ['ul', 'ol', 'paragraph']]
     ],
         placeholder: 'Write here your description....',
         tabsize: 2,
-        height: 200
+        height: 500
     });
     </script>
- 
 </body>
 
 </html>

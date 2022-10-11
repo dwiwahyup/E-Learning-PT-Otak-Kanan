@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->longText('text');
+            $table->string('thumbnaile', 50)->nullable();
+            $table->string('vidio', 50)->nullable();
             $table->bigInteger('chapters_id');
             $table->timestamps();
         });
