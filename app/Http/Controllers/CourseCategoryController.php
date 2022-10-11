@@ -13,7 +13,7 @@ class CourseCategoryController extends Controller
             ->leftJoin('chapters', function ($join) {
                 $join->on('course_categories.id', '=', 'chapters.course_categories_id');
             })
-            ->select('course_categories.id', 'course_categories.name', 'course_categories.introduction', DB::raw('COUNT(chapters.course_categories_id) as chapters_count'))
+            ->select('course_categories.id', 'course_categories.name', 'course_categories.image_url', 'course_categories.introduction', DB::raw('COUNT(chapters.course_categories_id) as chapters_count'))
             ->groupBy('course_categories.id')
             ->get();
         // dd($query);
