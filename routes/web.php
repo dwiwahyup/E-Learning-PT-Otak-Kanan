@@ -25,18 +25,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
 
