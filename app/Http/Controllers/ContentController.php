@@ -147,15 +147,21 @@ class ContentController extends Controller
     {
         $query = DB::table('contents')->where('id', $id)->get();
 
-        // dd($query);
-
         return view('dashboard.content.preview', ['query' => $query]);
     }
 
     public function delete($id)
     {
+        $data = DB::table('contents')->find($id);
+
+        if ($data->thumbnaile != null) {
+            $path = public_path() . '/content/thumbnaile/';
+            $old_file = $path . $data->thumbnaile;
+            unlink(($old_file));
+        }
+
         DB::table('contents')->where('id', $id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'content has been deleted');
     }
 }
