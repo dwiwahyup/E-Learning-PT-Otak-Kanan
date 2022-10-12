@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,7 +48,9 @@ class CourseCategoryController extends Controller
         DB::table('course_categories')->insert([
             'name' => $request->name,
             'introduction' => $request->introduction,
-            'image_url' => $filename
+            'image_url' => $filename,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect('/dashboard/coursecategory')->with('success', 'new course category has been added');
@@ -83,7 +86,8 @@ class CourseCategoryController extends Controller
                 ->update([
                     'name' => $request->name,
                     'introduction' => $request->introduction,
-                    'image' => $filename
+                    'image' => $filename,
+                    'updated_at' => Carbon::now()
                 ]);
         }
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been updated');

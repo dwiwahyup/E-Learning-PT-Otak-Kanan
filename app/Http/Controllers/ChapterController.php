@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -49,7 +50,9 @@ class ChapterController extends Controller
         DB::table('chapters')->insert([
             'name' => $request->name,
             'abstract' => $request->abstract,
-            'course_categories_id' => $request->course_categories_id
+            'course_categories_id' => $request->course_categories_id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->action(
@@ -81,7 +84,8 @@ class ChapterController extends Controller
         DB::table('chapters')->where('id', $request->id)->update([
             'name' => $request->name,
             'abstract' => $request->abstract,
-            'course_categories_id' => $request->course_categories_id
+            'course_categories_id' => $request->course_categories_id,
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->action(

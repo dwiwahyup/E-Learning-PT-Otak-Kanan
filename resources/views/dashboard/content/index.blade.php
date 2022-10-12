@@ -38,8 +38,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Text</th>
-                                <th>Vidio</th>
                                 <th>Thumbnile</th>
+                                <th>Created</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,8 +47,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Text</th>
-                                <th>Vidio</th>
                                 <th>Thumbnile</th>
+                                <th>Created</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
@@ -57,12 +57,15 @@
                             <tr>
                                 <td>{{$data->name}}</td>
                                 <td>{!! Str::words($data->text, 50) !!}</td>
-                                <td>{{$data->vidio}}</td>
+                                {{-- <td>{{$data->vidio}}</td> --}}
                                 <td>    
                                         @if ($data->thumbnaile != null)
                                             <img src="{{url('/content/thumbnaile/'.$data->thumbnaile)}}" alt="" width="200px" height="100px">
                                         @else
                                         @endif
+                                </td>
+                                <td>
+                                    {{$data->created_at}}
                                 </td>
                                 <td>
                                     <div class="d-flex">
