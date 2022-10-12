@@ -13,7 +13,11 @@
                 <a href="{{('/dashboard/coursecategory')}}">Course</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="/dashboard/chapter/{{$id}}">Chapter</a>
+                @if ($chapters_id != null)
+                    <a href="/dashboard/chapter/{{$chapters_id->course_categories_id}}">Chapter</a>
+                @else
+                    <a href="{{URL::previous()}}">Chapter</a>
+                @endif
             </li>
             <li class="breadcrumb-item active">Content</li>
         </ol>

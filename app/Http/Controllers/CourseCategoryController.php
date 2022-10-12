@@ -67,7 +67,6 @@ class CourseCategoryController extends Controller
     public function update(Request $request)
     {
         $data = DB::table('course_categories')->get();
-
         if ($request->hasFile('image')) {
             $path = public_path() . '/coursecategory/courseimage/';
             // dd($path);

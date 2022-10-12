@@ -4,13 +4,9 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Tambah Materi</li>
-        </ol>
+        <a class="btn btn-link mb-2" href="{{URL::previous()}}">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+        </a>
 
         @if ($errors->any())
                     <div class="mb-5" role="alert">
@@ -34,7 +30,7 @@
             <div class="card-body">
                 <form action="/dashboard/content/store" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="chapters_id" value="{{ $id }}"> <br />
+                    <input type="hidden" name="chapters_id" value="{{ $id }}">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

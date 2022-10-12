@@ -6,13 +6,9 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Update</li>
-        </ol>
+        <a class="btn btn-link mb-2" href="{{URL::previous()}}">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+        </a>
 
         @if ($errors->any())
             <div class="mb-5" role="alert">
@@ -31,7 +27,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i></i>Update Data Materi
+                <i></i>Update Content
             </div>
             <div class="card-body">
                 {{-- @dd($data); --}}

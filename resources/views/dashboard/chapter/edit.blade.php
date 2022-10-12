@@ -8,9 +8,12 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="#">Dashboard</a>
+            <a href="{{('/dashboard')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Log Book</li>
+        <li class="breadcrumb-item">
+            <a href="{{('/dashboard/coursecategory')}}">Course</a>
+        </li>
+        <li class="breadcrumb-item active">Chapter</li>
     </ol>
 
     @if ($errors->any())

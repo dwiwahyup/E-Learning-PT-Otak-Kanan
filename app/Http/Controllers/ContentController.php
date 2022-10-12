@@ -13,8 +13,20 @@ class ContentController extends Controller
     public function index($id)
     {
         $data = DB::table('contents')->where('chapters_id', $id)->get();
-        // dd($data);
-        return view('dashboard.content.index', ['data' => $data, 'id' => $id]);
+        $chapters_id = DB::table('contents')
+            ->Join('chapters', function ($join) use ($id) {
+                $join->on('contents.chapters_id', '=', 'chapters.id')
+                    ->where('contents.chapters_id', '=', $id);
+            })
+            ->select('chapters.course_categories_id')
+            ->first();
+        // dd($chapters_id);
+        // dd($id);
+
+        return view('dashboard.content.index', [
+            'data' => $data,
+            'id' => $id, 'chapters_id' => $chapters_id
+        ]);
     }
 
     public function create($id)
