@@ -23,13 +23,14 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
-
+        // dd($request);
         $id = $request->chapters_id;
+
         $this->validate($request, [
             'question' => 'required',
             'answer' => 'required',
             'chapters_id' => 'required',
-            'image_url' => 'required'
+            'image_url' => 'image'
         ]);
 
         $images = $request->file('image');
@@ -58,6 +59,7 @@ class QuizController extends Controller
     public function edit($id)
     {
         $data = DB::table('quizzes')->where('id', $id)->get();
+        // dd($data);
 
         return view('dashboard.quiz.edit', ['data' => $data]);
     }

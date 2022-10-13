@@ -16,13 +16,14 @@
             <h2><i class="fa fa-file"></i> Edit Course Category</h2>
         </div>
     @foreach ($data as $data)
-    <form action="/dashboard/coursecategory/update" method="POST">
+    <form action="/dashboard/coursecategory/update" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ $data->id }}" enctype="multipart/form-data" > <br/>
         @csrf
         <div class="row">
             <div class="col-md-6">
-                <input type="hidden" name="id" value="{{ $data->id }}"> <br />
+
                 <div class="form-group">
-                    <label>Name Coure</label>
+                    <label>Name Course</label>
                     <input value="{{$data->name}}" type="text" name="name" class="form-control">
                 </div>
             </div>

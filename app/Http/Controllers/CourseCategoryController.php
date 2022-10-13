@@ -66,10 +66,11 @@ class CourseCategoryController extends Controller
 
     public function update(Request $request)
     {
+
+        // dd($request);
         $data = DB::table('course_categories')->get();
         if ($request->hasFile('image')) {
             $path = public_path() . '/coursecategory/courseimage/';
-            // dd($path);
 
             if ($data->image_url != '' && $data->image_url) {
                 $file_old = $path . $data->image_url;
@@ -89,6 +90,14 @@ class CourseCategoryController extends Controller
                     'updated_at' => Carbon::now()
                 ]);
         }
+        DB::table('course_categories')
+            ->where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'introduction' => $request->introduction,
+                // 'image' => $filename,
+                'updated_at' => Carbon::now()
+            ]);
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been updated');
     }
 
