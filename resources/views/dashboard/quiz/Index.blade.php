@@ -30,6 +30,7 @@
                         <tr>
                             <th>Quistion</th>
                             <th>Answer</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -37,6 +38,7 @@
                         <tr>
                             <th>Question</th>
                             <th>Answer</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -45,6 +47,12 @@
                             <tr>
                                 <td>{{$data->question}}</td>
                                 <td>{{$data->answer}}</td>
+                                <td>
+                                @if ($data->image_url != null)
+                                    <img src="{{url('/quiz/quizimage/'.$data->image_url)}}" alt="" width="200px" height="100px">
+                                @else
+                                @endif
+                                </td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="/dashboard/quiz/edit/{{$data->id}}" class="btn btn-success btn-md">Edit</a>

@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->bigInteger('chapters_id');
             $table->text('question');
             $table->text('answer');
+            $table->string('image_url')->nullable();
             $table->bigInteger('chapters_id');
             $table->timestamps();
         });

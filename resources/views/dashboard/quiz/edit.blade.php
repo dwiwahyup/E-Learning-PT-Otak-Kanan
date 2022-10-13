@@ -17,7 +17,7 @@
             <h2><i class="fa fa-file"></i> Edit Quiz</h2>
         </div>
     @foreach ($data as $data)
-    <form action="/dashboard/quiz/update" method="POST">
+    <form action="/dashboard/quiz/update/{{$data->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         <!-- /row-->
         <div class="row">
@@ -43,8 +43,12 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>File</label>
-                    <ol><input type="file" name="berkas" /></ol>
-                    {{-- <form action="/file-upload" class="dropzone"></form> --}}
+                    <input type="file" name="image" class="form-control">
+                    <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
+                    @if ($data->image_url != null)
+                        <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{url('quiz/quizimage/'.$data->image_url)}}"></p>
+                    @else
+                    @endif
                 </div>
             </div>
         </div>

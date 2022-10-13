@@ -61,8 +61,9 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>File</label>
-                    <ol><input type="file" name="berkas" /></ol>
+                    <input type="file" name="image" class="form-control" />
                     {{-- <form action="/file-upload" class="dropzone"></form> --}}
+                    <small class="form-text"> Please input image</small>
                 </div>
             </div>
         </div>

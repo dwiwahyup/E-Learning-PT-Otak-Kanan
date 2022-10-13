@@ -85,7 +85,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/quiz/create/{id}', [QuizController::class, 'create']);
         Route::post('/quiz/store', [QuizController::class, 'store']);
         Route::get('/quiz/edit/{id}', [QuizController::class, 'edit']);
-        Route::post('/quiz/update', [QuizController::class, 'update']);
+        Route::post('/quiz/update/{id}', [QuizController::class, 'update']);
         Route::get('/quiz/delete/{id}', [QuizController::class, 'delete']);
 
         //route for profile
