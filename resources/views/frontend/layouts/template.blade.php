@@ -48,20 +48,21 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 p-r-5">
-					<p><img src="{{ url('frontend/img/logo.svg')}}" width="150" height="36" alt=""></p>
-					<p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
+					{{-- <p><img src="{{ url('frontend/img/logo.svg')}}" width="150" height="36" alt=""></p> --}}
+					<h5>ABOUT</h5>
+					<p>PT. OTAK KANAN is a company engaged in the field of creative industries located in the city of Surabaya and was officially named PT OTAK KANAN in 2009.</p>
 					<div class="follow_us">
 						<ul>
 							<li>Follow us</li>
-							<li><a href="#0"><i class="ti-facebook"></i></a></li>
-							<li><a href="#0"><i class="ti-twitter-alt"></i></a></li>
-							<li><a href="#0"><i class="ti-google"></i></a></li>
+							<li><a href="https://web.facebook.com/ptOtakKanan/"><i class="ti-facebook"></i></a></li>
+							<li><a href="https://twitter.com/otakkanan"><i class="ti-twitter-alt"></i></a></li>
+							{{-- <li><a href="#0"><i class="ti-google"></i></a></li>
 							<li><a href="#0"><i class="ti-pinterest"></i></a></li>
-							<li><a href="#0"><i class="ti-instagram"></i></a></li>
+							<li><a href="#0"><i class="ti-instagram"></i></a></li> --}}
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 ml-lg-auto">
+				{{-- <div class="col-lg-3 col-md-6 ml-lg-auto">
 					<h5>Useful links</h5>
 					<ul class="links">
 						<li><a href="about.html">About</a></li>
@@ -70,14 +71,14 @@
 						<li><a href="blog.html">News &amp; Events</a></li>
 						<li><a href="contacts.html">Contacts</a></li>
 					</ul>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h5>Contact with Us</h5>
+				</div> --}}
+				<div class="col-lg-3 col-md-6 ml-lg-auto">
+					<h5>CONTACT WITH US</h5>
 					<ul class="contacts">
-						<li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
-						<li><a href="mailto:info@Panagea.com"><i class="ti-email"></i> info@Panagea.com</a></li>
+						<li><a href="tel://+6285775936999"><i class="ti-mobile"></i>085 77 59 36999</a></li>
+						<li><a href="mailto:info@otakkanan.co.id"><i class="ti-email"></i> E-Mail Otak Kanan</a></li>
 					</ul>
-					<div id="newsletter">
+					{{-- <div id="newsletter">
 					<h6>Newsletter</h6>
 					<div id="message-newsletter"></div>
 					<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
@@ -86,13 +87,13 @@
 							<input type="submit" value="Submit" id="submit-newsletter">
 						</div>
 					</form>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 			<!--/row-->
 			<hr>
 			<div class="row">
-				<div class="col-lg-6">
+				{{-- <div class="col-lg-6">
 					<ul id="footer-selector">
 						<li>
 							<div class="styled-select" id="lang-selector">
@@ -114,8 +115,8 @@
 						</li>
 						<li><img src="{{ url('frontend/img/cards_all.svg')}}" alt=""></li>
 					</ul>
-				</div>
-				<div class="col-lg-6">
+				</div> --}}
+				<div class="col-lg-12">
 					<ul id="additional_links">
 						<li><a href="#0">Terms and conditions</a></li>
 						<li><a href="#0">Privacy</a></li>
