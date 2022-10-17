@@ -55,13 +55,21 @@
                                     {{$data->abstract}}
                                 {{-- </p> --}}
                                 <div class="mt-3 font-weight-normal" role="group" aria-label="Basic mixed styles example">
-                                    <a class="mr-2" href="/dashboard/chapter/edit/{{$data->id}}">
+                                        <a class="mr-2" href="/dashboard/chapter/edit/{{$data->id}}">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                                    <a class="mr-2" href="/dashboard/content/{{$data->id}}">
+
+                                        @if ($data->contents_count == 0)
+                                        <a class="mr-2" href="/dashboard/content/create/{{$data->id}}">    
+                                        <i class="fa fa-list-alt" aria-hidden="true"></i> Add Content</a>
+                                            @else    
+                                        <a class="mr-2" href="/dashboard/content/{{$data->id}}">
                                         <i class="fa fa-list-alt" aria-hidden="true"></i> Content List</a>
-                                    <a class="mr-2" href="/dashboard/quiz/{{$data->id}}">
+                                        @endif
+
+
+                                        <a class="mr-2" href="/dashboard/quiz/{{$data->id}}">
                                         <i class="fa fa-question-circle" aria-hidden="true"></i> Quiz</a>
-                                    <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
+                                        <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
                                         <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                                 </div>
                             </div>
