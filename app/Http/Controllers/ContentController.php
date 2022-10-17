@@ -18,7 +18,7 @@ class ContentController extends Controller
                 $join->on('contents.chapters_id', '=', 'chapters.id')
                     ->where('contents.chapters_id', '=', $id);
             })
-            ->select('chapters.course_categories_id')
+            ->select('chapters.course_categories_id', 'chapters.name')
             ->first();
         // dd($chapters_id);
         // dd($id);
