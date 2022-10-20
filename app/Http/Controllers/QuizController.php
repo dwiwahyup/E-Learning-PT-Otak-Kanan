@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Quiz;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,7 +48,9 @@ class QuizController extends Controller
             'question' => $request->question,
             'answer' => $request->answer,
             'chapters_id' => $request->chapters_id,
-            'image_url' => $filename
+            'image_url' => $filename,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->action(
@@ -95,7 +98,8 @@ class QuizController extends Controller
                 'question' => $request->question,
                 'answer' => $request->answer,
                 'chapters_id' => $request->chapters_id,
-                'image_url' => $filename
+                'image_url' => $filename,
+                'updated_at' => Carbon::now()
             ]);
         }
         DB::table('quizzes')->where('id', $request->id)->update([

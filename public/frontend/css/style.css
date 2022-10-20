@@ -438,7 +438,7 @@ label {
 }
 
 hr {
-  margin: 30px 0 30px 0;
+  /* margin: 30px 0 30px 0; */
   border-color: #ededed;
 }
 hr.large {
@@ -2326,7 +2326,7 @@ video {
   height: 620px;
 }
 .hero_single.version_2:before {
-  background: url(../img/home_section_1.jpg) center center no-repeat;
+  background: url(../img/banner.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -6001,7 +6001,7 @@ a.grid_item.latest_adventure em {
 }
 
 .banner {
-  background: url(../img/banner_bg_desktop.jpg) center center no-repeat;
+  background: url(../img/banner2.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7568,7 +7568,7 @@ a.address:hover {
 }
 
 .call_section {
-  background: url(../img/bg_call_section.jpg) center center no-repeat fixed;
+  background: url(../img/banner1.jpg) center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
