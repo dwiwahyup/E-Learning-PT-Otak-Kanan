@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
+            $table->string('title', 50);
             $table->longText('text');
-            $table->string('thumbnaile', 50)->nullable();
+            $table->string('thumbnaile_url', 200)->nullable();
+            $table->string('thumbnaile_id', 100)->unique();
             $table->string('vidio', 50)->nullable();
+            $table->string('slug', 70)->unique();
             $table->bigInteger('chapters_id');
             $table->timestamps();
         });
