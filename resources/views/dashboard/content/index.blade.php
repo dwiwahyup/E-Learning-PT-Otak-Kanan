@@ -77,8 +77,8 @@
                                 <td>
                                     <div class="d-flex">
                                         <a href="/dashboard/content/edit/{{$data->slug}}" class="btn btn-success btn-md">Edit</a>
-                                        <a href="/dashboard/content/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
-                                        <a href="/dashboard/content/preview/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Preview</a>
+                                        <a href="/dashboard/content/delete/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                        <a href="/dashboard/content/preview/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Preview</a>
                                     </div>
                                 </td>
                             </tr>

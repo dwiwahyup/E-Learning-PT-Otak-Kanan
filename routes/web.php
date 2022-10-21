@@ -44,8 +44,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::post('/content/store', [ContentController::class, 'store']);
         Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
         Route::post('/content/update/{id}', [ContentController::class, 'update']);
-        Route::get('/content/delete/{id}', [ContentController::class, 'delete']);
-        Route::get('/content/preview/{id}', [ContentController::class, 'preview']);
+        Route::get('/content/delete/{slug}', [ContentController::class, 'delete']);
+        Route::get('/content/preview/{slug}', [ContentController::class, 'preview']);
 
         // route for logbook
         Route::get('/logbook/{id}', [LogbookController::class, 'index']);

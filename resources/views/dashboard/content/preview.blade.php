@@ -24,10 +24,10 @@
                             </iframe>   
                         @endif
                             
-                        @if ($data->thumbnaile == null)
+                        @if ($data->thumbnaile_url == null)
                             
                         @else
-                            <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{url('/content/thumbnaile/'.$data->thumbnaile)}}"></p>
+                            <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{$data->thumbnaile_url}}"></p>
                         @endif
                         <!-- /post meta -->
                         <div class="post-content">

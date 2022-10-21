@@ -11,8 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-// use PhpParser\Node\Expr\List_;
-
 class ContentController extends Controller
 {
     public function index($id)
@@ -64,7 +62,7 @@ class ContentController extends Controller
             $remove_path = pathinfo($imageName, PATHINFO_FILENAME);
             $newFilename = str_replace(' ', '_', $remove_path);
             $public_id = date('Y-m-d_His') . '_' . $newFilename;
-            $thumbnile_id = $folder . '/' . $public_id;
+            $thumbnaile_id = $folder . '/' . $public_id;
             // dd($thumbnile_id);
             $result = Cloudinary::upload($thumbnile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
         } else {
@@ -97,7 +95,7 @@ class ContentController extends Controller
             'title' => $request->name,
             'thumbnaile_url' => $result,
             'vidio' => $request->vidio,
-            'thumbnile_id' => $thumbnile_id,
+            'thumbnaile_id' => $thumbnaile_id,
             'text' => $content,
             'chapters_id' => $request->chapters_id,
             'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
@@ -139,8 +137,8 @@ class ContentController extends Controller
         if ($request->hasFile('thumbnaile')) {
             // $path = public_path() . '/content/thumbnaile/';
 
-            if ($data->thumbnile_id != '' && $data->thumbnile_id) {
-                $thumbnaile_old = $data->thumbnile_id;
+            if ($data->thumbnaile_id != '' && $data->thumbnaile_id) {
+                $thumbnaile_old = $data->thumbnaile_id;
                 Cloudinary::destroy($thumbnaile_old);
                 // dd($thumbnaile_old);
             }
@@ -152,7 +150,7 @@ class ContentController extends Controller
             $remove_path = pathinfo($imageName, PATHINFO_FILENAME);
             $newFilename = str_replace(' ', '_', $remove_path);
             $public_id = date('Y-m-d_His') . '_' . $newFilename;
-            $thumbnile_id = $folder . '/' . $public_id;
+            $thumbnaile_id = $folder . '/' . $public_id;
             // dd($thumbnile_id);
             $result = Cloudinary::upload($thumbnaile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
             // $filename = $thumbnaile->getClientOriginalName();
@@ -160,7 +158,7 @@ class ContentController extends Controller
             DB::table('contents')->where('id', $request->id)->update([
                 'title' => $request->name,
                 'thumbnaile_url' => $result,
-                'thumbnile_id' => $thumbnile_id,
+                'thumbnaile_id' => $thumbnaile_id,
                 'vidio' => $request->vidio,
                 'text' => $request->text,
                 'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
@@ -196,19 +194,13 @@ class ContentController extends Controller
         return view('dashboard.content.preview', ['query' => $query]);
     }
 
-    public function delete($id)
+    public function delete($slug)
     {
-        // $data = DB::table('contents')->where('slug', $slug)->first();
-        $data = DB::table('contents')->find($id);
-
-        $public_id = $data->thumbnile_id;
-        // dd($path);
+        $data = DB::table('contents')->where('slug', $slug)->first();
+        // dd($data->thumbnaile_id);
+        $public_id = $data->thumbnaile_id;
         Cloudinary::destroy($public_id);
-
-
-
-        DB::table('contents')->where('id', $id)->delete();
-
+        DB::table('contents')->where('slug', $slug)->delete();
         return redirect()->back()->with('success', 'content has been deleted');
     }
 }
