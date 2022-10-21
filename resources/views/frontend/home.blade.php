@@ -27,7 +27,7 @@
                 <div class="box_grid">
                     <figure>
                         {{-- <a href="#0" class="wish_bt"></a> --}}
-                        <a href="tour-detail.html"><img src="{{ url('frontend/img/banner4.jpg')}}" class="img-fluid" alt="" width="800" height="533">
+                        <a href="tour-detail.html"><img src="{{ url('frontend/img/mahasiswa.jpg')}}" class="img-fluid" alt="" width="800" height="533">
                             <div class="read_more"><span>Read more</span></div>
                         </a>
                         <small>Front-End Developer</small>
@@ -72,20 +72,47 @@
     </div>
     <!-- /container -->
 
-    <div class="container container-custom margin_30_95">
+    <div class="bg_color_1">
+			<div class="container container-custom margin_80_55">
+				<div class="main_title_2">
+					<h2>Why do you have to follow<br>
+                    internship program at PT. Otak Kanan?</h2>
+                
+				</div>
+				<div class="row adventure_feat">
+					<div class="col-md-3">
+						<img src="frontend/img/paste-solid.svg" alt="" width="75" height="75"><br>
+						<p>Practical activities can be converted into credits</p>
+					</div>
+					<div class="col-md-3">
+						<img src="frontend/img/knowladge.png" alt="" width="75" height="75"><br>
+						<p>Ease of exploration of students' knowledge and abilities during the activity</p>
+					</div>
+					<div class="col-md-3">
+						<img src="frontend/img/networking.png" alt="" width="75" height="75"><br>
+						<p>Learn and expand networks outside of the home campus</p>
+					</div>
+                    <div class="col-md-3">
+						<img src="frontend/img/teacher.png" alt="" width="75" height="75"><br>
+						<p>Gain knowledge and experience from professional and qualified partners.</p>
+					</div>
+				</div>
+			</div>
+			<!-- /container -->
+		</div>
+
+    {{-- <div class="container container-custom margin_30_95">
         <div class="banner mb-0">
             <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
                 <div>
-                    <small>PT Otak Kanan</small>
-                    <h3>Your Perfect<br>Advenure Experience</h3>
-                    <p>Activities and accommodations</p>
-                    {{-- <a href="adventure.html" class="btn_1">Read more</a> --}}
+                    <h3>Kenapa kamu harus mengikuti 
+                    <br>program magang di PT. Otak Kanan?</h3>
                 </div>
             </div>
             <!-- /wrapper -->
         </div>
         <!-- /banner -->
-    </div>
+    </div> --}}
     <!-- /container -->
 
     <div class="container margin_95_40">
@@ -249,9 +276,9 @@
                 <div class="block-reveal">
                     <div class="block-vertical"></div>
                     <div class="box_1">
-                        <h3>Enjoy a GREAT travel with us</h3>
-                        <p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue ut. </p>
-                        <a href="#0" class="btn_1 rounded">Read more</a>
+                        <h3>Achieve a Better Future</h3>
+                        <p align="justify">PT. Otak Kanan provide the best internship experience to shape a better and career-appropriate future.</p>
+                        {{-- <a href="#0" class="btn_1 rounded">Read more</a> --}}
                     </div>
                 </div>
             </div>
