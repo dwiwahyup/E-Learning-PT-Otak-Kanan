@@ -64,11 +64,11 @@ class CourseCategoryController extends Controller
         return view('dashboard.coursecategory.edit', ['data' => $data]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
-        // dd($request);
-        $data = DB::table('course_categories')->get();
+        $data = DB::table('course_categories')->find($id);
+        // dd($data);
         if ($request->hasFile('image')) {
             $path = public_path() . '/coursecategory/courseimage/';
 
@@ -86,7 +86,7 @@ class CourseCategoryController extends Controller
                 ->update([
                     'name' => $request->name,
                     'introduction' => $request->introduction,
-                    'image' => $filename,
+                    'image_url' => $filename,
                     'updated_at' => Carbon::now()
                 ]);
         }
@@ -103,15 +103,16 @@ class CourseCategoryController extends Controller
 
     public function delete($id)
     {
-        $data = DB::table('course_categories')->get();
+        $data = Db::table('course_categories_id')->find($id);
+
+        $path = public_path() . '/paragraph/imagecontent/';
+        $file_old = $path . $data->image_url;
+        if ($data->image_url != null) {
+            unlink($file_old);
+        }
 
         DB::table('course_categories')->where('id', $id)->delete();
 
-        if ($data->image_url != null) {
-            $path = public_path() . '/paragraph/imagecontent/';
-            $file_old = $path . $data->image_url;
-            unlink($file_old);
-        }
 
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been deleted');
     }

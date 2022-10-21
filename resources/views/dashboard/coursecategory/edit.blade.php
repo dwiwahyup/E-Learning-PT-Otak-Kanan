@@ -16,8 +16,8 @@
             <h2><i class="fa fa-file"></i> Edit Course Category</h2>
         </div>
     @foreach ($data as $data)
-    <form action="/dashboard/coursecategory/update" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="{{ $data->id }}" enctype="multipart/form-data" > <br/>
+    <form action="/dashboard/coursecategory/update/{{$data->id}}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ $data->id }}" > <br/>
         @csrf
         <div class="row">
             <div class="col-md-6">

@@ -13,9 +13,14 @@
                 <a href="{{('/dashboard/coursecategory')}}">Course</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="/dashboard/chapter/{{$chapters_id->course_categories_id}}">
-                    {{$chapters_id->name}}
-                </a>
+                @if ($chapters_id != null)
+                    <a href="/dashboard/chapter/{{$chapters_id->course_categories_id}}"> {{$chapters_name->name}}</a>
+                @else
+                    <a href="{{URL::previous()}}">{{$chapters_name->name}}</a>
+                @endif
+                {{-- <a href="/dashboard/chapter/{{$chapters_id->course_categories_id}}">
+                  
+                </a> --}}
             </li>
             <li class="breadcrumb-item active">Content</li>
         </ol>
@@ -57,12 +62,12 @@
                         <tbody>
                             @foreach ($data as $data)
                             <tr>
-                                <td>{{$data->name}}</td>
+                                <td>{{$data->title}}</td>
                                 <td>{!! Str::words($data->text, 50) !!}</td>
                                 {{-- <td>{{$data->vidio}}</td> --}}
                                 <td>    
-                                        @if ($data->thumbnaile != null)
-                                            <img src="{{url('/content/thumbnaile/'.$data->thumbnaile)}}" alt="" width="200px" height="100px">
+                                        @if ($data->thumbnaile_url != null)
+                                            <img src="{{$data->thumbnaile_url}}" alt="" width="200px" height="100px">
                                         @else
                                         @endif
                                 </td>
@@ -71,7 +76,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/content/edit/{{$data->id}}" class="btn btn-success btn-md">Edit</a>
+                                        <a href="/dashboard/content/edit/{{$data->slug}}" class="btn btn-success btn-md">Edit</a>
                                         <a href="/dashboard/content/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
                                         <a href="/dashboard/content/preview/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Preview</a>
                                     </div>

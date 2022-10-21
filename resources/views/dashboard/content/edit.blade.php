@@ -40,7 +40,7 @@
                             <input type="hidden" name="id" value="{{ $data->id }}">
                             <div class="form-group">
                                 <label>Content Name</label>
-                                <input name="name" value="{{$data->name}}" type="text" class="form-control">
+                                <input name="name" value="{{$data->title}}" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Link Vidio</label>
@@ -58,8 +58,8 @@
                                 <label>Thumbnaile</label>
                                 <input type="file" name="thumbnaile" class="form-control">
                                 <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
-                                @if ($data->thumbnaile != null)
-                                    <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{url('/content/thumbnaile/'.$data->thumbnaile)}}"></p>
+                                @if ($data->thumbnaile_url != null)
+                                    <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{$data->thumbnaile_url}}"></p>
                                 @else
                                     
                                 @endif

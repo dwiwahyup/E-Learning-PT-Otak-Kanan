@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Content;
 use Carbon\Carbon;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 // use PhpParser\Node\Expr\List_;
 
 class ContentController extends Controller
@@ -13,19 +18,22 @@ class ContentController extends Controller
     public function index($id)
     {
         $data = DB::table('contents')->where('chapters_id', $id)->get();
+        $chapters_name = DB::table('chapters')->where('id', $id)->first();
         $chapters_id = DB::table('contents')
             ->Join('chapters', function ($join) use ($id) {
                 $join->on('contents.chapters_id', '=', 'chapters.id')
                     ->where('contents.chapters_id', '=', $id);
             })
-            ->select('chapters.course_categories_id', 'chapters.name')
+            ->select('chapters.course_categories_id')
             ->first();
         // dd($chapters_id);
-        // dd($id);
+        // dd($name);
 
         return view('dashboard.content.index', [
             'data' => $data,
-            'id' => $id, 'chapters_id' => $chapters_id
+            'id' => $id,
+            'chapters_id' => $chapters_id,
+            'chapters_name' => $chapters_name
         ]);
     }
 
@@ -41,15 +49,24 @@ class ContentController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'text' => 'required',
+            // 'slug' => 'required|unique:posts',
             'thumbnail' => 'image|max:50',
             'vidio' => 'max:50',
             'chapters_id' => 'required'
         ]);
 
+
+
         $thumbnile = $request->file('thumbnaile');
         if ($request->hasFile('thumbnaile')) {
+            $folder = 'thumbnile_contents';
             $imageName = $thumbnile->getClientOriginalName();
-            $thumbnile->move(public_path('/content/thumbnaile/'), $imageName);
+            $remove_path = pathinfo($imageName, PATHINFO_FILENAME);
+            $newFilename = str_replace(' ', '_', $remove_path);
+            $public_id = date('Y-m-d_His') . '_' . $newFilename;
+            $thumbnile_id = $folder . '/' . $public_id;
+            // dd($thumbnile_id);
+            $result = Cloudinary::upload($thumbnile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
         } else {
             $imageName = null;
         }
@@ -73,13 +90,17 @@ class ContentController extends Controller
         }
 
         $content = $dom->saveHTML();
-        // dd($content);
+        // $slug = SlugService::createSlug(Content::class, 'slug', $request->name);
+        // dd($slug);
+
         DB::table('contents')->insert([
-            'name' => $request->name,
-            'thumbnaile' => $imageName,
+            'title' => $request->name,
+            'thumbnaile_url' => $result,
             'vidio' => $request->vidio,
+            'thumbnile_id' => $thumbnile_id,
             'text' => $content,
             'chapters_id' => $request->chapters_id,
+            'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -92,9 +113,10 @@ class ContentController extends Controller
         )->with('success', 'new content has been added');
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        $data = DB::table('contents')->where('id', $id)->get();
+        // dd($slug);
+        $data = DB::table('contents')->where('slug', $slug)->get();
         // dd($data);
 
         return view('dashboard.content.edit', ['data' => $data]);
@@ -115,33 +137,45 @@ class ContentController extends Controller
         ]);
 
         if ($request->hasFile('thumbnaile')) {
-            $path = public_path() . '/content/thumbnaile/';
+            // $path = public_path() . '/content/thumbnaile/';
 
-            if ($data->thumbnaile != '' && $data->thumbnaile) {
-                $file_old = $path . $data->thumbnaile;
-                unlink($file_old);
+            if ($data->thumbnile_id != '' && $data->thumbnile_id) {
+                $thumbnaile_old = $data->thumbnile_id;
+                Cloudinary::destroy($thumbnaile_old);
+                // dd($thumbnaile_old);
             }
             // dd($request->name);
             // $request['thumbnaile'] = $filename;
             $thumbnaile = $request->file('thumbnaile');
-            $filename = $thumbnaile->getClientOriginalName();
-            $thumbnaile->move(public_path('/content/thumbnaile/'), $filename);
+            $folder = 'thumbnile_contents';
+            $imageName = $thumbnaile->getClientOriginalName();
+            $remove_path = pathinfo($imageName, PATHINFO_FILENAME);
+            $newFilename = str_replace(' ', '_', $remove_path);
+            $public_id = date('Y-m-d_His') . '_' . $newFilename;
+            $thumbnile_id = $folder . '/' . $public_id;
+            // dd($thumbnile_id);
+            $result = Cloudinary::upload($thumbnaile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
+            // $filename = $thumbnaile->getClientOriginalName();
+            // $thumbnaile->move(public_path('/content/thumbnaile/'), $filename);
             DB::table('contents')->where('id', $request->id)->update([
-                'name' => $request->name,
-                'thumbnaile' => $filename,
+                'title' => $request->name,
+                'thumbnaile_url' => $result,
+                'thumbnile_id' => $thumbnile_id,
                 'vidio' => $request->vidio,
                 'text' => $request->text,
+                'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
                 'chapters_id' => $request->chapters_id,
                 'updated_at' => Carbon::now()
             ]);
         }
 
         DB::table('contents')->where('id', $request->id)->update([
-            'name' => $request->name,
+            'title' => $request->name,
             // 'thumbnaile' => $filename,
             'vidio' => $request->vidio,
             'text' => $request->text,
             'chapters_id' => $request->chapters_id,
+            'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
             'updated_at' => Carbon::now()
         ]);
 
@@ -155,22 +189,23 @@ class ContentController extends Controller
         )->with('success', 'this chapter has been update');
     }
 
-    public function preview($id)
+    public function preview($slug)
     {
-        $query = DB::table('contents')->where('id', $id)->get();
+        $query = DB::table('contents')->where('slug', $slug)->get();
 
         return view('dashboard.content.preview', ['query' => $query]);
     }
 
     public function delete($id)
     {
+        // $data = DB::table('contents')->where('slug', $slug)->first();
         $data = DB::table('contents')->find($id);
 
-        if ($data->thumbnaile != null) {
-            $path = public_path() . '/content/thumbnaile/';
-            $old_file = $path . $data->thumbnaile;
-            unlink(($old_file));
-        }
+        $public_id = $data->thumbnile_id;
+        // dd($path);
+        Cloudinary::destroy($public_id);
+
+
 
         DB::table('contents')->where('id', $id)->delete();
 
