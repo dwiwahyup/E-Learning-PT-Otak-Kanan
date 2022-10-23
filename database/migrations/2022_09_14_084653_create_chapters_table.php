@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('abstract');
+            $table->string('slug', 70)->unique();
             $table->bigInteger('course_categories_id');
             $table->timestamps();
         });

@@ -55,7 +55,7 @@
                                     {{$data->abstract}}
                                 {{-- </p> --}}
                                 <div class="mt-3 font-weight-normal" role="group" aria-label="Basic mixed styles example">
-                                        <a class="mr-2" href="/dashboard/chapter/edit/{{$data->id}}">
+                                        <a class="mr-2" href="/dashboard/chapter/edit/{{$data->slug}}">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                         @if ($data->contents_count == 0)
@@ -90,7 +90,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="/dashboard/chapter/delete/{{$data->id}}">Delete</a>
+                                <a class="btn btn-primary" href="/dashboard/chapter/delete/{{$data->slug}}">Delete</a>
                             </div>
                         </form>
                         </div>

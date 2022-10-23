@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CourseCategoryController extends Controller
 {
@@ -14,7 +17,7 @@ class CourseCategoryController extends Controller
             ->leftJoin('chapters', function ($join) {
                 $join->on('course_categories.id', '=', 'chapters.course_categories_id');
             })
-            ->select('course_categories.id', 'course_categories.name', 'course_categories.image_url', 'course_categories.introduction', DB::raw('COUNT(chapters.course_categories_id) as chapters_count'))
+            ->select('course_categories.id', 'course_categories.name', 'course_categories.image_url', 'course_categories.introduction', 'course_categories.slug', DB::raw('COUNT(chapters.course_categories_id) as chapters_count'))
             ->groupBy('course_categories.id')
             ->get();
         // dd($query);
@@ -36,10 +39,18 @@ class CourseCategoryController extends Controller
         ]);
 
         $images = $request->file('image');
-
         if ($request->hasFile('image')) {
-            $filename = $images->getClientOriginalName();
-            $images->move(public_path('/coursecategory/courseimage/'), $filename);
+            $folder = 'courses';
+            $image_name = $images->getClientOriginalName();
+            $remove_path = pathinfo($image_name, PATHINFO_FILENAME);
+            $newImageName = str_replace('', '_', $remove_path);
+            $public_id = date('Y-m-d_His') . '_' . $newImageName;
+            $image_id = $folder . '/' . $public_id;
+            $result = Cloudinary::upload($images->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
+            // dd($image_id);
+
+
+            // $images->move(public_path('/coursecategory/courseimage/'), $filename);
             // $path = $images->store('public/imagecontent');
         } else {
             $filename = null;
@@ -47,8 +58,10 @@ class CourseCategoryController extends Controller
 
         DB::table('course_categories')->insert([
             'name' => $request->name,
+            'image_url' => $result,
+            'image_id' => $image_id,
             'introduction' => $request->introduction,
-            'image_url' => $filename,
+            'slug' => SlugService::createSlug(CourseCategory::class, 'slug', $request->name),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -56,9 +69,9 @@ class CourseCategoryController extends Controller
         return redirect('/dashboard/coursecategory')->with('success', 'new course category has been added');
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        $data = DB::table('course_categories')->where('id', $id)
+        $data = DB::table('course_categories')->where('slug', $slug)
             ->get();
 
         return view('dashboard.coursecategory.edit', ['data' => $data]);
@@ -101,18 +114,13 @@ class CourseCategoryController extends Controller
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been updated');
     }
 
-    public function delete($id)
+    public function delete($slug)
     {
-        $data = Db::table('course_categories_id')->find($id);
-
-        $path = public_path() . '/paragraph/imagecontent/';
-        $file_old = $path . $data->image_url;
-        if ($data->image_url != null) {
-            unlink($file_old);
-        }
-
-        DB::table('course_categories')->where('id', $id)->delete();
-
+        $data = DB::table('course_categories')->where('slug', $slug)->first();
+        $image_id = $data->image_id;
+        // dd($image_id);
+        Cloudinary::destroy($image_id);
+        DB::table('course_categories')->where('slug', $slug)->delete();
 
         return redirect('/dashboard/coursecategory')->with('success', 'course category has been deleted');
     }

@@ -67,17 +67,17 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/chapter/{id}', [ChapterController::class, 'index']);
         Route::get('/chapter/create/{id}', [ChapterController::class, 'create']);
         Route::post('/chapter/store', [ChapterController::class, 'store']);
-        Route::get('/chapter/edit/{id}', [ChapterController::class, 'edit']);
+        Route::get('/chapter/edit/{slug}', [ChapterController::class, 'edit']);
         Route::post('/chapter/update', [ChapterController::class, 'update']);
-        Route::get('/chapter/delete/{id}', [ChapterController::class, 'delete']);
+        Route::get('/chapter/delete/{slug}', [ChapterController::class, 'delete']);
 
         // route for course catagory
         Route::get('/coursecategory', [CourseCategoryController::class, 'index']);
         Route::get('/coursecategory/create', [CourseCategoryController::class, 'create']);
         Route::post('/coursecategory/store', [CourseCategoryController::class, 'store']);
-        Route::get('/coursecategory/edit/{id}', [CourseCategoryController::class, 'edit']);
+        Route::get('/coursecategory/edit/{slug}', [CourseCategoryController::class, 'edit']);
         Route::post('/coursecategory/update', [CourseCategoryController::class, 'update']);
-        Route::get('/coursecategory/delete/{id}', [CourseCategoryController::class, 'delete']);
+        Route::get('/coursecategory/delete/{slug}', [CourseCategoryController::class, 'delete']);
         Route::get('/coursecategory/student/{id}', [CourseCategoryController::class, 'preview']);
 
         //route for quiz

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chapter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ChapterController extends Controller
 {
@@ -21,7 +23,7 @@ class ChapterController extends Controller
             ->leftJoin('contents', function ($join) {
                 $join->on('contents.chapters_id', '=', 'chapters.id');
             })
-            ->select('chapters.id', 'chapters.name', 'chapters.abstract', 'course_categories.name as course_name', DB::raw('COUNT(contents.chapters_id) as contents_count'))
+            ->select('chapters.id', 'chapters.name', 'chapters.abstract', 'chapters.slug', 'course_categories.name as course_name', DB::raw('COUNT(contents.chapters_id) as contents_count'))
             ->groupBy('chapters.id')
             ->get();
         // dd($query);
@@ -51,6 +53,7 @@ class ChapterController extends Controller
             'name' => $request->name,
             'abstract' => $request->abstract,
             'course_categories_id' => $request->course_categories_id,
+            'slug' => SlugService::createSlug(Chapter::class, 'slug', $request->name),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -61,9 +64,9 @@ class ChapterController extends Controller
         )->with('success', 'new chapter has been added');
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        $data = DB::table('chapters')->where('id', $id)->get();
+        $data = DB::table('chapters')->where('slug', $slug)->get();
 
         // dd($data);
 
@@ -94,10 +97,10 @@ class ChapterController extends Controller
         )->with('success', 'this chapter has been update');
     }
 
-    public function delete($id)
+    public function delete($slug)
     {
         // $id = $request->course_categories_id;
-        DB::table('chapters')->where('id', $id)->delete();
+        DB::table('chapters')->where('slug', $slug)->delete();
 
         return redirect()->back()->with('success', 'chapter has been deleted');
     }

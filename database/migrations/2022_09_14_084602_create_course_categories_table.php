@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('course_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 50);
             $table->text('introduction');
-            $table->string('image_url')->nullable();
+            $table->string('slug', 70)->unique();
+            $table->string('image_url', 200)->nullable();
+            $table->string('image_id', 100)->unique();
             $table->timestamps();
         });
     }

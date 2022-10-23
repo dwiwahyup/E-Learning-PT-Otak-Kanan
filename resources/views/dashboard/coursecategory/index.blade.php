@@ -53,15 +53,15 @@
 								<td>{{$data->chapters_count}} Chapter</td>
                                 <td>
                                     @if ($data->image_url != null)
-                                        <img src="{{url('/coursecategory/courseimage/'.$data->image_url)}}" alt="" width="200px" height="100px">
+                                        <img src="{{$data->image_url}}" alt="" width="200px" height="100px">
                                     @else
                                     @endif
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/chapter/{{$data->id}}" class="btn btn-success btn-md">Chapter</a>
-                                        <a href="coursecategory/edit/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Edit</a>
-                                        <a href="coursecategory/delete/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                        <a href="/dashboard/chapter/{{encrypt($data->id)}}" class="btn btn-success btn-md">Chapter</a>
+                                        <a href="coursecategory/edit/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Edit</a>
+                                        <a href="coursecategory/delete/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Delete</a>
                                         <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Student</a>
                                     </div>
                                 </td>
