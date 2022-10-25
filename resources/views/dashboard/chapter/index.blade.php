@@ -24,7 +24,7 @@
             </div>
         @endif
         <p>
-            <a href="/dashboard/chapter/create/{{$id}}" class="btn btn-secondary plus"> Add Chapter</a>
+            <a href="/dashboard/chapter/create/{{Crypt::encrypt($id)}}" class="btn btn-secondary plus"> Add Chapter</a>
         </p>
         {{-- @dd($data) --}}
         <!-- Icon Cards-->
@@ -58,13 +58,13 @@
                                         <a class="mr-2" href="/dashboard/chapter/edit/{{$data->slug}}">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
-                                        @if ($data->contents_count == 0)
+                                        {{-- @if ($data->contents_count == 0)
                                         <a class="mr-2" href="/dashboard/content/create/{{$data->id}}">    
                                         <i class="fa fa-list-alt" aria-hidden="true"></i> Add Content</a>
-                                            @else    
-                                        <a class="mr-2" href="/dashboard/content/{{$data->id}}">
+                                            @else     --}}
+                                        <a class="mr-2" href="/dashboard/content/{{Crypt::encrypt($data->id)}}">
                                         <i class="fa fa-list-alt" aria-hidden="true"></i> Content List</a>
-                                        @endif
+                                        {{-- @endif --}}
 
 
                                         <a class="mr-2" href="/dashboard/quiz/{{$data->id}}">

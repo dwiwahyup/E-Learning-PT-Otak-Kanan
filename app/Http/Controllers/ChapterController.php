@@ -7,11 +7,14 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Crypt;
 
 class ChapterController extends Controller
 {
     public function index($id)
     {
+        $id = Crypt::decrypt($id);
+        // dd($id);
         $course_name = DB::table('course_categories')->where('id', $id)->first();
         // dd($course_name);
 
@@ -33,6 +36,7 @@ class ChapterController extends Controller
 
     public function create($id)
     {
+        $id = Crypt::decrypt($id);
         // dd($id);
 
         return view('dashboard.chapter.create', ['id' => $id]);
@@ -60,7 +64,7 @@ class ChapterController extends Controller
 
         return redirect()->action(
             [ChapterController::class, 'index'],
-            ['id' => $id]
+            ['id' => Crypt::encrypt($id)]
         )->with('success', 'new chapter has been added');
     }
 

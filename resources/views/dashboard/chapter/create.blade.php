@@ -6,7 +6,8 @@
 <div class="content-wrapper">
     <div class="container-fluid">
     <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
+
+    {{-- <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{('/dashboard')}}">Dashboard</a>
         </li>
@@ -14,7 +15,11 @@
             <a href="{{('/dashboard/coursecategory')}}">Course</a>
         </li>
         <li class="breadcrumb-item active">Chapter</li>
-    </ol>
+    </ol> --}}
+
+    <a class="btn btn-link mb-2" href="{{URL::previous()}}">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+    </a>
 
     @if ($errors->any())
     <div class="mb-5" role="alert">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 50);
             $table->longText('text');
             $table->string('thumbnaile_url', 200)->nullable();
-            $table->string('thumbnaile_id', 100)->unique();
+            $table->string('thumbnaile_id', 100)->unique()->nullable();
             $table->string('vidio', 50)->nullable();
             $table->string('slug', 70)->unique();
             $table->bigInteger('chapters_id');

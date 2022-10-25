@@ -8,6 +8,7 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +16,7 @@ class ContentController extends Controller
 {
     public function index($id)
     {
+        $id = Crypt::decrypt($id);
         $data = DB::table('contents')->where('chapters_id', $id)->get();
         $chapters_name = DB::table('chapters')->where('id', $id)->first();
         $chapters_id = DB::table('contents')
@@ -37,6 +39,7 @@ class ContentController extends Controller
 
     public function create($id)
     {
+        $id = Crypt::decrypt($id);
         return view('dashboard.content.create', ['id' => $id]);
     }
 
@@ -65,26 +68,35 @@ class ContentController extends Controller
             $thumbnaile_id = $folder . '/' . $public_id;
             // dd($thumbnile_id);
             $result = Cloudinary::upload($thumbnile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
+            // dd($result);
         } else {
-            $imageName = null;
+            $result = null;
+            $thumbnaile_id = null;
         }
 
         $text = $request->text;
         $dom = new \DOMDocument();
         $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('img');
+        $folder_image_content = 'image_contents';
 
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data) = explode(',', $data);
-            $imgData = base64_decode($data);
-            $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
-            $path = public_path() . $imageName;
-            file_put_contents($path, $imgData);
+            // dd($data);
+            // list($type, $data) = explode(';', $data);
+            // list(, $data) = explode(',', $data);
+            // $imgData = base64_decode($data);
+            // dd($imgData);
+            $image_content = Cloudinary::upload($data, ['folder' => $folder_image_content])->getSecurePath();
+            // dd($image_content);
+            // $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
+            // $path = public_path() . $imageName;
+            // dd($path);
+            // file_put_contents($path, $imgData);
+            // file_put_contents($image_content);
 
             $image->removeAttribute('src');
-            $image->setAttribute('src', $imageName);
+            $image->setAttribute('src', $image_content);
         }
 
         $content = $dom->saveHTML();
@@ -107,7 +119,7 @@ class ContentController extends Controller
 
         return redirect()->action(
             [ContentController::class, 'index'],
-            ['id' => $id]
+            ['id' => Crypt::encrypt($id)]
         )->with('success', 'new content has been added');
     }
 
@@ -155,6 +167,34 @@ class ContentController extends Controller
             $result = Cloudinary::upload($thumbnaile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
             // $filename = $thumbnaile->getClientOriginalName();
             // $thumbnaile->move(public_path('/content/thumbnaile/'), $filename);
+
+            $text = $request->text;
+            $dom = new \DOMDocument();
+            $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $imageFile = $dom->getElementsByTagName('img');
+            $folder_image_content = 'image_contents';
+
+            foreach ($imageFile as $item => $image) {
+                $data = $image->getAttribute('src');
+                // dd($data);
+                // list($type, $data) = explode(';', $data);
+                // list(, $data) = explode(',', $data);
+                // $imgData = base64_decode($data);
+                // dd($imgData);
+                $image_content = Cloudinary::upload($data, ['folder' => $folder_image_content])->getSecurePath();
+                // dd($image_content);
+                // $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
+                // $path = public_path() . $imageName;
+                // dd($path);
+                // file_put_contents($path, $imgData);
+                // file_put_contents($image_content);
+
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_content);
+            }
+
+            $content = $dom->saveHTML();
+
             DB::table('contents')->where('id', $request->id)->update([
                 'title' => $request->name,
                 'thumbnaile_url' => $result,
@@ -165,6 +205,31 @@ class ContentController extends Controller
                 'chapters_id' => $request->chapters_id,
                 'updated_at' => Carbon::now()
             ]);
+        }
+
+        $text = $request->text;
+        $dom = new \DOMDocument();
+        $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('img');
+        $folder_image_content = 'image_contents';
+
+        foreach ($imageFile as $item => $image) {
+            $data = $image->getAttribute('src');
+            // dd($data);
+            // list($type, $data) = explode(';', $data);
+            // list(, $data) = explode(',', $data);
+            // $imgData = base64_decode($data);
+            // dd($imgData);
+            $image_content = Cloudinary::upload($data, ['folder' => $folder_image_content])->getSecurePath();
+            // dd($image_content);
+            // $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
+            // $path = public_path() . $imageName;
+            // dd($path);
+            // file_put_contents($path, $imgData);
+            // file_put_contents($image_content);
+
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_content);
         }
 
         DB::table('contents')->where('id', $request->id)->update([

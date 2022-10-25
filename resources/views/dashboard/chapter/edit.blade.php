@@ -6,7 +6,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
     <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
+    {{-- <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{('/dashboard')}}">Dashboard</a>
         </li>
@@ -14,7 +14,11 @@
             <a href="{{('/dashboard/coursecategory')}}">Course</a>
         </li>
         <li class="breadcrumb-item active">Chapter</li>
-    </ol>
+    </ol> --}}
+
+    <a class="btn btn-link mb-2" href="{{URL::previous()}}">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+    </a>
 
     @if ($errors->any())
     <div class="mb-5" role="alert">
@@ -32,15 +36,15 @@
 
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
-            <h2><i class="fa fa-file"></i>Update Chapter</h2>
+            <h2><i class="fa fa-file"></i>Edit Chapter</h2>
         </div>
 
     {{-- @dd($id); --}}
     @foreach ($data as $data)
         <form action="/dashboard/chapter/update" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="course_categories_id" value="{{$data->course_categories_id}}"> <br />
-            <input type="hidden" name="id" value="{{$data->id}}"> <br />
+            <input type="hidden" name="course_categories_id" value="{{$data->course_categories_id}}">
+            <input type="hidden" name="id" value="{{$data->id}}">
             <div class="row">
                 <div class="col">
                     <div class="form-group">

@@ -14,7 +14,7 @@
             </li>
             <li class="breadcrumb-item">
                 @if ($chapters_id != null)
-                    <a href="/dashboard/chapter/{{$chapters_id->course_categories_id}}"> {{$chapters_name->name}}</a>
+                    <a href="/dashboard/chapter/{{Crypt::encrypt($chapters_id->course_categories_id)}}"> {{$chapters_name->name}}</a>
                 @else
                     <a href="{{URL::previous()}}">{{$chapters_name->name}}</a>
                 @endif
@@ -39,7 +39,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="/dashboard/content/create/{{$id}}" class="btn btn-secondary plus"> Add Content</a></p>
+                    <p><a href="/dashboard/content/create/{{Crypt::encrypt($id)}}" class="btn btn-secondary plus"> Add Content</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>

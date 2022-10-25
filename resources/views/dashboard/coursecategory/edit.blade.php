@@ -5,12 +5,17 @@
 <div class="content-wrapper">
     <div class="container-fluid">
     <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
+    {{-- <ol class="breadcrumb">
         <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Course Category</li>
-    </ol>
+    </ol> --}}
+
+    <a class="btn btn-link mb-2" href="{{URL::previous()}}">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+    </a>
+
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
             <h2><i class="fa fa-file"></i> Edit Course Category</h2>

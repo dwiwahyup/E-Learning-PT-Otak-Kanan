@@ -59,7 +59,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/chapter/{{encrypt($data->id)}}" class="btn btn-success btn-md">Chapter</a>
+                                        <a href="/dashboard/chapter/{{Crypt::encrypt($data->id)}}" class="btn btn-success btn-md">Chapter</a>
                                         <a href="coursecategory/edit/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Edit</a>
                                         <a href="coursecategory/delete/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Delete</a>
                                         <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Student</a>
