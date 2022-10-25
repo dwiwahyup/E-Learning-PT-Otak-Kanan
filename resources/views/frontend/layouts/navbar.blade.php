@@ -21,7 +21,7 @@
     </a>
     <nav id="menu" class="main-menu">
         <ul>
-            <li><span><a href="">Home</a></span></li>
+            <li><span><a href="{{url('/')}}">Home</a></span></li>
             <li><span><a href="#0">Course</a></span>
                 <ul>
                     <li>
@@ -43,11 +43,7 @@
                     </li>
                 </ul>
             </li>
-            <li><span><a href="#0">About</a></span>
-                <ul>
-                    {{-- <li><a href="about.html">About</a></li>
-                    <li><a href="media-gallery.html">Media gallery</a></li> --}}
-                </ul>
+            <li><span><a href="{{url('/about')}}">About</a></span>
             </li>
             <li><span><a href="#0">Account</a></span>
                 <ul>

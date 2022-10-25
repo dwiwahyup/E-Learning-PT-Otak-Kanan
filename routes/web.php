@@ -6,6 +6,7 @@ use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NavigasiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ContentGalleryController;
@@ -104,3 +105,5 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/about', [NavigasiController::class, 'about']);
