@@ -15,7 +15,9 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -111,3 +113,6 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 require __DIR__ . '/auth.php';
 
 Route::get('/about', [NavigasiController::class, 'about']);
+
+Route::get('/profile', [UserProfileController::class, 'profile']);
+Route::get('/profile/update', [UserProfileController::class, 'update']);

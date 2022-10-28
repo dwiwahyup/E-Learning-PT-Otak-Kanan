@@ -10,4 +10,6 @@ class ProfileController extends Controller
     {
         return view('dashboard.profile.index');
     }
+
+   
 }
