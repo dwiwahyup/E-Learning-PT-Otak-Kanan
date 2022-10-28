@@ -13,6 +13,7 @@ use App\Http\Controllers\ContentGalleryController;
 use App\Http\Controllers\ContentParagraphController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index']);
+
+//route for program
+Route::get('/program', [ProgramController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
 

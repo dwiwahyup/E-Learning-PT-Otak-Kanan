@@ -9,7 +9,7 @@
                 <p>Expolore Your Interest and Upgrade Your Skills </p> 
                 <br>
                 <p class="btn_home">
-                    <a href="" class="btn_1 rounded">Join Now</a>
+                    <a href="{{url('/program/')}}" class="btn_1 rounded">Join Now</a>
                 </p>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="box_grid">
                     <figure>
                         {{-- <a href="#0" class="wish_bt"></a> --}}
-                        <a href="tour-detail.html"><img src="{{ url('frontend/img/mahasiswa.jpg')}}" class="img-fluid" alt="" width="800" height="533">
+                        <a href="tour-detail.html"><img src="{{ url('frontend/img/banner4.jpg')}}" class="img-fluid" alt="" width="800" height="533">
                             <div class="read_more"><span>Read more</span></div>
                         </a>
                         <small>Front-End Developer</small>
@@ -101,19 +101,7 @@
 			<!-- /container -->
 		</div>
 
-    {{-- <div class="container container-custom margin_30_95">
-        <div class="banner mb-0">
-            <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-                <div>
-                    <h3>Kenapa kamu harus mengikuti 
-                    <br>program magang di PT. Otak Kanan?</h3>
-                </div>
-            </div>
-            <!-- /wrapper -->
-        </div>
-        <!-- /banner -->
-    </div> --}}
-    <!-- /container -->
+
 
     <div class="container margin_95_40">
         <div class="main_title_2">

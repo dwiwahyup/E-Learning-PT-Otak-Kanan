@@ -1,7 +1,7 @@
 <header class="header menu_fixed">
     <div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
     <div id="logo">
-        <a href="index.html">
+        <a href="{{url('/')}}">
             <img src="{{ url('assets/dashboard/img/otakkanan.png')}}" width="150" height="36" alt="" class="logo_normal">
         {{-- <img src="{{ url('frontend/img/logo_sticky.svg')}}" width="150" height="36" alt="" class="logo_sticky"> --}}
         </a>

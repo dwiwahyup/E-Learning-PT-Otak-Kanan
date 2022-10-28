@@ -1118,7 +1118,7 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
   }
 }
 .hero_in.general:before {
-  background: url(../img/hero_in_bg_2.jpg) center center no-repeat;
+  background: url(../img/banner2.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -4096,9 +4096,9 @@ section#reviews {
 }
 .reviews-container .review-box {
   position: relative;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   padding-left: 100px;
-  min-height: 100px;
+  min-height: 50px;
 }
 @media (max-width: 767px) {
   .reviews-container .review-box {
@@ -4119,8 +4119,10 @@ section#reviews {
   overflow: hidden;
 }
 .reviews-container .rev-thumb img {
-  width: 80px;
+  width: 50px;
   height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 @media (max-width: 767px) {
   .reviews-container .rev-thumb {
@@ -4130,8 +4132,8 @@ section#reviews {
 }
 .reviews-container .rev-content {
   position: relative;
-  padding: 25px 25px 0 25px;
-  border: 1px solid #ededed;
+  padding: 10px 10px 0 0px;
+  /* border: 1px solid #ededed; */
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
