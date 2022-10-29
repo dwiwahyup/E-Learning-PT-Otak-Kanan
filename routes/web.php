@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NavigasiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ContentGalleryController;
 use App\Http\Controllers\ContentParagraphController;
@@ -44,6 +45,10 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 
     Route::middleware(['admin'])->group(function () {
         Route::get('/', [DashboardController::class, 'index']);
+
+        // route for mentors
+        Route::get('/mentors', [MentorsController::class, 'index']);
+        Route::get('/mentors/create', [MentorsController::class, 'create']);
 
         // route for contents
         Route::get('/content/{id}', [ContentController::class, 'index']);
