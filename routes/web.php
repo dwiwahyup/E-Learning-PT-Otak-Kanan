@@ -35,8 +35,10 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
+//route for home/landing page
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/allcourse', [HomeController::class, 'allcourse']);
+
 
 //route for program
 Route::get('/program', [ProgramController::class, 'index']);

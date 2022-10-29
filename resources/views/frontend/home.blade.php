@@ -67,7 +67,7 @@
             <!-- /item -->
         </div>
         <!-- /carousel -->
-        <p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Courses</a></p>
+        <p class="btn_home_align"><a href="{{url('/allcourse/')}}" class="btn_1 rounded">View all Courses</a></p>
         <hr class="large">
     </div>
     <!-- /container -->
