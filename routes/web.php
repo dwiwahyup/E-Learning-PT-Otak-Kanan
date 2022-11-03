@@ -7,6 +7,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NavigasiController;
+use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ClassController;
@@ -126,3 +127,5 @@ Route::get('/about', [NavigasiController::class, 'about']);
 
 Route::get('/profile', [UserProfileController::class, 'profile']);
 Route::get('/profile/update', [UserProfileController::class, 'update']);
+
+Route::get('/testimonial', [TestimonialsController::class, 'index']);
