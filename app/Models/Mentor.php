@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
-class CourseCategory extends Model
+class Mentor extends Model
 {
     use HasFactory, Sluggable;
 
     protected $fillable = [
-        'name', 'introduction', 'slug'
+        'name', 'motivation', 'image_url', 'course_categories_id', 'image_id', 'slug'
     ];
 
     public function sluggable(): array
@@ -23,8 +23,8 @@ class CourseCategory extends Model
         ];
     }
 
-    public function mentors()
+    public function courses()
     {
-        return $this->hasMany(Mentor::class, 'course_categories_id', 'id');
+        return $this->belongsTo(CourseCategory::class, 'course_categories_id', 'id');
     }
 }

@@ -29,25 +29,34 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>Image</th>
-                          <th>Name Mentor</th>
-                          <th>Course Category</th>
-                          <th>Introduction</th>
+                            <th>No</th>
+                            <th>Name Mentor</th>
+                            <th>Course Category</th>
+                            <th>Motivation</th>
+                            <th>Image</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       </tfoot>
                         <tbody>
-                             @foreach ($data as $dataa)
+                             @foreach ($mentors as $index => $data)
                             <tr>
-                              <td>{{$dataa->name}}</td>
-                              <td>{{$dataa->name}}</td>
-                              <td>{{$dataa->email}}</td>
-                              <td>{{$dataa->name}}</td>
+
+                              <td>{{$index + 1}}</td>
+                              <td>{{$data->name}}</td>
+                              <td>{{$data->courses->name}}</td>
+                              <td>{{$data->motivation}}</td>
+                              <td>
+                                <img src="{{$data->image_url}}" alt="" width="80px" height="150px">
+                            </td>
                                 <td>
-                                    <div class="d-flex">
-                                        <a href="/dashboard/user/edit/{{$dataa->id}}" class="btn btn-success btn-md">Edit</a>
-                                        <a href="/dashboard/user/delete/{{$dataa->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                    <div class="inline-block">
+                                        <a href="{{route('mentors.edit', $data->slug)}}" class="btn btn-success btn-md">Edit</a>
+                                        <form action="{{route('mentors.destroy', $data->id)}}" class="d-inline" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('delete')}}
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

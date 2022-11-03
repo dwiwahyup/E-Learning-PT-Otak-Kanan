@@ -49,8 +49,11 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/', [DashboardController::class, 'index']);
 
         // route for mentors
-        Route::get('/mentors', [MentorsController::class, 'index']);
-        Route::get('/mentors/create', [MentorsController::class, 'create']);
+        // Route::get('/mentors', [MentorsController::class, 'index']);
+        // Route::get('/mentors/create', [MentorsController::class, 'create']);
+        Route::resource('mentors', MentorsController::class)->parameters([
+            'mentor' => 'slug'
+        ]);
 
         // route for contents
         Route::get('/content/{id}', [ContentController::class, 'index']);
