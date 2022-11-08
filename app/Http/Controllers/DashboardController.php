@@ -12,10 +12,7 @@ class DashboardController extends Controller
         $materi = DB::table('contents')->count();
         $userr = DB::table('users')->count();
         $courses = DB::table('course_categories')->count();
-        return view('dashboard.index', compact('materi','userr','courses'));
-
-        }
-    
-
-
+        $mentors = DB::table('mentors')->count();
+        return view('dashboard.index', compact('materi', 'userr', 'courses', 'mentors'));
+    }
 }

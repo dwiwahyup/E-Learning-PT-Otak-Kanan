@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Crypt;
 
 class ChapterController extends Controller
 {
-    public function index($id)
+    public function CreateChapter($id)
     {
         $id = Crypt::decrypt($id);
         // dd($id);

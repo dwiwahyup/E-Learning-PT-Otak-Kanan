@@ -82,7 +82,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::post('/user/store', [UserController::class, 'store']);
 
         // route for chapter
-        Route::get('/chapter/{id}', [ChapterController::class, 'index']);
+        Route::get('/chapter/{uuid}', [ChapterController::class, 'CreateChapter']);
         Route::get('/chapter/create/{id}', [ChapterController::class, 'create']);
         Route::post('/chapter/store', [ChapterController::class, 'store']);
         Route::get('/chapter/edit/{slug}', [ChapterController::class, 'edit']);
