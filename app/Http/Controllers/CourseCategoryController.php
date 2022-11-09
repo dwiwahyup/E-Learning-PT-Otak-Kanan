@@ -33,13 +33,13 @@ class CourseCategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'introduction' => 'required',
-            'images' => 'required|image'
+            'image' => 'required|image'
         ]);
 
         // check file is a image and get original name and create id for image
         $images = $request->file('image');
         if ($request->hasFile('image')) {
-            $folder = 'courses';
+            $folder = SlugService::createSlug(CourseCategory::class, 'slug', $request->name);
             $image_name = $images->getClientOriginalName();
             $remove_path = pathinfo($image_name, PATHINFO_FILENAME);
             $newImageName = str_replace('', '_', $remove_path);
@@ -67,6 +67,7 @@ class CourseCategoryController extends Controller
 
     public function update(Request $request, CourseCategory $coursecategory)
     {
+        // dd($coursecategory);
         $this->validate($request, [
             'name' => 'required|max:50',
             'introduction' => 'required'
@@ -80,7 +81,7 @@ class CourseCategoryController extends Controller
             }
             // check file is a image and get original name and create id for image
             $image = $request->file('image');
-            $folder = 'courses';
+            $folder = $coursecategory->slug;
             $image_name = $image->getClientOriginalName();
             $remove_path = pathinfo($image_name, PATHINFO_FILENAME);
             $new_images_name = str_replace('', '_', $remove_path);
@@ -91,7 +92,6 @@ class CourseCategoryController extends Controller
             $data = $request->all();
             $data['image_url'] = $result;
             $data['image_id'] = $image_id;
-            $data['slug'] = SlugService::createSlug(CourseCategory::class, 'slug', $request->name);
             $coursecategory->update($data);
         }
 

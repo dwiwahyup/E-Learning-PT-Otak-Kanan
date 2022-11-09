@@ -49,7 +49,9 @@
                             @foreach ($query as $data)
                             <tr>
                                 <td>{{$data->name}}</td>
-                                <td>{!! Str::limit($data->introduction, 120) !!}</td>
+                                <td>
+                                    {!! Str::limit($data->introduction, 50) !!}
+                                </td>
 								<td>{{$data->chapters_count}} Chapter</td>
                                 <td>
                                     @if ($data->image_url != null)
@@ -60,13 +62,13 @@
                                 <td>
                                     <div class="inline-block">
                                         <a href="{{route('coursecategory.chapter.index', $data->slug)}}" class="btn btn-success btn-md">Chapter</a>
-                                        <a href="{{route('coursecategory.edit', $data->slug)}}" class="btn btn-danger btn-md ml-2" >Edit</a>
+                                        <a href="{{route('coursecategory.edit', $data->slug)}}" class="btn btn-danger btn-md ml-1" >Edit</a>
                                         <form action="{{route('coursecategory.destroy', $data->id)}}" class="d-inline" method="POST">
                                             {{ csrf_field() }}
                                             {{method_field('delete')}}
-                                            <button class="btn btn-danger">Delete</button>
+                                            <button class="btn btn-danger ml-1">Delete</button>
                                         </form>
-                                        <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Student</a>
+                                        <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-1">Student</a>
                                     </div>
                                 </td>
                             </tr>

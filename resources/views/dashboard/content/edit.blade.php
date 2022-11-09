@@ -57,7 +57,7 @@
                                 <input type="file" name="thumbnaile" class="form-control">
                                 <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
                                 @if ($content->thumbnaile_url != null)
-                                    <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{$data->thumbnaile_url}}"></p>
+                                    <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{$content->thumbnaile_url}}"></p>
                                 @else
                                     
                                 @endif

@@ -66,8 +66,6 @@ class ChapterController extends Controller
         ]);
 
         $data = $request->all();
-        $data['slug'] = SlugService::createSlug(Chapter::class, 'slug', $request->name);
-        $data['course_categories_id'] = $coursecategory->id;
         $chapter->update($data);
 
         return redirect()->route('coursecategory.chapter.index', ['coursecategory' => $coursecategory->slug])->with('success', 'chapter has been updated');

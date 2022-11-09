@@ -54,7 +54,7 @@ class ContentController extends Controller
 
         $thumbnile = $request->file('thumbnaile');
         if ($request->hasFile('thumbnaile')) {
-            $folder = 'thumbnile_contents';
+            $folder = $coursecategory->slug;
             $imageName = $thumbnile->getClientOriginalName();
             $remove_path = pathinfo($imageName, PATHINFO_FILENAME);
             $newFilename = str_replace(' ', '_', $remove_path);
@@ -70,7 +70,7 @@ class ContentController extends Controller
         $dom = new \DOMDocument();
         $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('img');
-        $folder_image_content = 'image_contents';
+        $folder_image_content = $coursecategory->slug;
 
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
@@ -119,7 +119,7 @@ class ContentController extends Controller
 
             // check file and get original name and create id for image
             $thumbnaile = $request->file('thumbnaile');
-            $folder = 'thumbnile_contents';
+            $folder = $coursecategory->slug;
             $imageName = $thumbnaile->getClientOriginalName();
             $remove_path = pathinfo($imageName, PATHINFO_FILENAME);
             $newFilename = str_replace(' ', '_', $remove_path);
@@ -131,7 +131,7 @@ class ContentController extends Controller
             $dom = new \DOMDocument();
             $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $imageFile = $dom->getElementsByTagName('img');
-            $folder_image_content = 'image_contents';
+            $folder_image_content = $coursecategory->slug;
 
             // insert image in cloudinary from the somernote
             foreach ($imageFile as $item => $image) {
@@ -148,7 +148,6 @@ class ContentController extends Controller
             $data['thumbnaile_url'] = $result;
             $data['thumbnaile_id'] = $thumbnaile_id;
             $data['text'] = $content_text;
-            $data['slug'] = SlugService::createSlug(Content::class, 'slug', $request->title);
             $data['chapters_id'] = $chapter->id;
             $content->update($data);
         }
@@ -157,7 +156,7 @@ class ContentController extends Controller
         $dom = new \DOMDocument();
         $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('img');
-        $folder_image_content = 'image_contents';
+        $folder_image_content = $coursecategory->slug;
 
         // insert image in cloudinary from the somernote
         foreach ($imageFile as $item => $image) {
