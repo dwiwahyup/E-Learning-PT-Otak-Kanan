@@ -11,7 +11,7 @@ class CourseCategory extends Model
     use HasFactory, Sluggable;
 
     protected $fillable = [
-        'name', 'introduction', 'slug'
+        'name', 'introduction', 'slug', 'image_url', 'image_id'
     ];
 
     public function sluggable(): array

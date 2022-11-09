@@ -24,7 +24,7 @@
             </div>
         @endif
         <p>
-            <a href="/dashboard/chapter/create/{{Crypt::encrypt($id)}}" class="btn btn-secondary plus"> Add Chapter</a>
+            <a href="{{route('coursecategory.chapter.create', $course_name->slug)}}" class="btn btn-secondary plus"> Add Chapter</a>
         </p>
         {{-- @dd($data) --}}
         <!-- Icon Cards-->
@@ -55,16 +55,10 @@
                                     {{$data->abstract}}
                                 {{-- </p> --}}
                                 <div class="mt-3 font-weight-normal" role="group" aria-label="Basic mixed styles example">
-                                        <a class="mr-2" href="/dashboard/chapter/edit/{{$data->slug}}">
+                                        <a class="mr-2" href="{{route('coursecategory.chapter.edit', ['coursecategory' => $course_name->slug, 'chapter' => $data->slug])}}">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-
-                                        {{-- @if ($data->contents_count == 0)
-                                        <a class="mr-2" href="/dashboard/content/create/{{$data->id}}">    
-                                        <i class="fa fa-list-alt" aria-hidden="true"></i> Add Content</a>
-                                            @else     --}}
-                                        <a class="mr-2" href="/dashboard/content/{{Crypt::encrypt($data->id)}}">
+                                        <a class="mr-2" href="{{route('coursecategory.chapter.content.index', ['coursecategory' => $course_name->slug, 'chapter' => $data->slug])}}">
                                         <i class="fa fa-list-alt" aria-hidden="true"></i> Content List</a>
-                                        {{-- @endif --}}
 
 
                                         <a class="mr-2" href="/dashboard/quiz/{{$data->id}}">
@@ -90,7 +84,11 @@
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="/dashboard/chapter/delete/{{$data->slug}}">Delete</a>
+                                <form action="{{route('coursecategory.chapter.destroy', ['coursecategory' => $course_name->id, 'chapter' => $data->id])}}" class="d-inline" method="POST">
+                                    {{ csrf_field() }}
+                                    {{method_field('delete')}}
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
                             </div>
                         </form>
                         </div>

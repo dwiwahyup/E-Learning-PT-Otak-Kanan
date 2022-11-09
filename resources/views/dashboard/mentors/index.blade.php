@@ -41,15 +41,21 @@
                         <tbody>
                              @foreach ($mentors as $index => $data)
                             <tr>
-
-                              <td>{{$index + 1}}</td>
-                              <td>{{$data->name}}</td>
-                              <td>{{$data->courses->name}}</td>
-                              <td>{{$data->motivation}}</td>
-                              <td>
-                                <img src="{{$data->image_url}}" alt="" width="80px" height="150px">
-                            </td>
+                                <td>{{$index + 1}}</td>
+                                <td>{{$data->name}}</td>
                                 <td>
+                                    {{-- @if ($data->courses->name  null)
+                                        
+                                    @else
+                                        {{$data->courses->name}}
+                                    @endif --}}
+                                    {{$data->courses->name ?? 'None'}}
+                                </td>
+                                <td>{{$data->motivation}}</td>
+                                <td>
+                                    <img src="{{$data->image_url}}" alt="" width="80px" height="150px">
+                                </td>
+                                    <td>
                                     <div class="inline-block">
                                         <a href="{{route('mentors.edit', $data->slug)}}" class="btn btn-success btn-md">Edit</a>
                                         <form action="{{route('mentors.destroy', $data->id)}}" class="d-inline" method="POST">

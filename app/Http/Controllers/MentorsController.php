@@ -32,7 +32,8 @@ class MentorsController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'motivation' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'course_categories_id' => 'required'
         ]);
 
         $image = $request->file('image');

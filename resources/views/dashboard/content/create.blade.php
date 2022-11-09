@@ -28,14 +28,13 @@
                 <i></i> Tambah Materi Baru
             </div>
             <div class="card-body">
-                <form action="/dashboard/content/store" method="post" enctype="multipart/form-data">
+                <form action="{{route('coursecategory.chapter.content.store', ['coursecategory' => $coursecategory->id, 'chapter' => $chapter->id])}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="chapters_id" value="{{ $id }}">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Link Vidio</label>

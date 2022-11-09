@@ -2,61 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chapter;
 use App\Models\Content;
-use Carbon\Carbon;
+use App\Models\CourseCategory;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class ContentController extends Controller
 {
-    public function index($id)
+    public function index($coursecategory, $chapter)
     {
-        $id = Crypt::decrypt($id);
-        $data = DB::table('contents')->where('chapters_id', $id)->get();
-        $chapters_name = DB::table('chapters')->where('id', $id)->first();
+        $chapter = Chapter::where('slug', $chapter)->first();
+        $chapter_id = $chapter->id;
+        $coursecategory = CourseCategory::where('slug', $coursecategory)->first();
+        $data = Content::where('chapters_id', $chapter_id)->get();
         $chapters_id = DB::table('contents')
-            ->Join('chapters', function ($join) use ($id) {
+            ->Join('chapters', function ($join) use ($chapter_id) {
                 $join->on('contents.chapters_id', '=', 'chapters.id')
-                    ->where('contents.chapters_id', '=', $id);
+                    ->where('contents.chapters_id', '=', $chapter_id);
             })
             ->select('chapters.course_categories_id')
             ->first();
-        // dd($chapters_id);
+        // dd($coursecategory);
         // dd($name);
-
         return view('dashboard.content.index', [
             'data' => $data,
-            'id' => $id,
+            'coursecategory' => $coursecategory,
             'chapters_id' => $chapters_id,
-            'chapters_name' => $chapters_name
+            'chapters' => $chapter
         ]);
     }
 
-    public function create($id)
+    public function create($coursecategory, $chapter)
     {
-        $id = Crypt::decrypt($id);
-        return view('dashboard.content.create', ['id' => $id]);
+        $chapter = Chapter::where('slug', $chapter)->first();
+        $coursecategory = CourseCategory::where('slug', $coursecategory)->first();
+
+        return view('dashboard.content.create', compact('chapter', 'coursecategory'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, CourseCategory $coursecategory, Chapter $chapter)
     {
-        // dd($request);
-        $id = $request->chapters_id;
         $this->validate($request, [
-            'name' => 'required|max:50',
+            'title' => 'required|max:50',
             'text' => 'required',
-            // 'slug' => 'required|unique:posts',
-            'thumbnail' => 'image|max:50',
+            'thumbnail' => 'image',
             'vidio' => 'max:50',
-            'chapters_id' => 'required'
         ]);
-
-
 
         $thumbnile = $request->file('thumbnaile');
         if ($request->hasFile('thumbnaile')) {
@@ -66,9 +60,7 @@ class ContentController extends Controller
             $newFilename = str_replace(' ', '_', $remove_path);
             $public_id = date('Y-m-d_His') . '_' . $newFilename;
             $thumbnaile_id = $folder . '/' . $public_id;
-            // dd($thumbnile_id);
             $result = Cloudinary::upload($thumbnile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
-            // dd($result);
         } else {
             $result = null;
             $thumbnaile_id = null;
@@ -82,80 +74,50 @@ class ContentController extends Controller
 
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
-            // dd($data);
-            // list($type, $data) = explode(';', $data);
-            // list(, $data) = explode(',', $data);
-            // $imgData = base64_decode($data);
-            // dd($imgData);
             $image_content = Cloudinary::upload($data, ['folder' => $folder_image_content])->getSecurePath();
-            // dd($image_content);
-            // $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
-            // $path = public_path() . $imageName;
-            // dd($path);
-            // file_put_contents($path, $imgData);
-            // file_put_contents($image_content);
-
             $image->removeAttribute('src');
             $image->setAttribute('src', $image_content);
         }
 
         $content = $dom->saveHTML();
-        // $slug = SlugService::createSlug(Content::class, 'slug', $request->name);
-        // dd($slug);
 
-        DB::table('contents')->insert([
-            'title' => $request->name,
-            'thumbnaile_url' => $result,
-            'vidio' => $request->vidio,
-            'thumbnaile_id' => $thumbnaile_id,
-            'text' => $content,
-            'chapters_id' => $request->chapters_id,
-            'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+        $data = $request->all();
+        $data['thumbnaile_id'] = $thumbnaile_id;
+        $data['thumbnaile_url'] = $result;
+        $data['text'] = $content;
+        $data['chapters_id'] = $chapter->id;
+        $data['slug'] = SlugService::createSlug(Content::class, 'slug', $request->title);
+        Content::create($data);
 
-
-
-        return redirect()->action(
-            [ContentController::class, 'index'],
-            ['id' => Crypt::encrypt($id)]
-        )->with('success', 'new content has been added');
+        return redirect()->route('coursecategory.chapter.content.index', ['coursecategory' => $coursecategory->slug, 'chapter' => $chapter->slug])->with('success', 'new content has been added');
     }
 
-    public function edit($slug)
+    public function edit($coursecategory, $chapter, $content)
     {
-        // dd($slug);
-        $data = DB::table('contents')->where('slug', $slug)->get();
-        // dd($data);
-
-        return view('dashboard.content.edit', ['data' => $data]);
+        $coursecategory = CourseCategory::where('slug', $coursecategory)->first();
+        $chapter = Chapter::where('slug', $chapter)->first();
+        $content = Content::where('slug', $content)->first();
+        // dd($content);
+        return view('dashboard.content.edit', compact('coursecategory', 'chapter', 'content'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, CourseCategory $coursecategory, Chapter $chapter, Content $content)
     {
-        $data = DB::table('contents')->find($id);
-        // dd($request);
-        $chapters_id = $request->chapters_id;
-
         $this->validate($request, [
-            'name' => 'required|max:50',
+            'title' => 'required|max:50',
             'text' => 'required',
             'thumbnail' => 'image|max:50',
             'vidio' => 'max:50',
-            'chapters_id' => 'required'
         ]);
 
         if ($request->hasFile('thumbnaile')) {
-            // $path = public_path() . '/content/thumbnaile/';
-
-            if ($data->thumbnaile_id != '' && $data->thumbnaile_id) {
-                $thumbnaile_old = $data->thumbnaile_id;
+            if ($content->thumbnaile_id != '' && $content->thumbnaile_id) {
+                $thumbnaile_old = $content->thumbnaile_id;
+                // delete image from cloudinary
                 Cloudinary::destroy($thumbnaile_old);
-                // dd($thumbnaile_old);
             }
-            // dd($request->name);
-            // $request['thumbnaile'] = $filename;
+
+            // check file and get original name and create id for image
             $thumbnaile = $request->file('thumbnaile');
             $folder = 'thumbnile_contents';
             $imageName = $thumbnaile->getClientOriginalName();
@@ -163,10 +125,7 @@ class ContentController extends Controller
             $newFilename = str_replace(' ', '_', $remove_path);
             $public_id = date('Y-m-d_His') . '_' . $newFilename;
             $thumbnaile_id = $folder . '/' . $public_id;
-            // dd($thumbnile_id);
             $result = Cloudinary::upload($thumbnaile->getRealPath(), ['folder' => $folder, 'public_id' => $public_id])->getSecurePath();
-            // $filename = $thumbnaile->getClientOriginalName();
-            // $thumbnaile->move(public_path('/content/thumbnaile/'), $filename);
 
             $text = $request->text;
             $dom = new \DOMDocument();
@@ -174,37 +133,24 @@ class ContentController extends Controller
             $imageFile = $dom->getElementsByTagName('img');
             $folder_image_content = 'image_contents';
 
+            // insert image in cloudinary from the somernote
             foreach ($imageFile as $item => $image) {
                 $data = $image->getAttribute('src');
-                // dd($data);
-                // list($type, $data) = explode(';', $data);
-                // list(, $data) = explode(',', $data);
-                // $imgData = base64_decode($data);
-                // dd($imgData);
                 $image_content = Cloudinary::upload($data, ['folder' => $folder_image_content])->getSecurePath();
-                // dd($image_content);
-                // $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
-                // $path = public_path() . $imageName;
-                // dd($path);
-                // file_put_contents($path, $imgData);
-                // file_put_contents($image_content);
-
                 $image->removeAttribute('src');
                 $image->setAttribute('src', $image_content);
             }
 
-            $content = $dom->saveHTML();
+            $content_text = $dom->saveHTML();
 
-            DB::table('contents')->where('id', $request->id)->update([
-                'title' => $request->name,
-                'thumbnaile_url' => $result,
-                'thumbnaile_id' => $thumbnaile_id,
-                'vidio' => $request->vidio,
-                'text' => $request->text,
-                'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
-                'chapters_id' => $request->chapters_id,
-                'updated_at' => Carbon::now()
-            ]);
+            // update content if user update new image
+            $data = $request->all();
+            $data['thumbnaile_url'] = $result;
+            $data['thumbnaile_id'] = $thumbnaile_id;
+            $data['text'] = $content_text;
+            $data['slug'] = SlugService::createSlug(Content::class, 'slug', $request->title);
+            $data['chapters_id'] = $chapter->id;
+            $content->update($data);
         }
 
         $text = $request->text;
@@ -213,43 +159,34 @@ class ContentController extends Controller
         $imageFile = $dom->getElementsByTagName('img');
         $folder_image_content = 'image_contents';
 
+        // insert image in cloudinary from the somernote
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
-            // dd($data);
-            // list($type, $data) = explode(';', $data);
-            // list(, $data) = explode(',', $data);
-            // $imgData = base64_decode($data);
-            // dd($imgData);
             $image_content = Cloudinary::upload($data, ['folder' => $folder_image_content])->getSecurePath();
-            // dd($image_content);
-            // $imageName = '/paragraph/imagecontent/' . time() . $item . '.png';
-            // $path = public_path() . $imageName;
-            // dd($path);
-            // file_put_contents($path, $imgData);
-            // file_put_contents($image_content);
-
             $image->removeAttribute('src');
             $image->setAttribute('src', $image_content);
         }
 
-        DB::table('contents')->where('id', $request->id)->update([
-            'title' => $request->name,
-            // 'thumbnaile' => $filename,
-            'vidio' => $request->vidio,
-            'text' => $request->text,
-            'chapters_id' => $request->chapters_id,
-            'slug' => SlugService::createSlug(Content::class, 'slug', $request->name),
-            'updated_at' => Carbon::now()
-        ]);
+        $content_text = $dom->saveHTML();
 
+        // update content without nrw umage
+        $data = $request->all();
+        $data['text'] = $content_text;
+        $data['slug'] = SlugService::createSlug(Content::class, 'slug', $request->title);
+        $content->update($data);
 
+        return redirect()->route('coursecategory.chapter.content.index', ['coursecategory' => $coursecategory->slug, 'chapter' => $chapter->slug])->with('success', 'content has been updated');
+    }
 
-
-
-        return redirect()->action(
-            [ContentController::class, 'index'],
-            ['id' => $chapters_id]
-        )->with('success', 'this chapter has been update');
+    public function destroy(CourseCategory $coursecategory, Chapter $chapter, Content $content)
+    {
+        // check thumbnile id in table null or not
+        if ($content->thumbnaile_id != null) {
+            // delete thumbnaile from cloudinary
+            Cloudinary::destroy($content->thumbnaile_id);
+        }
+        $content->delete();
+        return redirect()->back()->with('success', 'content has been deleted');
     }
 
     public function preview($slug)
@@ -257,15 +194,5 @@ class ContentController extends Controller
         $query = DB::table('contents')->where('slug', $slug)->get();
 
         return view('dashboard.content.preview', ['query' => $query]);
-    }
-
-    public function delete($slug)
-    {
-        $data = DB::table('contents')->where('slug', $slug)->first();
-        // dd($data->thumbnaile_id);
-        $public_id = $data->thumbnaile_id;
-        Cloudinary::destroy($public_id);
-        DB::table('contents')->where('slug', $slug)->delete();
-        return redirect()->back()->with('success', 'content has been deleted');
     }
 }

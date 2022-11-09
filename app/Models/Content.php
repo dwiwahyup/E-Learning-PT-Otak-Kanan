@@ -11,7 +11,7 @@ class Content extends Model
     use HasFactory, Sluggable;
 
     protected $fillable = [
-        'name', 'text', 'slug'
+        'title', 'text', 'thumbnaile_id', 'vidio', 'slug', 'chapters_id', 'thumbnaile_url'
     ];
 
     public function sluggable(): array

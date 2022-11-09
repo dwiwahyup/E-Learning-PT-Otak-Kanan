@@ -50,20 +50,13 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/', [DashboardController::class, 'index']);
 
         // route for mentors
-        // Route::get('/mentors', [MentorsController::class, 'index']);
-        // Route::get('/mentors/create', [MentorsController::class, 'create']);
-        Route::resource('mentors', MentorsController::class)->parameters([
-            'mentor' => 'slug'
-        ]);
-
-        // route for contents
-        Route::get('/content/{id}', [ContentController::class, 'index']);
-        Route::get('/content/create/{id}', [ContentController::class, 'create']);
-        Route::post('/content/store', [ContentController::class, 'store']);
-        Route::get('/content/edit/{id}', [ContentController::class, 'edit']);
-        Route::post('/content/update/{id}', [ContentController::class, 'update']);
-        Route::get('/content/delete/{slug}', [ContentController::class, 'delete']);
-        Route::get('/content/preview/{slug}', [ContentController::class, 'preview']);
+        Route::resource('mentors', MentorsController::class);
+        // route for course
+        Route::resource('coursecategory', CourseCategoryController::class);
+        // route for chapter
+        Route::resource('coursecategory.chapter', ChapterController::class);
+        // route for content
+        Route::resource('coursecategory.chapter.content', ContentController::class);
 
         // route for logbook
         Route::get('/logbook/{id}', [LogbookController::class, 'index']);
@@ -80,23 +73,6 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::post('/user/update', [UserController::class, 'update']);
         Route::get('/user/delete/{id}', [UserController::class, 'delete']);
         Route::post('/user/store', [UserController::class, 'store']);
-
-        // route for chapter
-        Route::get('/chapter/{uuid}', [ChapterController::class, 'CreateChapter']);
-        Route::get('/chapter/create/{id}', [ChapterController::class, 'create']);
-        Route::post('/chapter/store', [ChapterController::class, 'store']);
-        Route::get('/chapter/edit/{slug}', [ChapterController::class, 'edit']);
-        Route::post('/chapter/update', [ChapterController::class, 'update']);
-        Route::get('/chapter/delete/{slug}', [ChapterController::class, 'delete']);
-
-        // route for course catagory
-        Route::get('/coursecategory', [CourseCategoryController::class, 'index']);
-        Route::get('/coursecategory/create', [CourseCategoryController::class, 'create']);
-        Route::post('/coursecategory/store', [CourseCategoryController::class, 'store']);
-        Route::get('/coursecategory/edit/{slug}', [CourseCategoryController::class, 'edit']);
-        Route::post('/coursecategory/update', [CourseCategoryController::class, 'update']);
-        Route::get('/coursecategory/delete/{slug}', [CourseCategoryController::class, 'delete']);
-        Route::get('/coursecategory/student/{id}', [CourseCategoryController::class, 'preview']);
 
         //route for quiz
         Route::get('/quiz/{id}', [QuizController::class, 'index']);

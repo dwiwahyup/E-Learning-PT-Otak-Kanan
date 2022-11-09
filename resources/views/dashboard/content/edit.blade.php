@@ -31,24 +31,22 @@
             </div>
             <div class="card-body">
                 {{-- @dd($data); --}}
-                @foreach ($data as $data)
-                <form action="/dashboard/content/update/{{$data->id}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('coursecategory.chapter.content.update', ['coursecategory' => $coursecategory->id, 'chapter' => $chapter->id, 'content' => $content->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="hidden" name="chapters_id" value="{{$data->chapters_id}}">
-                            <input type="hidden" name="id" value="{{ $data->id }}">
                             <div class="form-group">
                                 <label>Content Name</label>
-                                <input name="name" value="{{$data->title}}" type="text" class="form-control">
+                                <input name="title" value="{{old('title') ?? $content->title}}" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Link Vidio</label>
-                                <input type="text" name="vidio" value="{{$data->vidio}}" class="form-control">
+                                <input type="text" name="vidio" value="{{old('vidio') ?? $content->vidio}}" class="form-control">
                                 <small class="form-text mb-3 text-danger">Please input link form youtube like : https://www.youtube.com/embed/tgbNymZ7vqY</small>
-                                @if ($data->vidio != null)
+                                @if ($content->vidio != null)
                                     <iframe style="width : 765px; height: 405px; border: none;"
-                                    src="{{$data->vidio}}">
+                                    src="{{$content->vidio}}">
                                     </iframe>
                                 @else
                                     
@@ -58,7 +56,7 @@
                                 <label>Thumbnaile</label>
                                 <input type="file" name="thumbnaile" class="form-control">
                                 <small class="form-text mb-3 text-danger">Please input image in size 400X800</small>
-                                @if ($data->thumbnaile_url != null)
+                                @if ($content->thumbnaile_url != null)
                                     <p><img alt="" class="img-fluid" style="width: 800px; height: 400px;" src="{{$data->thumbnaile_url}}"></p>
                                 @else
                                     
@@ -66,14 +64,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Text</label>
-                                <textarea class="editor" name="text">{{$data->text}}</textarea>
+                                <textarea class="editor" name="text">{{old('text') ?? $content->text}}</textarea>
                             </div>
                         </div>
                         
                         </div>
                         <button type="submit" class="btn btn-primary plus float-left">Update</button>
                 </form>
-                @endforeach
                     {{-- <p><a href="#0" class="btn btn-primary plus float-left">Update</a></p>    --}}
                 </div>
                 

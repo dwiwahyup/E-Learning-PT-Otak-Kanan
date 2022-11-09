@@ -44,10 +44,10 @@
                                 <input type="text" name="motivation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Course</label>
+                                <label>Course Categories</label>
                                 <div class="styled-select">
                                 <select name="course_categories_id">
-                                    <option>---</option>
+                                    <option value="">Select Course</option>
                                     @foreach ($course as $courses)
                                         <option value="{{$courses->id}}">{{$courses->name}}</option>
                                     @endforeach

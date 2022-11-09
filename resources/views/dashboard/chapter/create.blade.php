@@ -40,10 +40,8 @@
             <h2><i class="fa fa-file"></i>Chapter</h2>
         </div>
 
-    {{-- @dd($id); --}}
-    <form action="/dashboard/chapter/store" method="post" enctype="multipart/form-data">
+    <form action="{{route('coursecategory.chapter.store', $coursecategory->id)}}" method="post" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="course_categories_id" value="{{ $id }}"> <br />
         <div class="row">
             <div class="col">
                 <div class="form-group">

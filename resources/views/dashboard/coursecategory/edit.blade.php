@@ -20,16 +20,16 @@
         <div class="header_box version_2">
             <h2><i class="fa fa-file"></i> Edit Course Category</h2>
         </div>
-    @foreach ($data as $data)
-    <form action="/dashboard/coursecategory/update/{{$data->id}}" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="{{ $data->id }}" > <br/>
+
+    <form action="{{route('coursecategory.update', $data->id)}}" method="post" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="row">
             <div class="col-md-6">
 
                 <div class="form-group">
                     <label>Name Course</label>
-                    <input value="{{$data->name}}" type="text" name="name" class="form-control">
+                    <input value="{{old('name') ?? $data->name}}" type="text" name="name" class="form-control">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label>Introduction</label>
                     {{-- <input type="text" value="{{$data->introduction}}" class="form-control" name="introduction"> --}}
-                    <textarea type="text" class="form-control" name="introduction">{{$data->introduction}}</textarea>
+                    <textarea type="text" class="form-control" name="introduction">{{old('introduction') ?? $data->introduction}}</textarea>
                     
                 </div>
             </div>
@@ -56,7 +56,6 @@
         </div>
             <p><button type="submit" class="btn btn-primary plus float-right">Update</button></p>
         </form>
-        @endforeach
     </div>	
     </div>
 <!-- /.container-fluid-->

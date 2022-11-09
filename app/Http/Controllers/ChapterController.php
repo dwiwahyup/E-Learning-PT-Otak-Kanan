@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chapter;
-use Carbon\Carbon;
+use App\Models\CourseCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Facades\Crypt;
 
 class ChapterController extends Controller
 {
-    public function CreateChapter($id)
+    public function index($slug)
     {
-        $id = Crypt::decrypt($id);
-        // dd($id);
-        $course_name = DB::table('course_categories')->where('id', $id)->first();
-        // dd($course_name);
+        $data = CourseCategory::where('slug', $slug)->first();
+        $id = $data->id;
 
         $query = DB::table('chapters')
             ->join('course_categories', function ($join) use ($id) {
@@ -29,83 +26,56 @@ class ChapterController extends Controller
             ->select('chapters.id', 'chapters.name', 'chapters.abstract', 'chapters.slug', 'course_categories.name as course_name', DB::raw('COUNT(contents.chapters_id) as contents_count'))
             ->groupBy('chapters.id')
             ->get();
-        // dd($query);
 
-        return view('dashboard.chapter.index', ['query' => $query, 'id' => $id, 'course_name' => $course_name]);
+        return view('dashboard.chapter.index', ['query' => $query, 'id' => $id, 'course_name' => $data]);
     }
 
-    public function create($id)
+    public function create($slug)
     {
-        $id = Crypt::decrypt($id);
-        // dd($id);
-
-        return view('dashboard.chapter.create', ['id' => $id]);
+        $coursecategory = CourseCategory::where('slug', $slug)->first();
+        return view('dashboard.chapter.create', ['coursecategory' => $coursecategory]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, CourseCategory $coursecategory)
     {
-        $id = $request->course_categories_id;
-        // dd($request);
-
         $this->validate($request, [
             'name' => 'required|max:50',
             'abstract' => 'required',
-            'course_categories_id' => 'required'
         ]);
 
-        DB::table('chapters')->insert([
-            'name' => $request->name,
-            'abstract' => $request->abstract,
-            'course_categories_id' => $request->course_categories_id,
-            'slug' => SlugService::createSlug(Chapter::class, 'slug', $request->name),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+        $data = $request->all();
+        $data['course_categories_id'] = $coursecategory->id;
+        $data['slug'] = SlugService::createSlug(Chapter::class, 'slug', $request->name);
+        Chapter::create($data);
 
-        return redirect()->action(
-            [ChapterController::class, 'index'],
-            ['id' => Crypt::encrypt($id)]
-        )->with('success', 'new chapter has been added');
+        return redirect()->route('coursecategory.chapter.index', ['coursecategory' => $coursecategory->slug])->with('success', 'new chapter has been addedd');
     }
 
-    public function edit($slug)
+    public function edit($coursecategory, $chapter)
     {
-        $data = DB::table('chapters')->where('slug', $slug)->get();
-
-        // dd($data);
-
-        return view('dashboard.chapter.edit', ['data' => $data]);
+        $chapter = Chapter::where('slug', $chapter)->first();
+        $coursecategory = CourseCategory::where('slug', $coursecategory)->first();
+        return view('dashboard.chapter.edit', ['coursecategory' => $coursecategory, 'chapter' => $chapter]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, CourseCategory $coursecategory, Chapter $chapter)
     {
-        // dd($request);
-        $id = $request->course_categories_id;
-
         $this->validate($request, [
             'name' => 'required|max:50',
             'abstract' => 'required',
-            'course_categories_id' => 'required'
         ]);
 
-        DB::table('chapters')->where('id', $request->id)->update([
-            'name' => $request->name,
-            'abstract' => $request->abstract,
-            'course_categories_id' => $request->course_categories_id,
-            'updated_at' => Carbon::now()
-        ]);
+        $data = $request->all();
+        $data['slug'] = SlugService::createSlug(Chapter::class, 'slug', $request->name);
+        $data['course_categories_id'] = $coursecategory->id;
+        $chapter->update($data);
 
-        return redirect()->action(
-            [ChapterController::class, 'index'],
-            ['id' => $id]
-        )->with('success', 'this chapter has been update');
+        return redirect()->route('coursecategory.chapter.index', ['coursecategory' => $coursecategory->slug])->with('success', 'chapter has been updated');
     }
 
-    public function delete($slug)
+    public function destroy(CourseCategory $coursecategory, Chapter $chapter)
     {
-        // $id = $request->course_categories_id;
-        DB::table('chapters')->where('slug', $slug)->delete();
-
+        $chapter->delete();
         return redirect()->back()->with('success', 'chapter has been deleted');
     }
 }

@@ -11,7 +11,7 @@ class Chapter extends Model
     use HasFactory, Sluggable;
 
     protected $fillable = [
-        'name', 'abstract', 'slug'
+        'name', 'abstract', 'slug', 'course_categories_id'
     ];
 
     public function sluggable(): array

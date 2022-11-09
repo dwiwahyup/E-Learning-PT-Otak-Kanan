@@ -5,16 +5,6 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    {{-- <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{{('/dashboard')}}">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{{('/dashboard/coursecategory')}}">Course</a>
-        </li>
-        <li class="breadcrumb-item active">Chapter</li>
-    </ol> --}}
 
     <a class="btn btn-link mb-2" href="{{URL::previous()}}">
         <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
@@ -40,20 +30,18 @@
         </div>
 
     {{-- @dd($id); --}}
-    @foreach ($data as $data)
-        <form action="/dashboard/chapter/update" method="post" enctype="multipart/form-data">
+        <form action="{{route('coursecategory.chapter.update', ['coursecategory' => $coursecategory->id, 'chapter' => $chapter->id])}}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="course_categories_id" value="{{$data->course_categories_id}}">
-            <input type="hidden" name="id" value="{{$data->id}}">
+            @method('PUT')
             <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <label>Chapter Name</label>
-                        <input type="text" name="name" value="{{$data->name}}" class="form-control">
+                        <input type="text" name="name" value="{{$chapter->name}}" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Abstract</label>
-                        <textarea type="text" class="form-control" name="abstract">{{$data->abstract}}</textarea>
+                        <textarea type="text" class="form-control" name="abstract">{{$chapter->abstract}}</textarea>
                     </div>
                 </div>
             </div>
@@ -61,7 +49,6 @@
             <!-- /row-->
                 <p><button type="submit" class="btn btn-primary plus float-right">Save</button></p>
             </form>
-    @endforeach
     </div>	
     </div>
 <!-- /.container-fluid-->

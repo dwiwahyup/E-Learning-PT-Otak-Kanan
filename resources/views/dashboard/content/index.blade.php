@@ -14,9 +14,9 @@
             </li>
             <li class="breadcrumb-item">
                 @if ($chapters_id != null)
-                    <a href="/dashboard/chapter/{{Crypt::encrypt($chapters_id->course_categories_id)}}"> {{$chapters_name->name}}</a>
+                    <a href="{{route('coursecategory.chapter.index', $coursecategory)}}"> {{$chapters->name}}</a>
                 @else
-                    <a href="{{URL::previous()}}">{{$chapters_name->name}}</a>
+                    <a href="{{URL::previous()}}">{{$chapters->name}}</a>
                 @endif
                 {{-- <a href="/dashboard/chapter/{{$chapters_id->course_categories_id}}">
                   
@@ -39,7 +39,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="/dashboard/content/create/{{Crypt::encrypt($id)}}" class="btn btn-secondary plus"> Add Content</a></p>
+                    <p><a href="{{route('coursecategory.chapter.content.create', ['coursecategory' => $coursecategory->slug, 'chapter' => $chapters->slug])}}" class="btn btn-secondary plus"> Add Content</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -76,8 +76,13 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/content/edit/{{$data->slug}}" class="btn btn-success btn-md">Edit</a>
-                                        <a href="/dashboard/content/delete/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                        <a href="{{route('coursecategory.chapter.content.edit', ['coursecategory' => $coursecategory->slug, 'chapter' => $chapters->slug, 'content' => $data->slug])}}" class="btn btn-success btn-md">Edit</a>
+                                        {{-- <a href="/dashboard/content/delete/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Delete</a> --}}
+                                        <form action="{{route('coursecategory.chapter.content.destroy', ['coursecategory' => $coursecategory->id, 'chapter' => $chapters->id, 'content' => $data->id])}}" class="d-inline" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('delete')}}
+                                            <button class="btn btn-danger ml-2">Delete</button>
+                                        </form>
                                         <a href="/dashboard/content/preview/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Preview</a>
                                     </div>
                                 </td>

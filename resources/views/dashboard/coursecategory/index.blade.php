@@ -58,10 +58,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex">
-                                        <a href="/dashboard/chapter/{{Crypt::encrypt($data->id)}}" class="btn btn-success btn-md">Chapter</a>
-                                        <a href="coursecategory/edit/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Edit</a>
-                                        <a href="coursecategory/delete/{{$data->slug}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                    <div class="inline-block">
+                                        <a href="{{route('coursecategory.chapter.index', $data->slug)}}" class="btn btn-success btn-md">Chapter</a>
+                                        <a href="{{route('coursecategory.edit', $data->slug)}}" class="btn btn-danger btn-md ml-2" >Edit</a>
+                                        <form action="{{route('coursecategory.destroy', $data->id)}}" class="d-inline" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('delete')}}
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
                                         <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-2" >Student</a>
                                     </div>
                                 </td>

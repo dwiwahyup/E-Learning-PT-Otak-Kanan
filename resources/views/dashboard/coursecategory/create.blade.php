@@ -36,7 +36,7 @@
                     <h2><i class="fa fa-file"></i>Course Category</h2>
                 </div>
 
-                <form action="/dashboard/coursecategory/store" method="post" enctype="multipart/form-data">
+                <form action="{{route('coursecategory.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
