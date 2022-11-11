@@ -21,17 +21,32 @@
                             <a class="nav-link active py-4" id="v-pills-home-tab" data-toggle="pill"
                                 href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"
                                 name="v-pills-home-tab">
-                                Front-End Developer
+                                <h6><u>Front-End Developer</u></h6>
+                                <p>
+                                    Online <br>
+                                    20 SKS, 4 Bulan <br>
+                                    Bersertifikat
+                                </p>
                             </a>
                             <a class="nav-link py-4" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
                                 role="tab" aria-controls="v-pills-profile" aria-selected="false"
                                 name="v-pills-profile-tab">
-                                Back-End Developer
+                                <h6><u>Back-End Developer</u></h6>
+                                <p>
+                                    Online <br>
+                                    20 SKS, 4 Bulan <br>
+                                    Bersertifikat
+                                </p>
                             </a>
                             <a class="nav-link py-4" id="v-pills-messages-tab" data-toggle="pill"
                                 href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
                                 aria-selected="false" name="v-pills-messages-tab">
-                                Digital Marketing
+                                <h6><u>Digital Marketing</u></h6>
+                                <p>
+                                    Online <br>
+                                    20 SKS, 4 Bulan <br>
+                                    Bersertifikat
+                                </p>
                             </a>
                         </div>
                     </div>
@@ -133,6 +148,7 @@
 
 
                                             <h6>Kompetensi yang Dikembangakan</h6>
+                                            <div class="container">
                                             <!-- Button trigger modal -->
                                             <button type="button" class="btn btn_1" data-toggle="modal"
                                                 data-target="#exampleModalCenter">
@@ -185,6 +201,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                             <br>
                                             <br>
                                             <h6>Kriteria Peserta</h6>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\ChapterUserController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ContentGalleryController;
 use App\Http\Controllers\ContentParagraphController;
+use App\Http\Controllers\ContentUserController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
@@ -40,6 +42,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
 
+//route for contentuser
+Route::get('/contentuser', [ContentUserController::class, 'index']);
+
+//route for chapteruser
+Route::get('/chapteruser', [ChapterUserController::class, 'index']);
 
 //route for program
 Route::get('/program', [ProgramController::class, 'index']);

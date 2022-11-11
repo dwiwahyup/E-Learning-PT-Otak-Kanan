@@ -3,8 +3,10 @@
 /*============================================================================================*/
 
 .tabs-verical .nav-link {
-	border-right: 1px solid #ddd;
-	border-radius: 0;
+	border: 1px solid rgb(212, 210, 210);
+	border-radius: 3;
+    box-shadow: #74788c;
+    margin-bottom: 10px;
 }
 .tabs-verical .navbar-default .navbar-text {
 	color: #ffffff;
@@ -17,3 +19,4 @@
 	border-bottom-color: rgb(221, 221, 221);
 	border-bottom-color: transparent;
 }
+
