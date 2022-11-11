@@ -154,7 +154,7 @@ class ContentController extends Controller
 
         $text = $request->text;
         $dom = new \DOMDocument();
-        $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHTML($text, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
         $imageFile = $dom->getElementsByTagName('img');
         $folder_image_content = $coursecategory->slug;
 
