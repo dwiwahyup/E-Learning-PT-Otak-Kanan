@@ -57,6 +57,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::resource('coursecategory.chapter', ChapterController::class);
         // route for content
         Route::resource('coursecategory.chapter.content', ContentController::class);
+        Route::get('/content/preview/{slug}', [ContentController::class, 'preview']);
 
         // route for logbook
         Route::get('/logbook/{id}', [LogbookController::class, 'index']);
@@ -67,12 +68,13 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
 
         // route for user
-        Route::get('/user', [UserController::class, 'index']);
-        Route::get('/user/create', [UserController::class, 'create']);
-        Route::get('/user/edit/{id}', [UserController::class, 'edit']);
-        Route::post('/user/update', [UserController::class, 'update']);
-        Route::get('/user/delete/{id}', [UserController::class, 'delete']);
-        Route::post('/user/store', [UserController::class, 'store']);
+        Route::resource('user', UserController::class);
+        // Route::get('/user', [UserController::class, 'index']);
+        // Route::get('/user/create', [UserController::class, 'create']);
+        // Route::get('/user/edit/{id}', [UserController::class, 'edit']);
+        // Route::post('/user/update', [UserController::class, 'update']);
+        // Route::get('/user/delete/{id}', [UserController::class, 'delete']);
+        // Route::post('/user/store', [UserController::class, 'store']);
 
         //route for quiz
         Route::get('/quiz/{id}', [QuizController::class, 'index']);
