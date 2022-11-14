@@ -15,7 +15,6 @@
         </div>
     </section>
 
-
     <div class="container container-custom margin_80_0">
         <div class="main_title_2">
             <span><em></em></span>
@@ -23,11 +22,11 @@
             <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
         </div>
         <div id="reccomended" class="owl-carousel owl-theme">
-            <div class="item">
+            {{-- <div class="item">
                 <div class="box_grid">
-                    <figure>
+                    <figure> --}}
                         {{-- <a href="#0" class="wish_bt"></a> --}}
-                        <a href="{{url('/chapteruser/')}}"><img
+                        {{-- <a href="{{url('/chapteruser/')}}"><img
                                 src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
                                 class="img-fluid" alt="" width="800" height="533">
                             <div class="read_more"><span>Read more</span></div>
@@ -48,33 +47,34 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             <!-- /item -->
-            <div class="item">
-                <div class="box_grid">
-                    <figure>
-                        <a href="tour-detail.html"><img src="{{ url('frontend/img/banner5.jpg')}}" class="img-fluid"
-                                alt="" width="800" height="533">
-                            <div class="read_more"><span>Read more</span></div>
-                        </a>
-                        <small>Back-End Developer</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="tour-detail.html">Back-End Developer</a></h3>
-                        <p>Back-end developers are the experts who build and maintain the mechanisms that process data
-                            and perform actions on websites.</p>
+            @foreach ($query as $item)
+                <div class="item">
+                    <div class="box_grid">
+                        <figure>
+                            <a href="tour-detail.html"><img src="{{ $item->image_url }}" class="img-fluid"
+                                    alt="" width="800" height="533">
+                                <div class="read_more"><span>Read more</span></div>
+                            </a>
+                            <small>{{$item->name}}</small>
+                        </figure>
+                        <div class="wrapper">
+                            <h3><a href="tour-detail.html">{{$item->name}}</a></h3>
+                            <p>{!! Str::limit($item->introduction, 150) !!}</p>
 
-                        <span class="price"> <strong>25</strong> Chapters and <strong>1 </strong> Profesional
-                            Mentors</span>
+                            <span class="price"> <strong>{{$item->chapters_count}}</strong> Chapters and <strong>1 </strong> Profesional
+                                Mentors</span>
+                        </div>
+                        <ul>
+                            <li><i class="icon-clock-6"></i>25 Hours </li>
+                            <li>
+                                <div class="score"><a href=""><strong>Start Now</strong></a></div>
+                            </li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li><i class="icon-clock-6"></i>25 Hours </li>
-                        <li>
-                            <div class="score"><a href=""><strong>Start Now</strong></a></div>
-                        </li>
-                    </ul>
                 </div>
-            </div>
+            @endforeach
             <!-- /item -->
         </div>
         <!-- /carousel -->
@@ -121,20 +121,21 @@
             <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
         </div>
         <div id="carousel" class="owl-carousel owl-theme">
-            <div class="item">
-                <a href="#0">
-                    <div class="title">
-                        <h4>Wahyu Prasetya
-                            <em>Full Stack Developer</em>
-                            <hr>
-                            <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum est feugiat
-                                leo consectetur ultricies. Suspendisse tempus et ex ac accumsan.</em>
-                        </h4>
-                    </div>
-                    <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
-                </a>
-            </div>
-            <div class="item">
+            @foreach ( $mentors as $data)
+                <div class="item">
+                    <a href="#0">
+                        <div class="title">
+                            <h4>{{$data->name}}
+                                <em>{{$data->courses->name}}</em>
+                                <hr>
+                                <em>"{{$data->motivation}}"</em>
+                            </h4>
+                        </div>
+                        <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
+                    </a>
+                </div>
+            @endforeach
+            {{-- <div class="item">
                 <a href="#0">
                     <div class="title">
                         <h4>Lucas Smith
