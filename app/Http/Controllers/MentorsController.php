@@ -16,7 +16,7 @@ class MentorsController extends Controller
 
         // dd($mentors);
 
-        return view('dashboard.mentors.index', ['mentors' => $mentors]);
+        return view('dashboard.profile.index', ['mentors' => $mentors]);
     }
     public function create()
     {
