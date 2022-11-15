@@ -31,7 +31,7 @@
             </li>   
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="{{('/dashboard/mentors')}}">
-                     <i class="fa fas fa-users" aria-hidden="true"></i>
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
                 <span class="nav-link-text">My Profile</span>
                 </a>
             </li>   
