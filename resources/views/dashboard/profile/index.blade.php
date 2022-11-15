@@ -19,7 +19,7 @@
                 <div class="col-lg-4 add_top_30">
                     <div class="card">
                         <div class="card-body profile-card">
-                            <center class="mt-6"> <img src="{{url('frontend/img/avatar3.jpg')}}" class="rounded-circle" width="175" />
+                            <center class="mt-6"> <img src="{{url('frontend/img/avatar3.jpg')}}" class="rounded-circle" width="175">
                             </center>
                         </div>
                     </div>

@@ -17,56 +17,33 @@
 						<form action="" class="dropzone"></form>
 				    </div>
                     <div class="row mb-5">
-                    <div class="col-md-6">
-                        <div class="col-md-4">
-                            <div class="photo-frame">
-                                <img class="photo-profile" src="{{url('/frontend/img/default_user.png')}}" height="200" width="200">
-                            </div>
+                     <div class="card-body profile-card">
+                            <center class="mt-6"> <img src="{{url('frontend/img/avatar3.jpg')}}" class="rounded-circle" width="175">
+                            </center>
                         </div>
-                    </div>
+						<input type="file"   name="filename" required>
                 </div>
 				</div>
                 
 				<div class="col-md-8 add_top_30">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="form-group">
 								<label>Name</label>
 								<input type="text" class="form-control" placeholder="Your name">
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Last name</label>
-								<input type="text" class="form-control" placeholder="Your last name">
-							</div>
-						</div>
+	
 					</div>
 					<!-- /row-->
 					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Telephone</label>
-								<input type="text" class="form-control" placeholder="Your telephone number">
-							</div>
-						</div>
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="form-group">
 								<label>Email</label>
 								<input type="email" class="form-control" placeholder="Your email">
 							</div>
 						</div>
 					</div>
-					<!-- /row-->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label>Personal info</label>
-								<textarea style="height:100px;" class="form-control" placeholder="Personal info"></textarea>
-							</div>
-						</div>
-					</div>
-					<!-- /row-->
 				</div>
 			</div>
 		</div>
