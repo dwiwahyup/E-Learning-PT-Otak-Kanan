@@ -28,20 +28,26 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>No</th>
+                                <th>Student Name</th>
                                 <th>Course Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <th>Course Name</th>
+                                <th>Student Name</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach ($query as $data)
+                            @foreach ($students as $index => $data)
                             <tr>
+                                <td>{{$index + 1}}</td>
                                 <td>{{$data->name}}</td>
+                                <td>{{$data->courses->name}}</td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="/dashboard/logbook/{{$data->id}}" class="btn btn-success btn-md">Logbook</a>

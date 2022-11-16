@@ -68,7 +68,7 @@
                                             {{method_field('delete')}}
                                             <button class="btn btn-danger ml-1">Delete</button>
                                         </form>
-                                        <a href="coursecategory/student/{{$data->id}}" class="btn btn-danger btn-md ml-1">Student</a>
+                                        <a href="student/{{$data->slug}}" class="btn btn-danger btn-md ml-1">Student</a>
                                     </div>
                                 </td>
                             </tr>

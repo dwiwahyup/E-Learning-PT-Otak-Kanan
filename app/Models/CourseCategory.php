@@ -27,4 +27,14 @@ class CourseCategory extends Model
     {
         return $this->hasMany(Mentor::class, 'course_categories_id', 'id');
     }
+
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class, 'course_categories_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'course_catagories_id', 'id');
+    }
 }

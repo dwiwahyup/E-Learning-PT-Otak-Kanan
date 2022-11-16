@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -120,5 +121,14 @@ class CourseCategoryController extends Controller
         // dd($query);
 
         return view('dashboard.coursecategory.student', ['query' => $query]);
+    }
+
+    public function students($slug)
+    {
+        $data = CourseCategory::where('slug', $slug)->first();
+        $id = $data->id;
+        $students = User::with('courses')->where('course_categories_id', $id)->get();
+        // dd($students);
+        return view('dashboard.coursecategory.student', compact('students'));
     }
 }

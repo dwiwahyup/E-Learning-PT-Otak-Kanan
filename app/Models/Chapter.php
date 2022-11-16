@@ -22,4 +22,9 @@ class Chapter extends Model
             ]
         ];
     }
+
+    public function courses()
+    {
+        return $this->belongsTo(CourseCategory::class, 'course_categories_id', 'id');
+    }
 }
