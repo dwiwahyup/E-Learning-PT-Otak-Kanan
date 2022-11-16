@@ -3265,7 +3265,7 @@ a.box_feat h3 {
 #carousel .item .title h4 {
   background-color: #0054a6;
   background-color: #0054a6;
-  display: inline-block;
+  /* display: inline-block; */
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   -ms-border-radius: 3px 3px 0 0;

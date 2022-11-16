@@ -25,61 +25,62 @@
             {{-- <div class="item">
                 <div class="box_grid">
                     <figure> --}}
-                        {{-- <a href="#0" class="wish_bt"></a> --}}
-                        {{-- <a href="{{url('/chapteruser/')}}"><img
-                                src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
-                                class="img-fluid" alt="" width="800" height="533">
-                            <div class="read_more"><span>Read more</span></div>
-                        </a>
-                        <small>Front-End Developer</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="{{url('/chapteruser/')}}">Front-End Developer</a></h3>
-                        <p>Front-end web development, also known as client-side development The challenge associated
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                        <span class="price"> <strong>25</strong> Chapters and <strong>1 </strong> Profesional
-                            Mentors</span>
-                    </div>
-                    <ul>
-                        <li><i class="icon-clock-6"></i>25 Hours </li>
-                        <li>
-                            <div class="score"><a href=""><strong>Start Now</strong></a></div>
-                        </li>
-                    </ul>
-                </div>
-            </div> --}}
-            <!-- /item -->
-            @foreach ($query as $item)
-                <div class="item">
-                    <div class="box_grid">
-                        <figure>
-                            <a href="tour-detail.html"><img src="{{ $item->image_url }}" class="img-fluid"
-                                    alt="" width="800" height="533">
-                                <div class="read_more"><span>Read more</span></div>
-                            </a>
-                            <small>{{$item->name}}</small>
-                        </figure>
-                        <div class="wrapper">
-                            <h3><a href="tour-detail.html">{{$item->name}}</a></h3>
-                            <p>{!! Str::limit($item->introduction, 150) !!}</p>
-
-                            <span class="price"> <strong>{{$item->chapters_count}}</strong> Chapters and <strong>1 </strong> Profesional
-                                Mentors</span>
-                        </div>
-                        <ul>
-                            <li><i class="icon-clock-6"></i>25 Hours </li>
-                            <li>
-                                <div class="score"><a href=""><strong>Start Now</strong></a></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            @endforeach
-            <!-- /item -->
+            {{-- <a href="#0" class="wish_bt"></a> --}}
+            {{-- <a href="{{url('/chapteruser/')}}"><img
+                src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
+                class="img-fluid" alt="" width="800" height="533">
+            <div class="read_more"><span>Read more</span></div>
+            </a>
+            <small>Front-End Developer</small>
+            </figure>
+            <div class="wrapper">
+                <h3><a href="{{url('/chapteruser/')}}">Front-End Developer</a></h3>
+                <p>Front-end web development, also known as client-side development The challenge associated
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                <span class="price"> <strong>25</strong> Chapters and <strong>1 </strong> Profesional
+                    Mentors</span>
+            </div>
+            <ul>
+                <li><i class="icon-clock-6"></i>25 Hours </li>
+                <li>
+                    <div class="score"><a href=""><strong>Start Now</strong></a></div>
+                </li>
+            </ul>
         </div>
-        <!-- /carousel -->
-        <p class="btn_home_align"><a href="{{url('/allcourse/')}}" class="btn_1 rounded">View all Courses</a></p>
-        <hr class="large">
+    </div> --}}
+    <!-- /item -->
+    @foreach ($query as $item)
+    <div class="item">
+        <div class="box_grid">
+            <figure>
+                <a href="tour-detail.html"><img src="{{ $item->image_url }}" class="img-fluid" alt="" width="800"
+                        height="533">
+                    <div class="read_more"><span>Read more</span></div>
+                </a>
+                <small>{{$item->name}}</small>
+            </figure>
+            <div class="wrapper">
+                <h3><a href="tour-detail.html">{{$item->name}}</a></h3>
+                <p>{!! Str::limit($item->introduction, 150) !!}</p>
+
+                <span class="price"> <strong>{{$item->chapters_count}}</strong> Chapters and <strong>1 </strong>
+                    Profesional
+                    Mentors</span>
+            </div>
+            <ul>
+                <li></li>
+                <li>
+                    <div class="score"><a href=""><strong>Start Now</strong></a></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    @endforeach
+    <!-- /item -->
+    </div>
+    <!-- /carousel -->
+    <p class="btn_home_align"><a href="{{url('/allcourse/')}}" class="btn_1 rounded">View all Courses</a></p>
+    <hr class="large">
     </div>
     <!-- /container -->
 
@@ -88,7 +89,6 @@
             <div class="main_title_2">
                 <h2>Why do you have to follow<br>
                     internship program at PT. Otak Kanan?</h2>
-
             </div>
             <div class="row adventure_feat">
                 <div class="col-md-3">
@@ -122,33 +122,32 @@
         </div>
         <div id="carousel" class="owl-carousel owl-theme">
             @foreach ( $mentors as $data)
-                <div class="item">
-                    <a href="#0">
-                        <div class="title">
-                            <h4>{{$data->name}}
-                                <em>{{$data->courses->name}}</em>
-                                <hr>
-                                <em>"{{$data->motivation}}"</em>
-                            </h4>
-                        </div>
-                        <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
-                    </a>
-                </div>
+            <div class="item">
+                <a href="#0">
+                    <div class="title">
+                        <h4>{{$data->name}}
+                            <em>{{$data->courses->name}}</em>
+                            <hr>
+                        </h4>
+                    </div>
+                    <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
+                </a>
+            </div>
             @endforeach
+
             {{-- <div class="item">
                 <a href="#0">
                     <div class="title">
                         <h4>Lucas Smith
                             <em>Marketing</em>
                             <hr>
-                            <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum est feugiat
-                                leo consectetur ultricies. Suspendisse tempus et ex ac accumsan.</em>
+                            
                         </h4>
                     </div>
                     <img src="{{ url('frontend/img/mentor2.jpg')}}" alt="">
-                </a>
-            </div>
-            {{-- <div class="item">
+            </a>
+        </div> --}}
+        {{-- <div class="item">
                 <a href="#0">
                     <div class="title">
                         <h4>Paul Stephens<em>Business strategist
@@ -159,36 +158,39 @@
                         </h4>
                     </div>
                     <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
-                </a>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#0">
+            <div class="title">
+                <h4>Pablo Himenez
+                    <em>Customer Service</em>
+                    <hr>
+                    <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum est feugiat
+                        leo consectetur ultricies. Suspendisse tempus et ex ac accumsan.</em>
+                </h4>
             </div>
-            <div class="item">
-                <a href="#0">
-                    <div class="title">
-                        <h4>Pablo Himenez
-                            <em>Customer Service</em>
-                            <hr>
-                            <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum est feugiat
-                                leo consectetur ultricies. Suspendisse tempus et ex ac accumsan.</em>
-                        </h4>
-                    </div>
-                    <img src="{{ url('frontend/img/mentor2.jpg')}}" alt="">
-                </a>
+            <img src="{{ url('frontend/img/mentor2.jpg')}}" alt="">
+        </a>
+    </div>
+    <div class="item">
+        <a href="#0">
+            <div class="title">
+                <h4>Andrew Stuttgart
+                    <em>Admissions</em>
+                    <hr>
+                    <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum est feugiat
+                        leo consectetur ultricies. Suspendisse tempus et ex ac accumsan.</em>
+                </h4>
             </div>
-            <div class="item">
-                <a href="#0">
-                    <div class="title">
-                        <h4>Andrew Stuttgart
-                            <em>Admissions</em>
-                            <hr>
-                            <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum est feugiat
-                                leo consectetur ultricies. Suspendisse tempus et ex ac accumsan.</em>
-                        </h4>
-                    </div>
-                    <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
-                </a>
-            </div> --}}
-        </div>
+            <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
+        </a>
+    </div>
+    {{-- </div>
         <!-- /carousel -->
+    </div> --}}
+    </div>
+    <!-- /carousel -->
     </div>
 
     <div class="bg_color_1">
@@ -298,10 +300,10 @@
                         <p align="justify">PT. Otak Kanan provide the best internship experience to shape a better and
                             career-appropriate future.</p>
                         {{-- <a href="#0" class="btn_1 rounded">Read more</a> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div> --}}
     <!--/call_section-->
 </main>

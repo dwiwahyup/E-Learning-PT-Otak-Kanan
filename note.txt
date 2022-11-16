@@ -1,0 +1,4 @@
+list pertanyaan pak wahyu
+
+1. apabila content pertama belum di kerjakan, maka kontent kedua belum bisa dikerjakan
+2. logic membuat fitur pilihan ganda
