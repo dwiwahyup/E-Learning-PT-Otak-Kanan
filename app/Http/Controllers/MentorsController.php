@@ -31,7 +31,7 @@ class MentorsController extends Controller
         // dd($request);
         $this->validate($request, [
             'name' => 'required|max:50',
-            'motivation' => 'required',
+            'motivation' => 'required|max:150',
             'image' => 'required',
             'course_categories_id' => 'required'
         ]);
@@ -60,7 +60,7 @@ class MentorsController extends Controller
     public function edit($slug)
     {
         $data = Mentor::where('slug', $slug)->first();
-        // dd($data);
+        // dd($data->courses);
         $course = CourseCategory::all('id', 'name');
         // dd($mentor);
         return view('dashboard.mentors.edit', ['item' => $data, 'course' => $course]);
@@ -71,7 +71,7 @@ class MentorsController extends Controller
         // dd($mentor->image_url);
         $this->validate($request, [
             'name' => 'required|max:50',
-            'motivation' => 'required',
+            'motivation' => 'required|max:150',
         ]);
 
         if ($request->hasFile('image')) {

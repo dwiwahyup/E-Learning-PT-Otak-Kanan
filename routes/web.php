@@ -60,6 +60,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::resource('mentors', MentorsController::class);
         // route for course
         Route::resource('coursecategory', CourseCategoryController::class);
+        Route::get('/student/{slug}', [CourseCategoryController::class, 'students']);
         // route for chapter
         Route::resource('coursecategory.chapter', ChapterController::class);
         // route for content
@@ -67,12 +68,14 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/content/preview/{slug}', [ContentController::class, 'preview']);
 
         // route for logbook
-        Route::get('/logbook/{id}', [LogbookController::class, 'index']);
-        Route::get('/logbook/create/{id}', [LogbookController::class, 'create']);
-        Route::post('/logbook/store', [LogbookController::class, 'store']);
-        Route::get('/logbook/edit/{id}', [LogbookController::class, 'edit']);
-        Route::post('/logbook/update', [LogbookController::class, 'update']);
-        Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
+        Route::resource('logbooks', LogbookController::class);
+        Route::get('logbook/students/{slug}', [LogbookController::class, 'students_logbooks']);
+        // Route::get('/logbook/{id}', [LogbookController::class, 'index']);
+        // Route::get('/logbook/create/{id}', [LogbookController::class, 'create']);
+        // Route::post('/logbook/store', [LogbookController::class, 'store']);
+        // Route::get('/logbook/edit/{id}', [LogbookController::class, 'edit']);
+        // Route::post('/logbook/update', [LogbookController::class, 'update']);
+        // Route::get('/logbook/delete/{id}', [LogbookController::class, 'delete']);
 
         // route for user
         Route::resource('user', UserController::class);

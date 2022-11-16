@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseCategory;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +12,19 @@ use function Ramsey\Uuid\v1;
 
 class LogbookController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-
-        $data = DB::table('logbooks')->where('users_id', $id)->get();
+        $data = DB::table('course_categories')
+            ->leftJoin('users', function ($join) {
+                $join->on('course_categories.id', '=', 'users.course_categories_id');
+            })
+            ->select('course_categories.id', 'course_categories.name', 'course_categories.slug', DB::raw("(CASE WHEN users.roles = 'USER' THEN COUNT(users.course_categories_id) ELSE 0 END) as users_count"))
+            ->groupBy('course_categories.id')
+            ->get();
+        // $data = CourseCategory::all('name');
 
         // dd($data);
-        return view('dashboard.logbook.index', ['data' => $data, 'id' => $id]);
+        return view('dashboard.logbook.index', ['data' => $data]);
     }
 
     public function create($id)
@@ -71,10 +78,19 @@ class LogbookController extends Controller
         );
     }
 
+    public function show()
+    {
+    }
+
     public function delete($id)
     {
         DB::table('logbooks')->where('id', $id)->delete();
 
         return redirect()->back();
+    }
+
+    public function students_logbooks($slug)
+    {
+        return view('dashboard.logbook.students-logbooks');
     }
 }

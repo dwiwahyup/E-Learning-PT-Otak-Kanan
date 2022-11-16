@@ -47,21 +47,21 @@
                         </tr>
                       </tfoot>
                         <tbody>
-                            @foreach ($data as $index => $data)
+                            {{-- @foreach ($data as $index => $data)
                             <tr>
 
                               <td>{{$index + 1}}</td>
-                              <td>{{$data->name}}</td>
-                              <td>{{$data->users_count}} on this course</td>
+                              <td>{{$data->name}}</td> --}}
+                              {{-- <td>{{$data->users_count}} on this course</td> --}}
                               {{-- <td>12345</td> --}}
                               {{-- <td>{!! Str::limit($data->description, 70) !!}</td> --}}
-                                <td>
+                                {{-- <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/logbook/students/{{$data->slug}}" class="btn btn-success btn-md">Students logbook</a>
+                                        <a href="/dashboard/logbook/edit/{{$data->id}}" class="btn btn-success btn-md">Students logbook</a>
                                     </div>
-                                </td>
-                            </tr>
-                            @endforeach
+                                </td> --}}
+                            {{-- </tr> --}}
+                            {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
