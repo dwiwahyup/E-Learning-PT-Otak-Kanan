@@ -10,13 +10,13 @@
             </li>
             <li class="breadcrumb-item active">User</li>
         </ol>
-        @if ($message = Session::get('success'))
+        @if ($message = Session::get('error'))
                     <div class="mb-10">
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-danger" role="alert">
                             <p>{{$message}}</p>
                         </div>
                     </div>
-                @endif
+        @endif
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
@@ -29,21 +29,29 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
+                          <th>No.</th>
                           <th>Name</th>
                           <th>Email</th>
+                          <th>Roles</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       </tfoot>
                         <tbody>
-                             @foreach ($data as $dataa)
+                             @foreach ($data as $index => $dataa)
                             <tr>
+                              <td>{{$index + 1}}</td>
                               <td>{{$dataa->name}}</td>
                               <td>{{$dataa->email}}</td>
+                              <td>{{$dataa->roles}}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/user/edit/{{$dataa->id}}" class="btn btn-success btn-md">Edit</a>
-                                        <a href="/dashboard/user/delete/{{$dataa->id}}" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                        <a href="{{route('user.edit', $dataa->id)}}" class="btn btn-success btn-md">Edit</a>
+                                        <form action="{{route('user.destroy', $dataa->id)}}" class="d-inline ml-2" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('delete')}}
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

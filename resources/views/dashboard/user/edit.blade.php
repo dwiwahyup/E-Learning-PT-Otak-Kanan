@@ -12,54 +12,46 @@
         </li>
         <li class="breadcrumb-item active">User</li>
     </ol>
+    @if ($errors->any())
+                    <div class="mb-5" role="alert">
+                        <div class="alert alert-danger" role="alert">
+                            <p>
+                                <ul>
+                                    @foreach ($errors->all() as $eror)
+                                        <li>{{$eror}}</li>
+                                    @endforeach
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+    @endif
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
-            <h2><i class="fa fa-file"></i> Edit User</h2>
+            <h2><i class="fa fa-file"></i> Edit Roles User</h2>
         </div>
-        {{-- @dd($data) --}}
-    @foreach ($data as $dataa)
-    <form action="/dashboard/user/update" method="POST">
+
+    <form action="{{route('user.update', $data->id)}}" method="POST">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-md-6">
-                <input type="hidden" name="id" value="{{ $dataa->id }}"> <br />
                 <div class="form-group">
-                    <label>Name</label>
-                    <input value="{{$dataa->name}}" type="text" name="name" class="form-control">
+                    <label>Roles</label>
+                    <div class="styled-select">
+                        <select name="roles">
+                            <option value="{{$data->roles}}">{{$data->roles}}</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="MENTOR">MENTOR</option>
+                                <option value="USER">USER</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- /row-->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input value="{{$dataa->email}}" type="text" name="email" class="form-control">
-                </div>
-            </div>
-        </div>
-        {{-- <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea type="text" class="form-control" name="description">{{$data->description}}</textarea>
-                   <textarea type="text" class="editor" name="description">{{$data->description}}</textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>File</label>
-                    <ol><input type="file" name="berkas" /></ol>
-                    <form action="/file-upload" class="dropzone"></form>
-                </div>
-            </div>
-        </div> --}}
-            <p><button type="submit" class="btn btn-primary plus float-right">Update</button></p>
-        </form>
-        @endforeach
-    </div>	
+    <p><button type="submit" class="btn btn-primary plus float-right">Update</button></p>
+</form>
+</div>	
     </div>
 <!-- /.container-fluid-->
 </div>

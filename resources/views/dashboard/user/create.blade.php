@@ -29,7 +29,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-body">
-                <form action="/dashboard/user/store" method="post" enctype="multipart/form-data">
+                <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

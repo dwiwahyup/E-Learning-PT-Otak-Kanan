@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+
 
 class UserController extends Controller
 {
 
     public function index()
     {
-        $dataa = DB::table('users')->get();
+        $dataa = User::all();
 
         return view('dashboard.user.index', ['data' => $dataa]);
     }
@@ -21,40 +26,43 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+        // dd($request);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required'],
         ]);
 
-        DB::table('users')->insert([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $data = $request->all();
+        $data['roles'] = 'MENTOR';
+        $data['password'] = Hash::make($request->password);
+
+        User::create($data);
 
         return redirect('/dashboard/user')->with('success', 'new user has been added');
     }
-    public function edit($id)
+    public function edit(User $user)
     {
-        $dataa = DB::table('users')->where('id', $id)
-            ->get();
-
-        return view('dashboard.user.edit', ['data' => $dataa]);
+        return view('dashboard.user.edit', ['data' => $user]);
     }
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
-        DB::table('users')->where('id', $request->id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password
+        // dd($request);
+        $this->validate($request, [
+            'roles' => 'required'
         ]);
+
+        $data = $request->all();
+        $user->update($data);
 
         return redirect('/dashboard/user')->with('success', 'User has been updated');
     }
-    public function delete($id)
+    public function destroy(User $user)
     {
-        DB::table('users')->where('id', $id)->delete();
+        if (Auth::user()->id == $user->id) {
+            return redirect(route('user.index'))->with('error', 'you cant delete your own account');
+        }
+        $user->delete();
 
         return redirect('/dashboard/user')->with('success', 'User has been deleted');
     }
