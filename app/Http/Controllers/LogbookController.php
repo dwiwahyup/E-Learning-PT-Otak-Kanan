@@ -93,4 +93,8 @@ class LogbookController extends Controller
     {
         return view('dashboard.logbook.students-logbooks');
     }
+    public function logbook()
+    {
+        return view('frontend.layouts.logbook');
+    }
 }

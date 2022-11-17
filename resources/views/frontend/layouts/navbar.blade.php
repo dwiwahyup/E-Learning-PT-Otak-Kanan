@@ -48,6 +48,7 @@
             <li><span><a href="#0">Account</a></span>
                 <ul>
                     <li><a href="{{url('/profile')}}">Profile</a></li>
+                    <li><a href="{{url('/logbook')}}">LogBook</a></li>
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>

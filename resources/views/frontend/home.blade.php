@@ -25,43 +25,43 @@
             {{-- <div class="item">
                 <div class="box_grid">
                     <figure> --}}
-            {{-- <a href="#0" class="wish_bt"></a> --}}
-            {{-- <a href="{{url('/chapteruser/')}}"><img
-                src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
-                class="img-fluid" alt="" width="800" height="533">
-            <div class="read_more"><span>Read more</span></div>
-            </a>
-            <small>Front-End Developer</small>
-            </figure>
-            <div class="wrapper">
-                <h3><a href="{{url('/chapteruser/')}}">Front-End Developer</a></h3>
-                <p>Front-end web development, also known as client-side development The challenge associated
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <span class="price"> <strong>25</strong> Chapters and <strong>1 </strong> Profesional
-                    Mentors</span>
-            </div>
-            <ul>
-                <li><i class="icon-clock-6"></i>25 Hours </li>
-                <li>
-                    <div class="score"><a href=""><strong>Start Now</strong></a></div>
-                </li>
-            </ul>
-        </div>
-    </div> --}}
-    <!-- /item -->
-    @foreach ($query as $item)
-    <div class="item">
-        <div class="box_grid">
-            <figure>
-                <a href="tour-detail.html"><img src="{{ $item->image_url }}" class="img-fluid" alt="" width="800"
-                        height="533">
-                    <div class="read_more"><span>Read more</span></div>
-                </a>
-                <small>{{$item->name}}</small>
-            </figure>
-            <div class="wrapper">
-                <h3><a href="tour-detail.html">{{$item->name}}</a></h3>
-                <p>{!! Str::limit($item->introduction, 150) !!}</p>
+                        {{-- <a href="#0" class="wish_bt"></a> --}}
+                        {{-- <a href="{{url('/chapteruser/')}}"><img
+                                src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
+                                class="img-fluid" alt="" width="800" height="533">
+                            <div class="read_more"><span>Read more</span></div>
+                        </a>
+                        <small>Front-End Developer</small>
+                    </figure>
+                    <div class="wrapper">
+                        <h3><a href="{{url('/chapteruser/')}}">Front-End Developer</a></h3>
+                        <p>Front-end web development, also known as client-side development The challenge associated
+                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                        <span class="price"> <strong>25</strong> Chapters and <strong>1 </strong> Profesional
+                            Mentors</span>
+                    </div>
+                    <ul>
+                        <li><i class="icon-clock-6"></i>25 Hours </li>
+                        <li>
+                            <div class="score"><a href=""><strong>Start Now</strong></a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div> --}}
+            <!-- /item -->
+            @foreach ($query as $item)
+                <div class="item">
+                    <div class="box_grid">
+                        <figure>
+                            <a href="/chapteruser/{{$item->slug}}"><img src="{{ $item->image_url }}" class="img-fluid"
+                                    alt="" width="800" height="533">
+                                <div class="read_more"><span>Read more</span></div>
+                            </a>
+                            <small>{{$item->name}}</small>
+                        </figure>
+                        <div class="wrapper">
+                            <h3><a href="/chapteruser/{{$item->slug}}">{{$item->name}}</a></h3>
+                            <p>{!! Str::limit($item->introduction, 150) !!}</p>
 
                 <span class="price"> <strong>{{$item->chapters_count}}</strong> Chapters and <strong>1 </strong>
                     Profesional
