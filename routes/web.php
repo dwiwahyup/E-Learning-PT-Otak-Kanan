@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Route;
 //route for home/landing page
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
+Route::get('/program', [HomeController::class, 'program']);
 
 //route for contentuser
 Route::get('/contentuser', [ContentUserController::class, 'index']);
@@ -48,8 +49,6 @@ Route::get('/contentuser', [ContentUserController::class, 'index']);
 //route for chapteruser
 Route::get('/chapteruser', [ChapterUserController::class, 'index']);
 
-//route for program
-Route::get('/program', [ProgramController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
 
@@ -106,6 +105,9 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/paragraph/edit/{id}', [ContentParagraphController::class, 'edit']);
         Route::post('/paragraph/update/{id}', [ContentParagraphController::class, 'update']);
         Route::get('/paragraph/delete/{id}', [ContentParagraphController::class, 'delete']);
+
+        //route for program
+        route::get('/program', [ProgramController::class, 'index']);
     });
 });
 

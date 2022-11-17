@@ -50,4 +50,9 @@ class HomeController extends Controller
     {
         return view('frontend.allcourse');
     }
+
+    public function program()
+    {
+        return view('frontend.program');
+    }
 }
