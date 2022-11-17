@@ -24,7 +24,7 @@
                 </a>
             </li>   
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{('/dashboard/logbooks')}}">
                     <i class="fa fa-book" aria-hidden="true"></i>
                 <span class="nav-link-text">LogBook</span>
                 </a>

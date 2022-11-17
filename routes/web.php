@@ -114,6 +114,7 @@ require __DIR__ . '/auth.php';
 Route::get('/about', [NavigasiController::class, 'about']);
 
 Route::get('/profile', [UserProfileController::class, 'profile']);
+Route::get('/logbook', [LogbookController::class, 'logbook']);
 Route::get('/profile/update', [UserProfileController::class, 'update']);
 
 Route::get('/testimonial', [TestimonialsController::class, 'index']);
