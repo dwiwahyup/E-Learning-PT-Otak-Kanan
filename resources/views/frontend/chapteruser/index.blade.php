@@ -15,60 +15,77 @@
             <aside class="col-lg-3" id="sidebar">
                 <div class="box_style_cat" id="faq_box">
                     <ul id="cat_nav">
-                        <li><a href="#payment" class="active"><i class="icon_document_alt"></i>Introdocution</a></li>
-                        <li><a href="#tips"><i class="icon_document_alt"></i>HTML</a></li>
-                        <li><a href="#reccomendations"><i class="icon_document_alt"></i>CSS</a></li>
-                        <li><a href="#terms"><i class="icon_document_alt"></i>Java Script</a></li>
-                        <li><a href="#booking"><i class="icon_document_alt"></i>Vue JS</a></li>
+                        @foreach ($chapter as $index => $data)
+                            <li><a href="#{{$data->slug}}" class="{{$index == 0 ? 'active' : ''}}"><i class="icon_document_alt"></i>{{$data->name}}</a></li>
+                        @endforeach
+                            {{-- <li><a href="#tips"><i class="icon_document_alt"></i>HTML</a></li>
+                            <li><a href="#reccomendations"><i class="icon_document_alt"></i>CSS</a></li>
+                            <li><a href="#terms"><i class="icon_document_alt"></i>Java Script</a></li>
+                            <li><a href="#booking"><i class="icon_document_alt"></i>Vue JS</a></li> --}}
                     </ul>
                 </div>
             </aside>
             <!--/aside -->
-
+            {{-- @dd($new) --}}
             <div class="col-lg-9" id="faq">
-                <h4 class="nomargin_top">Introdocution</h4>
-                <div role="tablist" class="add_bottom_45 accordion_2" id="payment">
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i
-                                        class="indicator ti-minus"></i>Introdocution Front-End Developer</a>
-                            </h5>
-                        </div>
-                        <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
-                            <div class="card-body">
-                                <div class="box_list">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-5">
-                                            <figure>
-                                                <small>Nama Content</small>
-                                                <a href="{{url('/contentuser/')}}"><img
-                                                        src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
-                                                        class="img-fluid" alt="" width="800" height="533">
-                                                    <div class="read_more"><span>Read more</span></div>
-                                                </a>
-                                            </figure>
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <div class="wrapper">
-                                                {{-- <a href="#0" class="wish_bt"></a> --}}
-                                                <h3><a href="{{url('/contentuser/')}}">Nama Content</a></h3>
-                                                <p> <strong>Deskripsi Content</strong> Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usuzril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                                <hr>
-                                                <p class="btn_home">
-                                                    <p class="btn_home_align"><a href="{{url('/allcourse/')}}" class="btn_1 rounded">Start Learn</a></p>
-                                                </p>
+                @foreach ($test as $index => $data)
+                {{-- @dd($data->contents->title) --}}
+                    <h4 class="nomargin_top">{{$data->name}}</h4>
+                    <div role="tablist" class="add_bottom_45 accordion_2" id="{{$data->slug}}">
+                        <div class="card">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapse{{$data->slug}}" aria-expanded="true"><i
+                                            class="indicator ti-minus"></i>
+                                            {{$data->name}}
+                                        </a>
+                                </h5>
+                            </div>
+                            <div id="collapse{{$data->slug}}" 
+                                class=" @if ($index == 0)
+                                    collapse show
+                                @else
+                                    collapse
+                                @endif" 
+                                role="tabpanel" data-parent="#{{$data->slug}}">
+                                @foreach ($data->contents as $item)
+                                    <div class="card-body">
+                                        <div class="box_list">
+                                            {{-- list introduction content --}}
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-5">
+                                                    <figure>
+                                                        <small>{{$item->title}}</small>
+                                                        <a href="contentuser/{{$item->slug}}"><img
+                                                                src="{{$item->thumbnaile_url ?? "https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"}}"
+                                                                class="img-fluid" alt="" width="800" height="533">
+                                                            <div class="read_more"><span>Read more</span></div>
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <div class="wrapper">
+                                                        {{-- <a href="#0" class="wish_bt"></a> --}}
+                                                        <h3><a href="contentuser/{{$item->slug}}">{{$item->title}}</a></h3>
+                                                        <p> <strong>Deskripsi Content</strong> Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usuzril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
+                                                        <hr>
+                                                        <p class="btn_home">
+                                                            <p class="btn_home_align"><a href="/contentuser/{{$item->slug}}" class="btn_1 rounded">Start Learn</a></p>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            {{-- end of list introduction content --}}
                                         </div>
+                                        <hr>
                                     </div>
-                                </div>
-                                <hr>
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
                 <!-- /accordion payment -->
-                <h4 class="nomargin_top">HTMl</h4>
+                {{-- <h4 class="nomargin_top">HTMl</h4>
                 <div role="tablist" class="add_bottom_45 accordion_2" id="tips">
                     <div class="card">
                         <div class="card-header" role="tab">
@@ -113,10 +130,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /accordion suggestions -->
 
-                <h4 class="nomargin_top">CSS</h4>
+                {{-- <h4 class="nomargin_top">CSS</h4>
                 <div role="tablist" class="add_bottom_45 accordion_2" id="reccomendations">
                     <div class="card">
                         <div class="card-header" role="tab">
@@ -139,12 +156,12 @@
                                     bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /card -->
-                </div>
+                {{-- </div> --}}
                 <!-- /accordion Reccomendations -->
 
-                <h4 class="nomargin_top">Java Sscript</h4>
+                {{-- <h4 class="nomargin_top">Java Sscript</h4>
                 <div role="tablist" class="add_bottom_45 accordion_2" id="terms">
                     <div class="card">
                         <div class="card-header" role="tab">
@@ -166,12 +183,12 @@
                                     bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /card -->
-                </div>
+                {{-- </div> --}}
                 <!-- /accordion Terms -->
 
-                <h4 class="nomargin_top">Vue JS</h4>
+                {{-- <h4 class="nomargin_top">Vue JS</h4>
                 <div role="tablist" class="add_bottom_45 accordion_2" id="booking">
                     <div class="card">
                         <div class="card-header" role="tab">
@@ -193,9 +210,9 @@
                                     bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /card -->
-                </div>
+                {{-- </div> --}}
                 <!-- /accordion Booking -->
             </div>
             <!-- /col -->

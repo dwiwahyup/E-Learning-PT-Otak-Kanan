@@ -43,10 +43,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
 
 //route for contentuser
-Route::get('/contentuser', [ContentUserController::class, 'index']);
+Route::get('/contentuser/{slug}', [ContentUserController::class, 'index']);
 
 //route for chapteruser
-Route::get('/chapteruser', [ChapterUserController::class, 'index']);
+Route::get('/chapteruser/{slug}', [ChapterUserController::class, 'index']);
 
 //route for program
 Route::get('/program', [ProgramController::class, 'index']);

@@ -13,6 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         $mentors = Mentor::with(['courses'])->get();
+        // dd($mentors);
 
         $courses = CourseCategory::with(['mentors'])->get();
 
@@ -34,7 +35,7 @@ class HomeController extends Controller
         //     ->groupBy('course_categories.id')
         //     ->get();
         // $query = DB::select("SELECT (SELECT COUNT(*) FROM chapters) as a, (SELECT COUNT(*) FROM mentors) as b");
-        $query = DB::select("SELECT course_categories.id, course_categories.name, course_categories.introduction, course_categories.image_url,
+        $query = DB::select("SELECT course_categories.id, course_categories.name, course_categories.introduction, course_categories.image_url, course_categories.slug,
             (SELECT COUNT(*) FROM chapters WHERE course_categories.id = chapters.course_categories_id) as chapters_count, 
             (SELECT COUNT(*) FROM mentors WHERE course_categories.id = mentors.course_categories_id) as mentors_count FROM course_categories");
 
