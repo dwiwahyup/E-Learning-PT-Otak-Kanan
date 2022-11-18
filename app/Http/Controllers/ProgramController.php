@@ -10,4 +10,9 @@ class ProgramController extends Controller
     {
         return view('dashboard.program.index');
     }
+
+    public function create()
+    {
+        return view('dashboard.program.create');
+    }
 }

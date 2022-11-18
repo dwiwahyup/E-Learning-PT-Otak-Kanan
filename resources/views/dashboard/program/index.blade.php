@@ -10,12 +10,8 @@
                 <a href="">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="">Course</a>
+                <a href="">Program</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href=""></a>
-            </li>
-            <li class="breadcrumb-item active">Content</li>
         </ol>
 
         <!-- Example DataTables Card-->
@@ -25,8 +21,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href=""
-                            class="btn btn-secondary plus"> Add Content</a></p>
+                    <p><a href="" class="btn btn-secondary plus"> Add Content</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -68,11 +63,17 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <div class="d-flex">
-                                        <a href="" class="btn btn-success btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md ml-2" >Delete</a>
-                                        <a href="" class="btn btn-danger btn-md ml-2" >Kriteria</a>
-                                    </div>
+                                    <center>
+                                        <div class="">
+                                            <a href="" class="btn btn-success btn-md">Edit</a>
+                                            <a href="" class="btn btn-danger btn-md ml-2">Delete</a>
+                                        </div>
+                                        <br>
+                                        <div class="d-flex">
+                                            <a href="" class="btn btn-danger btn-md ml-2">Kriteria</a>
+                                            <a href="" class="btn btn-danger btn-md ml-2">Preview</a>
+                                        </div>
+                                    </center>
                                 </td>
                             </tr>
                         </tbody>

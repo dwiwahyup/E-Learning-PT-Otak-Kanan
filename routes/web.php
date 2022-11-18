@@ -12,9 +12,8 @@ use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ContentGalleryController;
-use App\Http\Controllers\ContentParagraphController;
 use App\Http\Controllers\ContentUserController;
+use App\Http\Controllers\KompetensiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
@@ -95,19 +94,12 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 
         //route for profile
         route::get('/profile', [ProfileController::class, 'index']);
-        // route for content pictures
-        Route::post('/contentGallery/store', [ContentGalleryController::class, 'store']);
-
-        // route for paragraph content
-        Route::get('/paragraph/{id}', [ContentParagraphController::class, 'index']);
-        Route::get('/paragraph/create/{id}', [ContentParagraphController::class, 'create']);
-        Route::post('/paragraph/store', [ContentParagraphController::class, 'store']);
-        Route::get('/paragraph/edit/{id}', [ContentParagraphController::class, 'edit']);
-        Route::post('/paragraph/update/{id}', [ContentParagraphController::class, 'update']);
-        Route::get('/paragraph/delete/{id}', [ContentParagraphController::class, 'delete']);
 
         //route for program
         route::get('/program', [ProgramController::class, 'index']);
+
+        //route for kompetensi
+        route::get('/kompetensi', [KompetensiController::class, 'index']);
     });
 });
 
