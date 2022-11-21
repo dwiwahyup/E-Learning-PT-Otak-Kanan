@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('course_categories_id');
+            $table->string('slug', 70);
             $table->rememberToken();
             $table->timestamps();
         });

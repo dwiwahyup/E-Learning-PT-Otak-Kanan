@@ -68,6 +68,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         // route for logbook
         Route::resource('logbooks', LogbookController::class);
         Route::get('logbook/students/{slug}', [LogbookController::class, 'students_logbooks']);
+        Route::get('logbook/students/show/{slug}', [LogbookController::class, 'list_logbooks_students']);
+        Route::post('logbook/students/aprroved/{id}', [LogbookController::class, 'approved_logbooks']);
         // Route::get('/logbook/{id}', [LogbookController::class, 'index']);
         // Route::get('/logbook/create/{id}', [LogbookController::class, 'create']);
         // Route::post('/logbook/store', [LogbookController::class, 'store']);

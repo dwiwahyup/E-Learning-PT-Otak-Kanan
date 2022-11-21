@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseCategory;
-use GrahamCampbell\ResultType\Success;
+use App\Models\User;
+use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\CourseCategory;
+use App\Models\Logbook;
 use Illuminate\Support\Facades\DB;
 
-use function Ramsey\Uuid\v1;
+use Illuminate\Support\Facades\Auth;
+use GrahamCampbell\ResultType\Success;
 
 class LogbookController extends Controller
 {
@@ -91,8 +93,32 @@ class LogbookController extends Controller
 
     public function students_logbooks($slug)
     {
-        return view('dashboard.logbook.students-logbooks');
+        $course = CourseCategory::where('slug', $slug)->first();
+
+        // join relation on table loogbooks and course_categories
+        $users = User::with(['logbooks', 'courses'])->where('course_categories_id', $course->id)->get();
+        // dd($query);
+        return view('dashboard.logbook.students-logbooks', compact('users', 'course'));
     }
+
+    public function list_logbooks_students($slug)
+    {
+        $user = User::with('courses')->where('slug', $slug)->first();
+        // dd($user);
+        $query = Logbook::where('users_id', $user->id)->orderBy('id', 'DESC')->get();
+
+        return view('dashboard.logbook.students-logbooks-show', compact('query', 'user'));
+    }
+
+    public function approved_logbooks(Request $request, $id)
+    {
+        DB::table('logbooks')->where('id', $id)->update([
+            'status' => $request->status
+        ]);
+
+        return redirect()->back();
+    }
+
     public function logbook()
     {
         return view('frontend.layouts.logbook');

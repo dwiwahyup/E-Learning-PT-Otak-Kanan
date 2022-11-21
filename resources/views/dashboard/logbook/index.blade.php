@@ -6,9 +6,9 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="/dashboard">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Log Book</li>
+            <li class="breadcrumb-item active">Logbooks Course</li>
         </ol>
         @if ($message = Session::get('success'))
         <div class="mb-10">
@@ -20,7 +20,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Log Book Data
+                <i class="fa fa-table"></i> Logbook data on course
             </div>
             <div class="card-body">
                 <div class="table-responsive">

@@ -3,65 +3,66 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-        <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="/dashboard">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Log Book</li>
+            <li class="breadcrumb-item">
+                <a href="{{route('logbooks.index')}}">Logbooks Course</a>
+            </li>
+            <li class="breadcrumb-item active">Logbooks {{$course->name}} Student</li>
         </ol>
         @if ($message = Session::get('success'))
-                    <div class="mb-10">
-                        <div class="alert alert-success" role="alert">
-                            <p>{{$message}}</p>
-                        </div>
-                    </div>
-                @endif
+        <div class="mb-10">
+            <div class="alert alert-success" role="alert">
+                <p>{{$message}}</p>
+            </div>
+        </div>
+        @endif
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Log Book Data
+                <i class="fa fa-table"></i> Student logbook {{$course->name}}
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    {{-- <p><a href="/dashboard/logbook/create/{{ $id }}" class="btn btn-secondary plus"> Add Log Book</a></p> --}}
+                    {{-- <p><a href="/dashboard/logbook/create/{{ $id }}" class="btn btn-secondary plus"> Add Log
+                    Book</a></p> --}}
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>Name</th>
-                          <th>Total Students</th>
-                          {{-- <th>Date</th>
-                          <th>Description</th> --}}
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tfoot>
-                        <tr>
-                          <th>No</th>
-                          <th>Name</th>
-                          <th>Total Students</th>
-                          {{-- <th>Date</th>
-                          <th>Description</th> --}}
-                          <th>Action</th>
-                        </tr>
-                      </tfoot>
-                        <tbody>
-                            {{-- @foreach ($data as $index => $data)
+                        <thead>
                             <tr>
-
-                              <td>{{$index + 1}}</td>
-                              <td>{{$data->name}}</td> --}}
-                              {{-- <td>{{$data->users_count}} on this course</td> --}}
-                              {{-- <td>12345</td> --}}
-                              {{-- <td>{!! Str::limit($data->description, 70) !!}</td> --}}
-                                {{-- <td>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Total Logbooks</th>
+                                <th>Logbooks waiting</th>
+                                <th>Logbooks approved</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Total logbooks</th>
+                                <th>Logbooks waiting</th>
+                                <th>Logbooks approved</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach ($users as $index => $item)
+                            <tr>
+                                <td>{{$index + 1}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>create {{$item->logbooks->count()}} logbooks</td>
+                                        <td>{{$item->logbooks->where('status', 0)->count()}} Waiting to approved</td>
+                                        <td>{{$item->logbooks->where('status', 1)->count()}} approved</td>
+                                <td>
                                     <div class="d-flex">
-                                        <a href="/dashboard/logbook/edit/{{$data->id}}" class="btn btn-success btn-md">Students logbook</a>
+                                        <a href="/dashboard/logbook/students/show/{{$item->slug}}" class="btn btn-success btn-md">Detail logbooks</a>
                                     </div>
-                                </td> --}}
-                            {{-- </tr> --}}
-                            {{-- @endforeach --}}
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
