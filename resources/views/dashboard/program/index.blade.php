@@ -17,11 +17,11 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Content Data
+                <i class="fa fa-table"></i> Program Data
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href="" class="btn btn-secondary plus"> Add Content</a></p>
+                    <p><a href="/dashboard/program/create/" class="btn btn-secondary plus"> Add Program</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -52,30 +52,39 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            @foreach ($data as $data)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$data->nama}}</td>
+                                <td>{{$data->jumlah_sks}}</td>
+                                <td>{{$data->tanggal_mulai}}</td>
+                                <td>{{$data->tanggal_selesai}}</td>
+                                <td>{{$data->metode_kegiatan}}</td>
+                                <td>{{$data->kegiatan}}</td>
+                                <td>{{$data->rincian_kegiatan}}</td>
+                                <td>{{$data->kriteria_peserta}}</td>
+                                <td>{{$data->informasi_tambahan}}</td>
                                 <td>
                                     <center>
                                         <div class="">
-                                            <a href="" class="btn btn-success btn-md">Edit</a>
-                                            <a href="" class="btn btn-danger btn-md ml-2">Delete</a>
+                                            <a href="{{route('program.edit', $data->slug)}}"
+                                                class="btn btn-danger btn-md ml-1">Edit</a>
+                                            <form action="{{route('program.destroy', $data->id)}}"
+                                                class="d-inline" method="POST">
+                                                {{ csrf_field() }}
+                                                {{method_field('delete')}}
+                                                <button class="btn btn-danger ml-1">Delete</button>
+                                            </form>
                                         </div>
                                         <br>
                                         <div class="d-flex">
-                                            <a href="" class="btn btn-danger btn-md ml-2">Kriteria</a>
+                                            <a href="{{route('program.kompetensi.index', $data->slug)}}" class="btn btn-danger btn-md ml-2">Kompetensi</a>
                                             <a href="" class="btn btn-danger btn-md ml-2">Preview</a>
                                         </div>
                                     </center>
                                 </td>
                             </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>

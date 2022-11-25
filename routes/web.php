@@ -98,10 +98,11 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         route::get('/profile', [ProfileController::class, 'index']);
 
         //route for program
-        route::get('/program', [ProgramController::class, 'index']);
+        // route::get('/program', [ProgramController::class, 'index']);
+        Route::resource('program', ProgramController::class);
 
         //route for kompetensi
-        route::get('/kompetensi', [KompetensiController::class, 'index']);
+        Route::resource('program.kompetensi', KompetensiController::class);
     });
 });
 

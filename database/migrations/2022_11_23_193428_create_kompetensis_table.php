@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kompetensi', function (Blueprint $table) {
+        Schema::create('kompetensis', function (Blueprint $table) {
             $table->id();
             $table->string('slug', 70)->unique();
-            $table->bigInteger('program_id');
-            $table->string('nama_kopetensi');
+            $table->bigInteger('programs_id');
+            $table->string('nama_kompetensi', 100);
             $table->string('target_pengembangan_keterampilan');
             $table->string('detail_pembelajaran');
             $table->string('metode_asesment');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kompetensi');
+        Schema::dropIfExists('kompetensis');
     }
 };

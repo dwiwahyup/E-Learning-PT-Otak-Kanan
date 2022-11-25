@@ -13,18 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama', 50);
             $table->string('slug', 70)->unique();
-            $table->string('jumlah_sks');
+            $table->string('jumlah_sks', 30);
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->string('metode_kegiatan');
-            $table->string('kegiatan');
-            $table->longText('rincian_kegiatan');
-            $table->longText('kriteria_peserta');
-            $table->longText('informasi_tambahan')->nullable();
+            $table->string('metode_kegiatan', 50);
+            $table->string('kegiatan', 100);
+            $table->LongText('rincian_kegiatan');
+            $table->LongText('kriteria_peserta');
+            $table->LongText('informasi_tambahan')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program');
+        Schema::dropIfExists('programs');
     }
 };

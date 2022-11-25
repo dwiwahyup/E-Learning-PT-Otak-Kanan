@@ -22,8 +22,8 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <p><a href=""
-                            class="btn btn-secondary plus"> Add Kriteria</a></p>
+                    <p><a href="{{route('program.kompetensi.create', $nama_program->slug)}}"
+                            class="btn btn-secondary plus"> Add Kompetensi</a></p>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -44,18 +44,21 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            @foreach ($data as $data)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$data->nama_kompetensi}}</td>
+                                <td>{{$data->target_pengembangan_keterampilan}}</td>
+                                <td>{{$data->detail_pembelajaran}}</td>
+                                <td>{{$data->metode_asesment}}</td>
                                 <td>
-                                    <div class="d-flex">
-                                        <a href="" class="btn btn-success btn-md">Edit</a>
+                                    <div class="d-flex"> 
+                                        <a href="{{route('program.kompetensi.edit', ['program' => $data->slug, 'kompetensi' => $data->kompetensi->slug])}}" class="btn btn-success btn-md">Edit</a>
                                         <a href="" class="btn btn-danger btn-md ml-2" >Delete</a>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
