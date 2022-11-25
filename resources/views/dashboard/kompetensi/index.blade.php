@@ -52,7 +52,7 @@
                                 <td>{{$data->metode_asesment}}</td>
                                 <td>
                                     <div class="d-flex"> 
-                                        <a href="{{route('program.kompetensi.edit', ['program' => $data->slug, 'kompetensi' => $data->kompetensi->slug])}}" class="btn btn-success btn-md">Edit</a>
+                                        <a href="{{route('program.kompetensi.edit', ['program' => $data->programs->slug, 'kompetensi' => $data->slug])}}" class="btn btn-success btn-md">Edit</a>
                                         <a href="" class="btn btn-danger btn-md ml-2" >Delete</a>
                                     </div>
                                 </td>

@@ -30,7 +30,7 @@
             <div class="card-body">
                 <form action="{{route('program.kompetensi.update', ['program' => $program->id, 'kompetensi' => $kompetensi->id])}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method(PUT)
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

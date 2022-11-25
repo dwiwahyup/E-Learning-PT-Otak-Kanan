@@ -22,4 +22,9 @@ class Kompetensi extends Model
             ]
         ];
     }
+
+    public function programs()
+    {
+        return $this->belongsTo(Program::class, 'programs_id', 'id');
+    }
 }

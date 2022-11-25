@@ -11,10 +11,10 @@ class KompetensiController extends Controller
 {
     public function index($slug)
     {
-        $program = Program::with('kompetensi')->where('slug', $slug)->first();
-        // dd($program);
+        $program = Program::where('slug', $slug)->first();
 
-        $data = Kompetensi::where('programs_id', $program->id)->get();
+        $data = Kompetensi::with('programs')->where('programs_id', $program->id)->get();
+        // dd($data);
 
 
         return view('dashboard/kompetensi.index', ['data' => $data, 'nama_program' => $program]);
@@ -49,9 +49,9 @@ class KompetensiController extends Controller
     {
         // dd($kompetensi);
         $program = Program::where('slug', $program)->first();
-        $kompetensi = Kompetensi::where('slug', $program)->first();
+        $kompetensi = Kompetensi::where('slug', $kompetensi)->first();
 
-        dd($kompetensi);
+        // dd($kompetensi);
         return view('dashboard.kompetensi.edit', ['program' => $program, 'kompetensi' => $kompetensi]);
     }
 
