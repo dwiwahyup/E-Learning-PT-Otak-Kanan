@@ -77,4 +77,12 @@ class ProgramController extends Controller
         $program->delete();
         return redirect('/dashboard/program')->with('success', 'course category has been deleted');
     }
+
+    public function preview($slug)
+    {
+        $program = Program::with('kompetensi')->where('slug', $slug)->first();
+        // dd($program);
+
+        return view('dashboard/program/preview', ['program' => $program]);
+    }
 }

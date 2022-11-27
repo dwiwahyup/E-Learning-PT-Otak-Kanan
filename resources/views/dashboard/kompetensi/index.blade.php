@@ -51,9 +51,12 @@
                                 <td>{{$data->detail_pembelajaran}}</td>
                                 <td>{{$data->metode_asesment}}</td>
                                 <td>
-                                    <div class="d-flex"> 
+                                    <div class=""> 
                                         <a href="{{route('program.kompetensi.edit', ['program' => $data->programs->slug, 'kompetensi' => $data->slug])}}" class="btn btn-success btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md ml-2" >Delete</a>
+                                        <form action="{{route('program.kompetensi.destroy', ['program' => $data->programs->id, 'kompetensi' => $data->id])}}" class="d-inline" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('delete')}}
+                                            <button class="btn btn-danger">Delete</button>
                                     </div>
                                 </td>
                             </tr>

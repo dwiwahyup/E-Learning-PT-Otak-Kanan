@@ -40,7 +40,7 @@ use Illuminate\Support\Facades\Route;
 //route for home/landing page
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
-Route::get('/program', [HomeController::class, 'program']);
+Route::get('/program/{slug}', [HomeController::class, 'program']);
 
 //route for contentuser
 Route::get('/contentuser/{slug}', [ContentUserController::class, 'index']);
@@ -100,6 +100,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         //route for program
         // route::get('/program', [ProgramController::class, 'index']);
         Route::resource('program', ProgramController::class);
+        route::get('/program/preview/{slug}', [ProgramController::class, 'preview']);
 
         //route for kompetensi
         Route::resource('program.kompetensi', KompetensiController::class);

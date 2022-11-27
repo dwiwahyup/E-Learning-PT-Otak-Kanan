@@ -51,7 +51,7 @@ class KompetensiController extends Controller
         $program = Program::where('slug', $program)->first();
         $kompetensi = Kompetensi::where('slug', $kompetensi)->first();
 
-        // dd($kompetensi);
+        // dd($program);
         return view('dashboard.kompetensi.edit', ['program' => $program, 'kompetensi' => $kompetensi]);
     }
 
@@ -69,5 +69,12 @@ class KompetensiController extends Controller
         $kompetensi->update($data);
 
         return redirect()->route('program.kompetensi.index', ['program' => $program->slug])->with('success', 'data has been updated');
+    }
+
+    public function destroy(Program $program, Kompetensi $kompetensi)
+    {
+        $kompetensi->delete();
+
+        return redirect()->back()->with('success', 'data has been deleted');
     }
 }

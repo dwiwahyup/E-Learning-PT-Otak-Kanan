@@ -78,7 +78,7 @@
                                         <br>
                                         <div class="d-flex">
                                             <a href="{{route('program.kompetensi.index', $data->slug)}}" class="btn btn-danger btn-md ml-2">Kompetensi</a>
-                                            <a href="" class="btn btn-danger btn-md ml-2">Preview</a>
+                                            <a href="/dashboard/program/preview/{{$data->slug}}" class="btn btn-danger btn-md ml-2">Preview</a>
                                         </div>
                                     </center>
                                 </td>

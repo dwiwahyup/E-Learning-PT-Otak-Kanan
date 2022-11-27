@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use Illuminate\Support\Facades\DB;
 use App\Models\CourseCategory;
 use App\Models\Mentor;
@@ -52,8 +53,11 @@ class HomeController extends Controller
         return view('frontend.allcourse');
     }
 
-    public function program()
+    public function program($slug)
     {
-        return view('frontend.program');
+        $program = Program::with('kompetensi')->where('slug', $slug)->first();
+        dd($program);
+
+        return view('frontend.program', ['program' => $program]);
     }
 }
