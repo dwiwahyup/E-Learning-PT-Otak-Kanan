@@ -9,7 +9,7 @@
                 <p>Expolore Your Interest and Upgrade Your Skills </p>
                 <br>
                 <p class="btn_home">
-                    <a href="/program/{{$item->slug}}" class="btn_1 rounded">Join Now</a>
+                    {{-- <a href="/program/{{$item->slug}}" class="btn_1 rounded">Join Now</a> --}}
                 </p>
             </div>
         </div>

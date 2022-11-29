@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use function Ramsey\Uuid\v1;
+
 use Illuminate\Http\Request;
 use App\Models\CourseCategory;
 use App\Models\Logbook;
@@ -29,15 +29,14 @@ class LogbookController extends Controller
         return view('dashboard.logbook.index', ['data' => $data]);
     }
 
-    public function create($id)
+    public function create()
     {
-        // $user = Auth::user();
-        // dd($user);
-        return view('dashboard.logbook.create', ['id' => $id]);
+        return view('frontend.layouts.logbook');
     }
 
     public function store(Request $request)
     {
+        dd($request);
         $id = $request->users_id;
 
         DB::table('logbooks')->insert([
@@ -61,23 +60,14 @@ class LogbookController extends Controller
         return view('dashboard.logbook.edit', ['data' => $data]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Logbook $logbook)
     {
-        // dd($request);
-        $id = $request->users_id;
+        // dd($logbook);
+        $data = $request->all();
+        $logbook->update($data);
+        // $data['status'] = 
 
-        DB::table('logbooks')->where('id', $request->id)->update([
-            'name' => $request->name,
-            'date' => $request->date,
-            'description' => $request->description,
-            'users_id' => $request->users_id
-        ]);
-
-
-        return redirect()->action(
-            [LogbookController::class, 'index'],
-            ['id' => $id]
-        );
+        return redirect()->back();
     }
 
     public function show()
@@ -108,15 +98,6 @@ class LogbookController extends Controller
         $query = Logbook::where('users_id', $user->id)->orderBy('id', 'DESC')->get();
 
         return view('dashboard.logbook.students-logbooks-show', compact('query', 'user'));
-    }
-
-    public function approved_logbooks(Request $request, $id)
-    {
-        DB::table('logbooks')->where('id', $id)->update([
-            'status' => $request->status
-        ]);
-
-        return redirect()->back();
     }
 
     public function logbook()

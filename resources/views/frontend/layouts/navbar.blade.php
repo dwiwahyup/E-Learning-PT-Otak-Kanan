@@ -45,17 +45,21 @@
             </li>
             <li><span><a href="{{url('/about')}}">About</a></span>
             </li>
-            <li><span><a href="#0">Account</a></span>
+                @guest
+                    <li><span><a href="{{ route('login') }}">Login</a></span>
+                @endguest
+                @auth()
+                <li><span><a href="#0">Account</a></span>
                 <ul>
-                    <li><a href="{{url('/profile')}}">Profile</a></li>
-                    <li><a href="{{url('/logbook')}}">LogBook</a></li>
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            @csrf
-                        </form>
-                    </li>
+                        <li><a href="{{url('/profile')}}">Profile</a></li>
+                        <li><a href="{{route('my_logbooks.create')}}">LogBook</a></li>
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
+                        </li>
+                    @endauth
                 </ul>
             </li>
         </ul>

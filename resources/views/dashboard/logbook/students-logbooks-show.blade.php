@@ -77,8 +77,9 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="/dashboard/logbook/students/aprroved/{{$item->id}}"  method="POST">
+                                            <form action="{{route('logbooks.update', $item->id)}}"  method="POST" enctype="multipart/form-data">
                                                 @csrf
+                                                @method('PUT')
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">

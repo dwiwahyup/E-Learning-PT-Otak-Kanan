@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{('/dashboard/mentors')}}">
+                <a class="nav-link" href="{{route('profile.index')}}">
                     <i class="fa fa-user-o" aria-hidden="true"></i>
                     <span class="nav-link-text">My Profile</span>
                 </a>
