@@ -46,7 +46,7 @@
 						<div class="col-md-8">
 							<div class="form-group">
 								<label>Phone Number</label>
-								<input type="text" class="form-control" disabled value="{{$users->user_details->phone_numbers}}">
+								<input type="text" class="form-control" disabled value="{{$users->user_details->phone_numbers ?? ""}}">
 							</div>
 						</div>
 					</div>
