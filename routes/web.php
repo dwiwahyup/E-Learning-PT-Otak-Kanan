@@ -1,26 +1,27 @@
 <?php
 
-use App\Http\Controllers\CourseCategoryController;
-use App\Http\Controllers\ChapterController;
-use App\Http\Controllers\ChapterUserController;
-use App\Http\Controllers\LogbookController;
-use App\Http\Controllers\ContentController;
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NavigasiController;
-use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ContentUserController;
-use App\Http\Controllers\KompetensiController;
-use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\ContentController;
+use App\Http\Controllers\LogbookController;
+use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\QuizController;
+use App\Http\Controllers\NavigasiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\KompetensiController;
+use App\Http\Controllers\ChapterUserController;
+use App\Http\Controllers\ContentUserController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserLogbookController;
 use App\Http\Controllers\UserProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\CourseCategoryController;
 
 
 /*
@@ -55,7 +56,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('my_logbooks', UserLogbookController::class)->only([
             'index', 'create', 'store'
         ]);
-        Route::get('/profile/update', [UserProfileController::class, 'update']);
+        Route::resource('MyProfile', UserProfileController::class);
     });
 });
 
