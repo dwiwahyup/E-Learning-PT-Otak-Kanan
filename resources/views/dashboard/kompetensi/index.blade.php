@@ -7,10 +7,10 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="">Dashboard</a>
+                <a href="{{('/dashboard')}}">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="">Program</a>
+                <a href="{{('/dashboard/program')}}">Program</a>
             </li>
             <li class="breadcrumb-item active">Kompetensi</li>
         </ol>

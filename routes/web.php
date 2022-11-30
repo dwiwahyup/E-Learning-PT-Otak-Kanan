@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\NavigasiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ChapterController;
@@ -11,13 +12,13 @@ use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\NavigasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\KompetensiController;
 use App\Http\Controllers\ChapterUserController;
 use App\Http\Controllers\ContentUserController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TestimonialUserController;
 use App\Http\Controllers\UserLogbookController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\TestimonialsController;
@@ -130,4 +131,4 @@ require __DIR__ . '/auth.php';
 
 Route::get('/about', [NavigasiController::class, 'about']);
 
-Route::get('/testimonial', [TestimonialController::class, 'index']);
+Route::get('/testimonial', [TestimonialUserController::class, 'index']);
