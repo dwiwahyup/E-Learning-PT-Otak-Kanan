@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Logbook::class, 'users_id', 'id');
     }
+
+    public function user_details()
+    {
+        return $this->hasOne(UserDetails::class, 'users_id', 'id');
+    }
 }

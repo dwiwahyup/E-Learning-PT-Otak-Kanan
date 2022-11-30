@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('logbooks', function (Blueprint $table) {
+        Schema::create('user_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default(0);
-            $table->date('date');
-            $table->longText('description');
+            $table->string('profile_photo', 200);
+            $table->string('phone_numbers', 15);
+            $table->string('campus', 75);
+            $table->text('address');
+            $table->integer('gender');
+            $table->string('NIM', 50);
+            $table->string('profile_photo_id', 100);
             $table->bigInteger('users_id');
             $table->timestamps();
         });
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logbooks');
+        Schema::dropIfExists('user_details');
     }
 };

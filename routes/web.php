@@ -18,7 +18,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\QuizController;
-use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\UserLogbookController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,11 +43,22 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
 Route::get('/program', [HomeController::class, 'program']);
 
-//route for contentuser
-Route::get('/contentuser/{slug}', [ContentUserController::class, 'index']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::middleware(['user'])->group(function () {
+        //route for contentuser
+        Route::get('/contentuser/{slug}', [ContentUserController::class, 'index']);
 
-//route for chapteruser
-Route::get('/chapteruser/{slug}', [ChapterUserController::class, 'index']);
+        //route for chapteruser
+        Route::get('/chapteruser/{slug}', [ChapterUserController::class, 'index']);
+
+        Route::get('/profile', [UserProfileController::class, 'profile']);
+        Route::resource('my_logbooks', UserLogbookController::class)->only([
+            'index', 'create', 'store'
+        ]);
+        Route::get('/profile/update', [UserProfileController::class, 'update']);
+    });
+});
+
 
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
@@ -70,7 +81,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::resource('logbooks', LogbookController::class);
         Route::get('logbook/students/{slug}', [LogbookController::class, 'students_logbooks']);
         Route::get('logbook/students/show/{slug}', [LogbookController::class, 'list_logbooks_students']);
-        Route::post('logbook/students/aprroved/{id}', [LogbookController::class, 'approved_logbooks']);
+        // Route::post('logbook/students/aprroved/{id}', [LogbookController::class, 'approved_logbooks']);
         // Route::get('/logbook/{id}', [LogbookController::class, 'index']);
         // Route::get('/logbook/create/{id}', [LogbookController::class, 'create']);
         // Route::post('/logbook/store', [LogbookController::class, 'store']);
@@ -96,7 +107,10 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
         Route::get('/quiz/delete/{id}', [QuizController::class, 'delete']);
 
         //route for profile
-        route::get('/profile', [ProfileController::class, 'index']);
+        route::resource('profile', ProfileController::class);
+        route::post('/profile/update/profile_image', [ProfileController::class, 'update_image']);
+        route::post('/profile/update/password', [ProfileController::class, 'update_password']);
+        route::post('/profile/update/email', [ProfileController::class, 'update_email']);
 
         //route for program
         // route::get('/program', [ProgramController::class, 'index']);
@@ -115,8 +129,4 @@ require __DIR__ . '/auth.php';
 
 Route::get('/about', [NavigasiController::class, 'about']);
 
-Route::get('/profile', [UserProfileController::class, 'profile']);
-Route::get('/logbook', [LogbookController::class, 'logbook']);
-Route::get('/profile/update', [UserProfileController::class, 'update']);
-
-Route::get('/testimonial', [TestimonialsController::class, 'index']);
+Route::get('/testimonial', [TestimonialController::class, 'index']);

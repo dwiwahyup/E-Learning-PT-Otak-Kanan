@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->bigInteger('course_categories_id');
             $table->string('slug', 70);
+            $table->string('roles', 10)->default('USER');
             $table->rememberToken();
             $table->timestamps();
         });

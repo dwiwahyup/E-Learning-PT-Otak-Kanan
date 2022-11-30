@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Return_;
 
-class IsMentor
+class IsUser
 {
     /**
      * Handle an incoming request.
@@ -18,10 +17,10 @@ class IsMentor
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->roles == 'MENTOR') {
+        if (Auth::user() && Auth::user()->roles == 'USER') {
             return $next($request);
         }
 
-        return redirect('/dashboard');
+        return redirect('/');
     }
 }
