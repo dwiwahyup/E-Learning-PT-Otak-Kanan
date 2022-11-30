@@ -9,7 +9,10 @@
         <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">My Profile</li>
+        <li class="breadcrumb-item">
+            <a href="{{route('profile.index')}}">{{$users->name}}</a>
+        </li>
+        <li class="breadcrumb-item active">Edit Profile</li>
     </ol>
 	@if ($errors->any())
 	<div class="mb-5" role="alert">
@@ -41,10 +44,10 @@
 				<h2><i class="fa fa-user"></i>Profile Details</h2>
 			</div>
 			<div class="row">
-                <div class="col-lg-4 add_top_30">
-                    <div class="card">
-                        <div class="card-body profile-card">
-                            <center class="mt-6"> <img src="{{$users->user_details->profile_photo ?? "https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg"}}" class="rounded-circle" width="175">
+				<div class="col-lg-4 add_top_30">
+					<div class="card">
+						<div class="card-body profile-card">
+							<center class="mt-6"> <img src="{{$users->user_details->profile_photo ?? "https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg"}}" class="rounded-circle" width="175">
                             </center>
                         </div>
 						<form action="/dashboard/profile/update/profile_image" method="post" enctype="multipart/form-data">
@@ -57,59 +60,69 @@
                     </div>
                 </div>
 				<div class="col-md-8 add_top_35">
-					<div class="row">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label>Name</label>
-								<input type="text" value="{{$users->name}}" disabled class="form-control">
-							</div>
-						</div>
-					</div>
-                    <div class="row">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label>Email</label>
-								<input type="text" class="form-control" disabled value="{{$users->email}}">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label>Phone Number</label>
-								<input type="text" class="form-control" disabled value="{{$users->user_details->phone_numbers ?? ""}}">
-							</div>
-						</div>
-					</div>
-					@if ($users->courses()->exists())
+					<form action="{{route('profile.update', $users_id)}} " method="post">
+						@csrf
+						@method('PUT')
 						<div class="row">
 							<div class="col-md-8">
 								<div class="form-group">
-									<label>Course</label>
-									<input type="text" class="form-control" disabled value="{{$users->courses->name}}">
-								</div>
-							</div>
-						</div>
-					@endif
-						<div class="row">
-							<div class="col-md-8">
-								<div class="form-group">
-									<label>Alamat</label>
-									<input type="text" class="form-control" disabled value="{{$users->user_details->address ?? ""}}">
+									<label>Name</label>
+									<input type="text" name="name" value="{{old('name') ?? $users->name}}" class="form-control">
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-8">
 								<div class="form-group">
-									<label>Jenis Kelamin</label>
-									<input type="text" class="form-control" disabled 
-									value="@if ($users->user_details->gender === 0) laki-laki
-									@else perempuan
-									@endif">
+									<label>Email</label>
+									<input type="text" class="form-control" disabled value="{{$users->email}}">
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-8">
+								<div class="form-group">
+									<label>Phone Number</label>
+									<input type="text" class="form-control" name="phone_number" value="{{old('phone_number') ?? $users->user_details->phone_numbers ?? ""}}">
+								</div>
+							</div>
+						</div>
+						@if ($users->courses()->exists())
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group">
+										<label>Course</label>
+										<input type="text" class="form-control" disabled value="{{old('course') ?? $users->courses->name}}">
+									</div>
+								</div>
+							</div>
+						@endif
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group">
+										<label>Alamat</label>
+										<input type="text" class="form-control" name="address" value="{{old('address') ?? $users->user_details->address ?? ""}}">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group">
+										<label for="inputState">Jenis Kelamin</label>
+										<select id="inputState" class="form-control" name="gender">
+											<option value="{{$users->user_details->gender}}">
+												@if ($users->user_details()->exists())@if ($users->user_details->gender === 0)laki-laki @else perempuan
+												@endif
+												@endif</option>
+											<option value="">--------------</option>
+											<option value="0">Laki-laki</option>
+											<option value="1">Perempuan</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<p><button type="submit" class="btn btn-primary plus float-right mt-2">Save</button></p>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -24,8 +24,33 @@ class ProfileController extends Controller
     public function edit($profile)
     {
         $users = User::with('courses', 'user_details')->where('id', Auth::user()->id)->first();
-        // dd($profile);
-        return view('dashboard.profile.edit', compact('users'));
+        $users_id = User::where('slug', $profile)->first()->id;
+        // dd($users_id);
+        return view('dashboard.profile.edit', compact('users', 'users_id'));
+    }
+
+    public function update(Request $request, $user)
+    {
+        // dd($user);
+
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'phone_number' => 'required|numeric',
+            'address' => 'required',
+            'gender' => 'required'
+        ]);
+
+        $users = User::find($user);
+        $users->name = $request->name;
+        $users->save();
+
+        $users_detail = UserDetails::where('users_id', $users->id)->first();
+        $users_detail->phone_numbers = $request->phone_number;
+        $users_detail->address = $request->address;
+        $users_detail->gender = $request->gender;
+        $users_detail->save();
+
+        return redirect()->back()->with('success', 'profile has been updated');
     }
 
     public function create()
