@@ -77,7 +77,7 @@
 						<div class="col-md-8">
 							<div class="form-group">
 								<label>Phone Number</label>
-								<input type="text" class="form-control" disabled value="{{$users->user_details->phone_numbers}}">
+								<input type="text" class="form-control" disabled value="{{$users->user_details->phone_numbers ?? ""}}">
 							</div>
 						</div>
 					</div>
@@ -107,14 +107,6 @@
 									value="@if ($users->user_details->gender === 0) laki-laki
 									@else perempuan
 									@endif">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-8">
-								<div class="form-group">
-									<label>NIM</label>
-									<input type="text" class="form-control" disabled value="{{$users->user_details->NIM ?? ""}}">
 								</div>
 							</div>
 						</div>
@@ -150,18 +142,22 @@
 					<div class="header_box version_2">
 						<h2><i class="fa fa-envelope"></i>Change email</h2>
 					</div>
-					<div class="form-group">
-						<label>Old email</label>
-						<input class="form-control" name="old_email" id="old_email" type="email">
-					</div>
-					<div class="form-group">
-						<label>New email</label>
-						<input class="form-control" name="new_email" id="new_email" type="email">
-					</div>
-					<div class="form-group">
-						<label>Confirm new email</label>
-						<input class="form-control" name="confirm_new_email" id="confirm_new_email" type="email">
-					</div>
+					<form action="/dashboard/profile/update/email" method="post" enctype="multipart/form-data">
+						@csrf
+						<div class="form-group">
+							<label>Old email</label>
+							<input class="form-control" name="old_email" type="email">
+						</div>
+						<div class="form-group">
+							<label>New email</label>
+							<input class="form-control" name="email" type="email">
+						</div>
+						<div class="form-group">
+							<label>Confirm new email</label>
+							<input class="form-control" name="confirm_new_email" type="email">
+							<p><button type="submit" class="btn btn-primary plus float-right mt-2">Save</button></p>
+						</div>
+					</form>
 				</div>
 			
 			</div>

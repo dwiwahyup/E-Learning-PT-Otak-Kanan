@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('profile_photo', 200);
             $table->string('phone_numbers', 15);
-            $table->string('campus', 75);
+            $table->string('campus', 75)->nullable();
             $table->text('address');
             $table->integer('gender');
-            $table->string('NIM', 50);
+            $table->string('NIM', 50)->nullable();
             $table->string('profile_photo_id', 100);
             $table->bigInteger('users_id');
             $table->timestamps();

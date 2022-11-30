@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -37,8 +38,6 @@ class ProfileController extends Controller
         // dd($request);
         $this->validate($request, [
             'phone_numbers' => 'required|numeric',
-            'campus' => 'required|max:75',
-            'NIM' => 'required|max:50',
             'gender' => 'required',
             'address' => 'required',
             'profile_image' => 'required|image'
@@ -123,5 +122,27 @@ class ProfileController extends Controller
             return redirect()->back()->with('success', 'new password has been updated');
         }
         return redirect()->back()->with('wrong', 'your password is wrong');
+    }
+
+    public function update_email(Request $request)
+    {
+        // dd(Auth::user()->email);
+        $this->validate($request, [
+            'old_email' => 'required|string',
+            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+            'confirm_new_email' => 'required'
+        ]);
+        if (Auth::user()->email != $request->old_email) {
+            return redirect()->back()->with('wrong', 'your email is wrong');
+        }
+        if ($request->new_email != $request->confirm_new_email) {
+            return redirect()->back()->with('wrong', 'your email not match');
+        }
+
+        $user = User::find(Auth::user()->id);
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->back()->with('succcess', 'new email has been updated');
     }
 }

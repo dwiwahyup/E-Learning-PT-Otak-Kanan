@@ -49,22 +49,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Asal kampus</label>
-                                <input type="text" name="campus" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>NIM</label>
-                                <input type="text" name="NIM" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
                                 <label for="inputState">Jenis Kelamin</label>
                                 <select id="inputState" class="form-control" name="gender">
                                     <option value="0">Laki-laki</option>

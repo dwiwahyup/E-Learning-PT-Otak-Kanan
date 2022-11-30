@@ -73,17 +73,11 @@
 								<div class="form-group">
 									<label>Jenis Kelamin</label>
 									<input type="text" class="form-control" disabled 
-									value="@if ($users->user_details->gender === 0) laki-laki
-									@else perempuan
+									value="@if ($users->user_details()->exists())@if ($users->user_details->gender === 0)laki-laki @else perempuan
+									@endif
+
 									@endif">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-8">
-								<div class="form-group">
-									<label>NIM</label>
-									<input type="text" class="form-control" disabled value="{{$users->user_details->NIM ?? ""}}">
+										
 								</div>
 							</div>
 						</div>
@@ -134,8 +128,9 @@
 		</div> --}}
 		<div class="inline-block">
 			<p>
+				@if ($users->user_details()->exists())
 				<a href="{{route('profile.edit', $users->slug)}}" class="btn_1 medium d-inline"> Edit</a>
-				@if ($users->courses()->exists())
+				@else
 				<a href="{{route('profile.create')}}" class="btn_1 medium d-inline">Complete profile</a>
 				@endif
 			</p>
