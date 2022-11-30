@@ -17,37 +17,54 @@
 						<form action="" class="dropzone"></form>
 				    </div>
                     <div class="row mb-5">
-                     <div class="card-body profile-card">
-                            <center class="mt-6"> <img src="https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg" class="rounded-circle" width="175">
+                    <div class="card-body profile-card">
+                            <center class="mt-6"> 
+                                <img src="https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg" class="rounded-circle" width="175">
                             </center>
-                        </div>
-						<input type="file"   name="filename" required>
+                            <input type="file" class="form-control mt-5" name="filename" required>
+                    </div>
                 </div>
 				</div>
                 
 				<div class="col-md-8 add_top_30">
-					<div class="row">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label>Name</label>
-								<input type="text" class="form-control" placeholder="Your name">
-							</div>
-						</div>
-	
-					</div>
 					<!-- /row-->
 					<div class="row">
 						<div class="col-md-8">
 							<div class="form-group">
-								<label>Email</label>
-								<input type="email" class="form-control" placeholder="Your email">
+								<label>Phone Number</label>
+								<input type="text" name="phone_numbers" class="form-control" >
+							</div>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label>Campus</label>
+								<input type="text" name="campus" class="form-control" >
+							</div>
+						</div>
+					</div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <textarea type="text" class="form-control" name="address"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label>NIM</label>
+								<input type="text" name="NIM" class="form-control" >
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+            <p class="btn_home_align mt-2"><a href="{{url(route('MyProfile.create'))}}" class="btn_1 rounded">Complete profile</a></p>
 		</div>
-        <div class="row">
+        {{-- <div class="row">
 			<div class="col-md-6">
 				<div class="box_general padding_bottom">
 					<div class="header_box version_2">
@@ -87,7 +104,7 @@
 				</div>
 			</div>
             <p><a href="#0" class="btn_1 medium">Save</a></p>
-		</div>
+		</div> --}}
         
 	</main>
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use App\Models\CourseCategory;
+use App\Models\User;
 use App\Models\Mentor;
 use App\Models\Program;
 use App\Models\Kompetensi;
 use Illuminate\Http\Request;
+use App\Models\CourseCategory;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -15,7 +16,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $mentors = Mentor::with(['courses'])->get();
+        $mentors = User::with('user_details', 'courses')->where('roles', 'MENTOR')->get();
         // dd($mentors);
 
         $courses = CourseCategory::with(['mentors'])->get();

@@ -131,7 +131,8 @@
                             <hr>
                         </h4>
                     </div>
-                    <img src="{{ url('frontend/img/mentor1.jpg')}}" alt="">
+                    <img src="{{ $data->user_details->profile_photo }}" alt="">
+                    {{-- url('frontend/img/mentor1.jpg') --}}
                 </a>
             </div>
             @endforeach
