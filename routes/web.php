@@ -18,6 +18,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 //route for home/landing page
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
-Route::get('/program/{slug}', [HomeController::class, 'program']);
+Route::get('/program', [HomeController::class, 'program']);
 
 //route for contentuser
 Route::get('/contentuser/{slug}', [ContentUserController::class, 'index']);
@@ -104,6 +105,9 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 
         //route for kompetensi
         Route::resource('program.kompetensi', KompetensiController::class);
+
+        //route for testimonial
+        Route::resource('testimonial', TestimonialController::class);
     });
 });
 

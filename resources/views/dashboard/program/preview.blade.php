@@ -228,6 +228,7 @@
                                                 </li>
                                             </ul> --}}
                                             <h6>Infromasi Tambahan</h6>
+                                            <p>{!! $program->informasi_tambahan !!}</p>
                                         </section>
                                     </div>
                                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"

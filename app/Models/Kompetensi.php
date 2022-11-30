@@ -18,7 +18,7 @@ class Kompetensi extends Model
     {
         return [
             'slug' => [
-                'source' => ['name_kompetensi']
+                'source' => ['nama_kompetensi']
             ]
         ];
     }

@@ -27,8 +27,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Jumlah Sks</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Selesai</th>
+                                <th>Tanggal</th>
                                 <th>Metode Kegiatan</th>
                                 <th>Kegiatan</th>
                                 <th>Rincian Kegiatan</th>
@@ -41,8 +40,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Jumlah Sks</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Selesai</th>
+                                <th>Tanggal</th>
                                 <th>Metode Kegiatan</th>
                                 <th>Kegiatan</th>
                                 <th>Rincian Kegiatan</th>
@@ -56,18 +54,23 @@
                             <tr>
                                 <td>{{$data->nama}}</td>
                                 <td>{{$data->jumlah_sks}}</td>
-                                <td>{{$data->tanggal_mulai}}</td>
-                                <td>{{$data->tanggal_selesai}}</td>
+                                <td>{{$data->tanggal_mulai}} Sampai {{$data->tanggal_selesai}}</td>
                                 <td>{{$data->metode_kegiatan}}</td>
                                 <td>{{$data->kegiatan}}</td>
-                                <td>{{$data->rincian_kegiatan}}</td>
-                                <td>{{$data->kriteria_peserta}}</td>
-                                <td>{{$data->informasi_tambahan}}</td>
+                                <td>
+                                    {!! Str::words($data->rincian_kegiatan, 20) !!}
+                                </td>
+                                <td>
+                                    {!! Str::words($data->kriteria_peserta, 20) !!}
+                                </td>
+                                <td>
+                                    {!! Str::words($data->informasi_tambahan, 20) !!}
+                                </td>
                                 <td>
                                     <center>
                                         <div class="">
                                             <a href="{{route('program.edit', $data->slug)}}"
-                                                class="btn btn-danger btn-md ml-1">Edit</a>
+                                                class="btn btn-success btn-md ml-1">Edit</a>
                                             <form action="{{route('program.destroy', $data->id)}}"
                                                 class="d-inline" method="POST">
                                                 {{ csrf_field() }}
@@ -77,8 +80,8 @@
                                         </div>
                                         <br>
                                         <div class="d-flex">
-                                            <a href="{{route('program.kompetensi.index', $data->slug)}}" class="btn btn-danger btn-md ml-2">Kompetensi</a>
-                                            <a href="/dashboard/program/preview/{{$data->slug}}" class="btn btn-danger btn-md ml-2">Preview</a>
+                                            <a href="{{route('program.kompetensi.index', $data->slug)}}" class="btn btn-secondary btn-md ml-2">Kompetensi</a>
+                                            <a href="/dashboard/program/preview/{{$data->slug}}" class="btn btn-info btn-md ml-2">Preview</a>
                                         </div>
                                     </center>
                                 </td>

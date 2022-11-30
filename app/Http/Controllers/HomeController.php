@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Program;
 use Illuminate\Support\Facades\DB;
 use App\Models\CourseCategory;
 use App\Models\Mentor;
-use Illuminate\Http\Request,
-    App\Http\Controllers\Controller;
+use App\Models\Program;
+use App\Models\Kompetensi;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class HomeController extends Controller
 {
@@ -17,6 +19,9 @@ class HomeController extends Controller
         // dd($mentors);
 
         $courses = CourseCategory::with(['mentors'])->get();
+
+        $program = Program::with('kompetensi')->first();
+        // dd($program);
 
         // $query = DB::table('course_categories')
         //     ->join('chapters', 'course_categories.id', '=', 'chapters.course_categories_id')
@@ -53,10 +58,10 @@ class HomeController extends Controller
         return view('frontend.allcourse');
     }
 
-    public function program($slug)
+    public function program()
     {
-        $program = Program::with('kompetensi')->where('slug', $slug)->first();
-        dd($program);
+        $program = Program::with('kompetensi')->get();
+        // dd($program);
 
         return view('frontend.program', ['program' => $program]);
     }
