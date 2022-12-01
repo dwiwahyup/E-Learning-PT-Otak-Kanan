@@ -434,7 +434,7 @@ strong {
 
 label {
   font-weight: 500;
-  margin-bottom: 3px;
+  /* margin-bottom: 3px; */
 }
 
 hr {
