@@ -44,6 +44,7 @@ use App\Http\Controllers\CourseCategoryController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/allcourse', [HomeController::class, 'allcourse']);
 Route::get('/program', [HomeController::class, 'program']);
+Route::resource('user_testimonial', TestimonialUserController::class);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['user'])->group(function () {
@@ -53,13 +54,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
         //route for chapteruser
         Route::get('/chapteruser/{slug}', [ChapterUserController::class, 'index']);
 
-        Route::get('/profile', [UserProfileController::class, 'profile']);
+        // route for logbooks user
         Route::resource('my_logbooks', UserLogbookController::class)->only([
             'index', 'create', 'store'
         ]);
+
+        // route for profile user
         Route::resource('MyProfile', UserProfileController::class);
     });
 });
+
 
 
 
@@ -130,5 +134,3 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 require __DIR__ . '/auth.php';
 
 Route::get('/about', [NavigasiController::class, 'about']);
-
-Route::get('/testimonial', [TestimonialUserController::class, 'index']);

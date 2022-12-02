@@ -285,7 +285,7 @@
                 <!-- /box_news -->
             </div>
             <!-- /row -->
-            <p class="btn_home_align"><a href="{{url('/testimonial')}}" class="btn_1 rounded">View all Testimonials</a>
+            <p class="btn_home_align"><a href="{{route('user_testimonial.index')}}" class="btn_1 rounded">View all Testimonials</a>
             </p>
         </div>
         <!-- /container -->
