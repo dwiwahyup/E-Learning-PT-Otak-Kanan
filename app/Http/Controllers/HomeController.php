@@ -23,7 +23,7 @@ class HomeController extends Controller
 
         $program = Program::with('kompetensi')->first();
 
-        $testimonials = Testimonial::with('users', 'users.user_details')->orderBY('id', 'DESC')->limit(4)->get();
+        $testimonials = Testimonial::with('users', 'users.user_details', 'users.courses')->inRandomOrder()->limit(4)->get();
         // dd($testimonials);
         // $query = DB::table('course_categories')
         //     ->join('chapters', 'course_categories.id', '=', 'chapters.course_categories_id')
@@ -51,7 +51,7 @@ class HomeController extends Controller
 
         // dd($query);
 
-        return view('frontend.home', compact('mentors', 'query'));
+        return view('frontend.home', compact('mentors', 'query', 'testimonials'));
     }
 
 

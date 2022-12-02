@@ -10,7 +10,7 @@
                     <div class="row no-gutters">
                         <div class="col-lg-7">
                             <figure>
-                                <a href="blog-post.html"><img src="{{ url('frontend/img/banner3.jpg')}}" alt="">
+                                <a href="blog-post.html"><img src="{{$data->users->courses->image_url ?? url('frontend/img/banner3.jpg')}}" alt="">
                                 </a>
                             </figure>
                         </div>
