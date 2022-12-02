@@ -60,6 +60,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ]);
 
         // route for profile user
+        route::get('/my_logbooks/view', [UserLogbookController::class, 'show_logbook']);
+
         Route::resource('MyProfile', UserProfileController::class);
     });
 });
@@ -132,5 +134,9 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/logbook', [LogbookController::class, 'logbook']);
+Route::get('/logbook/view', [LogbookController::class, 'show_logbook']);
+Route::get('/logbook/create', [LogbookController::class, 'add_logbook']);
 
 Route::get('/about', [NavigasiController::class, 'about']);
