@@ -100,8 +100,21 @@ class LogbookController extends Controller
         return view('dashboard.logbook.students-logbooks-show', compact('query', 'user'));
     }
 
+    // public function logbook()
+    // {
+    //     return view('frontend.layouts.logbook');
+    // }
     public function logbook()
     {
-        return view('frontend.layouts.logbook');
+        return view('frontend.logbook.index');
+    }
+
+    public function show_logbook()
+    {
+        return view('frontend.logbook.logbook');
+    }
+    public function add_logbook()
+    {
+        return view('frontend.logbook.create');
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\CourseCategory;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class HomeController extends Controller
@@ -17,13 +18,13 @@ class HomeController extends Controller
     public function index()
     {
         $mentors = User::with('user_details', 'courses')->where('roles', 'MENTOR')->get();
-        // dd($mentors);
 
         $courses = CourseCategory::with(['mentors'])->get();
 
         $program = Program::with('kompetensi')->first();
-        // dd($program);
 
+        $testimonials = Testimonial::with('users', 'users.user_details', 'users.courses')->inRandomOrder()->limit(4)->get();
+        // dd($testimonials);
         // $query = DB::table('course_categories')
         //     ->join('chapters', 'course_categories.id', '=', 'chapters.course_categories_id')
         //     ->join('mentors', 'course_categories.id', '=', 'mentors.course_categories_id')
@@ -50,7 +51,7 @@ class HomeController extends Controller
 
         // dd($query);
 
-        return view('frontend.home', compact('mentors', 'query'));
+        return view('frontend.home', compact('mentors', 'query', 'testimonials'));
     }
 
 

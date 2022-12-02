@@ -203,89 +203,30 @@
                 {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <a class="box_news" href="#0">
-                        <figure><img src="{{ url('frontend/img/news_home_1.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Firman Wahyudi</li>
-                        </ul>
-                        <div class="info">
-                            <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
-                                    class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-
-                        </div>
-                        {{-- <h4>Pri oportere scribentur eu</h4> --}}
-                        <p align="justify">Magang di PT. Otak Kanan sangat seru dan materi yang disampaikan sangat
-                            jelas. Penyampaian materi juga diajarkan terlebih dahulu kemudian dicoba untuk prakter.
-                            Terima kasih PT. Otak Kanan.</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-                <div class="col-lg-6">
-                    <a class="box_news" href="#0">
-                        <figure><img src="{{ url('frontend/img/news_home_1.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Firman Wahyudi</li>
-                        </ul>
-                        <div class="info">
-                            <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
-                                    class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-
-                        </div>
-                        {{-- <h4>Pri oportere scribentur eu</h4> --}}
-                        <p align="justify">Magang di PT. Otak Kanan sangat seru dan materi yang disampaikan sangat
-                            jelas. Penyampaian materi juga diajarkan terlebih dahulu kemudian dicoba untuk prakter.
-                            Terima kasih PT. Otak Kanan.</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-                <div class="col-lg-6">
-                    <a class="box_news" href="#0">
-                        <figure><img src="{{ url('frontend/img/news_home_1.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Firman Wahyudi</li>
-                        </ul>
-                        <div class="info">
-                            <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
-                                    class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-
-                        </div>
-                        {{-- <h4>Pri oportere scribentur eu</h4> --}}
-                        <p align="justify">Magang di PT. Otak Kanan sangat seru dan materi yang disampaikan sangat
-                            jelas. Penyampaian materi juga diajarkan terlebih dahulu kemudian dicoba untuk prakter.
-                            Terima kasih PT. Otak Kanan.</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
-                <div class="col-lg-6">
-                    <a class="box_news" href="#0">
-                        <figure><img src="{{ url('frontend/img/news_home_1.jpg')}}" alt="">
-                            <figcaption><strong>28</strong>Dec</figcaption>
-                        </figure>
-                        <ul>
-                            <li>Firman Wahyudi</li>
-                        </ul>
-                        <div class="info">
-                            <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
-                                    class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-
-                        </div>
-                        {{-- <h4>Pri oportere scribentur eu</h4> --}}
-                        <p align="justify">Magang di PT. Otak Kanan sangat seru dan materi yang disampaikan sangat
-                            jelas. Penyampaian materi juga diajarkan terlebih dahulu kemudian dicoba untuk prakter.
-                            Terima kasih PT. Otak Kanan.</p>
-                    </a>
-                </div>
-                <!-- /box_news -->
+                @foreach ($testimonials as $item)
+                    <div class="col-lg-6">
+                        <a class="box_news" href="#0">
+                            <figure><img src="{{$item->users->courses->image_url ?? url('frontend/img/news_home_1.jpg')}}" alt="">
+                                <figcaption><strong>28</strong>Dec</figcaption>
+                            </figure>
+                            <ul>
+                                <li>{{$item->name}}</li>
+                            </ul>
+                            <div class="info">
+                                <div class="cat_star">
+                                    @for ($i = 0; $i < $item->rating; $i++)
+                                    <i class="icon_star"></i>
+                                    @endfor
+                                </div>
+                            </div>
+                            {{-- <h4>Pri oportere scribentur eu</h4> --}}
+                            <p align="justify">{{$item->review}}</p>
+                        </a>
+                    </div>
+                @endforeach
             </div>
             <!-- /row -->
-            <p class="btn_home_align"><a href="{{url('/testimonial')}}" class="btn_1 rounded">View all Testimonials</a>
+            <p class="btn_home_align"><a href="{{route('user_testimonial.index')}}" class="btn_1 rounded">View all Testimonials</a>
             </p>
         </div>
         <!-- /container -->

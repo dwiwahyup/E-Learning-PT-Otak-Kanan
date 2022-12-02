@@ -15,7 +15,7 @@ class UserLogbookController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.logbook.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class UserLogbookController extends Controller
      */
     public function create()
     {
-        return view('frontend.layouts.logbook');
+        return view('frontend.logbook.create');
     }
 
     /**
@@ -93,5 +93,9 @@ class UserLogbookController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function show_logbook()
+    {
+        return view('frontend.logbook.logbook');
     }
 }
