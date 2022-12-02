@@ -41,7 +41,7 @@ class ProgramController extends Controller
         $data['slug'] = SlugService::createSlug(Program::class, 'slug', $request->nama);
         Program::create($data);
 
-        return redirect('/dashboard/program')->with('success', 'new course category has been added');
+        return redirect('/dashboard/program')->with('success', 'new program has been added');
     }
     public function edit($slug)
     {
@@ -69,13 +69,13 @@ class ProgramController extends Controller
         $data['slug'] = SlugService::createSlug(Program::class, 'slug', $request->nama);
         $program->update($data);
 
-        return redirect('/dashboard/program')->with('success', 'new course category has been added');
+        return redirect('/dashboard/program')->with('success', 'program has been updated');
     }
 
     public function destroy(Program $program)
     {
         $program->delete();
-        return redirect('/dashboard/program')->with('success', 'course category has been deleted');
+        return redirect('/dashboard/program')->with('success', 'program has been deleted');
     }
 
     public function preview($slug)

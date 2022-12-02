@@ -12,7 +12,7 @@ class KompetensiController extends Controller
     public function index($slug)
     {
         $program = Program::where('slug', $slug)->first();
-
+        // dd($program);
         $data = Kompetensi::with('programs')->where('programs_id', $program->id)->get();
         // dd($data);
 
