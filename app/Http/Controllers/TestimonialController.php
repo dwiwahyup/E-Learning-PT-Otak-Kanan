@@ -10,7 +10,8 @@ class TestimonialController extends Controller
 {
     public function index()
     {
-        $data = Testimonial::all();
+        $data = Testimonial::with('users.courses')->orderBY('id', 'DESC')->get();
+        // dd($data);
 
         return view('dashboard.testimonial.index', ['data' => $data]);
     }

@@ -131,7 +131,7 @@
                             <hr>
                         </h4>
                     </div>
-                    <img src="{{ $data->user_details->profile_photo }}" alt="">
+                    <img src="{{ $data->user_details->profile_photo ?? "https://res.cloudinary.com/djbbzawzs/image/upload/v1667293146/picture_assets_frontend/mentor2_dg1wij.jpg" }}" alt="">
                     {{-- url('frontend/img/mentor1.jpg') --}}
                 </a>
             </div>

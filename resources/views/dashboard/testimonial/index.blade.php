@@ -30,6 +30,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Rating</th>
+                                <th>Course</th>
                                 <th>Review</th>
                                 <th>Action</th>
                             </tr>
@@ -39,6 +40,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Rating</th>
+                                <th>Course</th>
                                 <th>Review</th>
                                 <th>Action</th>
                             </tr>
@@ -50,6 +52,7 @@
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->rating}}</td>
+                                <td>{{$data->users->courses->name}}</td>
                                 <td>{{$data->review}}</td>
                                 <td>
                                     <div class="">
