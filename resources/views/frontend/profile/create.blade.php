@@ -31,11 +31,12 @@
                     <form>
                         <h6 class="heading-small text-muted mb-4">User information</h6>
                         <div class="pl-lg-4">
-							<div class="row">
+                            <div class="row">
                                 <div class="col-lg-8">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="input-last-name">Phone Numbber</label>
-                                        <input type="text" name="phone_number" class="form-control form-control-alternative">
+                                        <input type="text" name="phone_number"
+                                            class="form-control form-control-alternative">
                                     </div>
                                 </div>
                             </div>
@@ -55,14 +56,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-									<div class="form-group focused">
+                                    <div class="form-group focused">
                                         <label class="form-control-label" for="input-last-name">Address</label>
-                                        <input  type="text" name="address" class="form-control ">
+                                        <input type="text" name="address" class="form-control ">
                                     </div>
-                                    
+
                                 </div>
-								<p class="btn_home_align mt-2"><a href="{{url(route('MyProfile.create'))}}" class="btn_1 rounded">Complete
-									profile</a></p>
+                                <p class="btn_home_align mt-2"><a href="{{url(route('MyProfile.create'))}}"
+                                        class="btn_1 rounded">Complete
+                                        profile</a></p>
                             </div>
                         </div>
                     </form>

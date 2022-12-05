@@ -7,10 +7,10 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="">Dashboard</a>
+                <a href="{{('/dashboard')}}">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="">Program</a>
+                <a href="{{('/dashboard/program/')}}">Program</a>
             </li>
         </ol>
 
@@ -19,6 +19,11 @@
             <div class="card-header">
                 <i class="fa fa-table"></i> Program Data
             </div>
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success" role="alert">
+                    <p>{{$message}}</p>
+                </div>
+            @endif
             <div class="card-body">
                 <div class="table-responsive">
                     <p><a href="/dashboard/program/create/" class="btn btn-secondary plus"> Add Program</a></p>
@@ -71,8 +76,8 @@
                                         <div class="">
                                             <a href="{{route('program.edit', $data->slug)}}"
                                                 class="btn btn-success btn-md ml-1">Edit</a>
-                                            <form action="{{route('program.destroy', $data->id)}}"
-                                                class="d-inline" method="POST">
+                                            <form action="{{route('program.destroy', $data->id)}}" class="d-inline"
+                                                method="POST">
                                                 {{ csrf_field() }}
                                                 {{method_field('delete')}}
                                                 <button class="btn btn-danger ml-1">Delete</button>
@@ -80,8 +85,10 @@
                                         </div>
                                         <br>
                                         <div class="d-flex">
-                                            <a href="{{route('program.kompetensi.index', $data->slug)}}" class="btn btn-secondary btn-md ml-2">Kompetensi</a>
-                                            <a href="/dashboard/program/preview/{{$data->slug}}" class="btn btn-info btn-md ml-2">Preview</a>
+                                            <a href="{{route('program.kompetensi.index', $data->slug)}}"
+                                                class="btn btn-secondary btn-md ml-2">Kompetensi</a>
+                                            <a href="/dashboard/program/preview/{{$data->slug}}"
+                                                class="btn btn-info btn-md ml-2">Preview</a>
                                         </div>
                                     </center>
                                 </td>
