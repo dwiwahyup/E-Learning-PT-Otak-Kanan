@@ -52,7 +52,7 @@
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->rating}}</td>
-                                <td>{{$data->users->courses->name}}</td>
+                                <td>{{$data->users->courses->name ?? ""}}</td>
                                 <td>{{$data->review}}</td>
                                 <td>
                                     <div class="">
