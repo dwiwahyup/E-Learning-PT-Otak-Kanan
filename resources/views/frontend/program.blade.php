@@ -49,7 +49,7 @@
 
                                 <div class="tab-content" id="v-pills-tabContent">
                                     @foreach ($program as $data)
-                                    <div class="tab-pane fade show  " id="v-pills-{{$data->slug}}" role="tabpanel"
+                                    <div class="tab-pane fade show " id="v-pills-{{$data->slug}}" role="tabpanel"
                                         aria-labelledby="v-pills-{{$data->slug}}-tab">
                                         <br>
                                         <br>

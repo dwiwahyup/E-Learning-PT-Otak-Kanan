@@ -207,12 +207,15 @@
                     <div class="col-lg-6">
                         <a class="box_news" href="#0">
                             <figure><img src="{{$item->users->courses->image_url ?? url('frontend/img/news_home_1.jpg')}}" alt="">
-                                <figcaption><strong>28</strong>Dec</figcaption>
-                            </figure>
-                            <ul>
-                                <li>{{$item->name}}</li>
-                            </ul>
+                                {{-- <figcaption><strong>28</strong>Dec</figcaption> --}}
+                            </figure>    
                             <div class="info">
+                                {{$item->created_at->toFormattedDateString()}}
+                                <ul>
+                                    <li>
+                                        <strong>{{$item->name}}</strong>
+                                    </li>
+                                </ul>
                                 <div class="cat_star">
                                     @for ($i = 0; $i < $item->rating; $i++)
                                     <i class="icon_star"></i>
