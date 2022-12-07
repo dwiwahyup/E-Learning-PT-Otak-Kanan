@@ -57,7 +57,16 @@ class HomeController extends Controller
 
     public function allcourse()
     {
-        return view('frontend.allcourse');
+        $courses = CourseCategory::with(['mentors'])->get();
+
+        $query = DB::select("SELECT course_categories.id, course_categories.name, course_categories.introduction, course_categories.image_url, course_categories.slug,
+            (SELECT COUNT(*) FROM chapters WHERE course_categories.id = chapters.course_categories_id) as chapters_count, 
+            (SELECT COUNT(*) FROM mentors WHERE course_categories.id = mentors.course_categories_id) as mentors_count FROM course_categories");
+
+        // dd($query);
+
+
+        return view('frontend.allcourse', compact('courses', 'query'));
     }
 
     public function program()

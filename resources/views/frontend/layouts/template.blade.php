@@ -66,8 +66,10 @@
 					<h5>Useful links</h5>
 					<ul class="links">
 						<li><a href="{{url('/about')}}">About</a></li>
+						@guest
 						<li><a href="{{ route('login') }}">Login</a></li>
 						<li><a href="{{url('/register')}}">Register</a></li>
+						@endguest
 						{{-- <li><a href="blog.html">News &amp; Events</a></li>
 						<li><a href="contacts.html">Contacts</a></li> --}}
 					</ul>
