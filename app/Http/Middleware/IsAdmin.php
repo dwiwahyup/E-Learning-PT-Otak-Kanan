@@ -21,6 +21,10 @@ class IsAdmin
             return $next($request);
         }
 
+        if (Auth::user() && Auth::user()->roles == 'MENTOR') {
+            return $next($request);
+        }
+
         return redirect('/');
     }
 }
