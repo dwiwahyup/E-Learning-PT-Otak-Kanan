@@ -5,7 +5,7 @@
     <section class="hero_in general">
         <div class="wrapper">
             <div class="container">
-                <h1 class="fadeInUp"><span></span>Frond-End Developer</h1>
+                <h1 class="fadeInUp"><span></span>{{$course->name}}</h1>
             </div>
         </div>
     </section>
@@ -55,7 +55,7 @@
                         <div>
                             @if ($next == null)
                                 @if ($next_chapter == null)
-                                    <a href="/chapteruser/{{$slug_course}}">
+                                    <a href="/chapteruser/{{$course->slug}}">
                                         <h5 class="d-inline">Akhir materi</h5>
                                         <br>    
                                         <p>{{$end_content->title}}

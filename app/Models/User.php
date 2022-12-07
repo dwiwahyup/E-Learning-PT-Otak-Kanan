@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserDetails::class, 'users_id', 'id');
     }
+
+    public function testimonial()
+    {
+        return $this->hasOne(Testimonial::class, 'users_id', 'id');
+    }
 }

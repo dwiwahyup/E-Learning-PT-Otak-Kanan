@@ -17,6 +17,6 @@ class ChapterUserController extends Controller
         $test = Chapter::with('contents')->where('course_categories_id', $course_categories->id)->get();
         // dd($test);
 
-        return view('frontend.chapteruser.index', compact('chapter', 'test'));
+        return view('frontend.chapteruser.index', compact('chapter', 'test', 'course_categories'));
     }
 }

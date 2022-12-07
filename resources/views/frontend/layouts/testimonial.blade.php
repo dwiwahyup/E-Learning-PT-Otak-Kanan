@@ -141,7 +141,7 @@
 </article> --}}
 <!-- /article -->
 
-<nav aria-label="...">
+{{-- <nav aria-label="...">
     <ul class="pagination pagination-sm">
         <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -153,49 +153,52 @@
             <a class="page-link" href="#">Next</a>
         </li>
     </ul>
-</nav>
+</nav> --}}
+{{$testimonials->links('vendor.pagination.bootstrap-5')}}
 
 @if (Auth::check())
-<div class="add-review">
-    <h5>Leave a Review</h5>
-    <form action="{{route('user_testimonial.store')}}" method="POST">
-        @csrf
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label>Name *</label>
-                <input type="text" name="name" id="name_review" value="{{Auth::user()->name}}" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Email *</label>
-                <input type="email" name="email" id="email_review" value="{{Auth::user()->email}}" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Rating </label>
-                <div class="custom-select-form">
-                    <select name="rating" id="rating_review" class="wide">
-                        <option value="1">1 (lowest)</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5 (highest)</option>
-                        {{-- <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10 (highest)</option> --}}
-                    </select>
+    @if (Auth::user()->testimonial ==  null)
+    <div class="add-review">
+        <h5>Leave a Review</h5>
+        <form action="{{route('user_testimonial.store')}}" method="POST">
+            @csrf
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Name *</label>
+                    <input type="text" name="name" id="name_review" value="{{Auth::user()->name}}" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Email *</label>
+                    <input type="email" name="email" id="email_review" value="{{Auth::user()->email}}" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Rating </label>
+                    <div class="custom-select-form">
+                        <select name="rating" id="rating_review" class="wide">
+                            <option value="1">1 (lowest)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5" selected>5 (highest)</option>
+                            {{-- <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10 (highest)</option> --}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Your Review</label>
+                    <textarea name="review" id="review_text" class="form-control" style="height:130px;"></textarea>
+                </div>
+                <div class="form-group col-md-12 add_top_20">
+                    <input type="submit" value="Submit" class="btn_1" id="submit-review">
                 </div>
             </div>
-            <div class="form-group col-md-12">
-                <label>Your Review</label>
-                <textarea name="review" id="review_text" class="form-control" style="height:130px;"></textarea>
-            </div>
-            <div class="form-group col-md-12 add_top_20">
-                <input type="submit" value="Submit" class="btn_1" id="submit-review">
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+    @endif
 @endif
 <!-- /pagination -->
 </div>

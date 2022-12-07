@@ -4,7 +4,7 @@
     <section class="hero_in general">
         <div class="wrapper">
             <div class="container">
-                <h1 class="fadeInUp"><span></span>Frond-End Developer</h1>
+                <h1 class="fadeInUp"><span></span>{{$course_categories->name}}</h1>
             </div>
         </div>
     </section>

@@ -10,7 +10,7 @@ class TestimonialUserController extends Controller
 {
     public function index()
     {
-        $testimonials = Testimonial::with('users', 'users.user_details', 'users.courses')->orderBY('id', 'DESC')->get();
+        $testimonials = Testimonial::with('users', 'users.user_details', 'users.courses')->orderBY('id', 'DESC')->paginate(3);
         // dd($testimonials);
 
         return view('frontend.layouts.testimonial', compact('testimonials'));

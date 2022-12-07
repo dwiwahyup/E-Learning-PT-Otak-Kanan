@@ -27,8 +27,6 @@ class ContentUserController extends Controller
         if ($next == null) {
             // get chapters now
             $chapter = Chapter::where('id', $dataa->chapters_id)->first();
-            // get all chapter with same course
-            $chapters = Chapter::where('course_categories_id', $chapter->course_categories_id)->get();
             // next chapters with same course
             $next_chapters = Chapter::where('course_categories_id', $chapter->course_categories_id)->where('id', '>', $chapter->id)->first();
             // check condition when end of chapters
@@ -44,7 +42,6 @@ class ContentUserController extends Controller
         $get_chapter = Chapter::where('id', $dataa->chapters_id)->first();
         $get_course = CourseCategory::where('id', $get_chapter->course_categories_id)->first();
 
-        // return view('frontend.contentuser.index', ['data' => $dataa, 'next' => $next, 'next_chapter' => $content]);
-        return view('frontend.contentuser.index', ['data' => $dataa, 'next' => $next, 'next_chapter' => $content, 'end_content' => $end, 'slug_course' => $get_course->slug]);
+        return view('frontend.contentuser.index', ['data' => $dataa, 'next' => $next, 'next_chapter' => $content, 'end_content' => $end, 'course' => $get_course]);
     }
 }
