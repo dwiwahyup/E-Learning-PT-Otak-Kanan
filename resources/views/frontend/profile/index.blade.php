@@ -15,11 +15,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg"
+                        <img src="{{$user->user_details->profile_photo ?? "https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg"}}"
                             alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
                             <h4>{{$user->name}}</h4>
-                            <p class="text-secondary mb-1">Full Stack Developer</p>
+                            <p class="text-secondary mb-1">{{$user->courses->name}}</p>
                             <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                         </div>
                     </div>
@@ -83,14 +83,20 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="input-last-name">Nim</label>
-                                        <input disabled value="{{$user->user_details->address ?? ""}}" type="text"
-                                            id="input-last-name" class="form-control form-control-alternative">
+                                        <label class="form-control-label" for="input-last-name">Alamat</label>
+                                        <textarea type="text" class="form-control" disabled>{{$user->user_details->address ?? ""}}</textarea>
+                                        {{-- <input disabled value="{{$user->user_details->address ?? ""}}" type="text"
+                                            id="input-last-name" class="form-control form-control-alternative"> --}}
                                     </div>
                                 </div>
-                                <p class="btn_home_align mt-2"><a href="{{url(route('MyProfile.create'))}}"
-                                        class="btn_1 rounded">Complete
-                                        profile</a></p>
+                                @if ($user->user_details()->exists())
+                                    <p class="btn_home_align mt-2"><a href="{{url(route('MyProfile.edit', $user->slug))}}"
+                                            class="btn_1 rounded">Edit</a></p>
+                                @else
+                                    <p class="btn_home_align mt-2"><a href="{{url(route('MyProfile.create'))}}"
+                                            class="btn_1 rounded">Complete
+                                            profile</a></p>
+                                @endif
                             </div>
                         </div>
                     </form>
