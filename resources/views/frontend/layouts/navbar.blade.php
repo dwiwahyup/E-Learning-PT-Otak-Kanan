@@ -37,6 +37,16 @@
                             @csrf
                         </form>
                     </li>
+                        @if (Auth::user()->roles == "USER")
+                            <li><a href="{{route('MyProfile.index')}}">Profile</a></li>
+                            <li><a href="{{route('my_logbooks.index')}}">LogBook</a></li>
+                        @endif
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
+                        </li>
                     @endauth
                 </ul>
             </li>
