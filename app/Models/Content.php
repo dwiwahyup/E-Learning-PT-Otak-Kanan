@@ -22,4 +22,9 @@ class Content extends Model
             ]
         ];
     }
+
+    public function chapters()
+    {
+        return $this->belongsTo(Chapter::class, 'chapters_id', 'id');
+    }
 }

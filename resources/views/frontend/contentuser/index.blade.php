@@ -26,26 +26,23 @@
                 <div class="col-lg-8">
                     <section id="description">
                         <h2>Description</h2>
-
-                        @foreach ($data as $dataa)
                         
-                        @if ($dataa->vidio == null)
+                        @if ($data->vidio == null)
                         @else
                             <iframe style="height: 405px; overflow-x:auto; "
-                                src="{{$dataa->vidio}}">
+                                src="{{$data->vidio}}">
                             </iframe>   
                         @endif
                             
-                        @if ($dataa->thumbnaile_url == null)
+                        @if ($data->thumbnaile_url == null)
                             
                         @else
-                            <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{$dataa->thumbnaile_url}}"></p>
+                            <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{$data->thumbnaile_url}}"></p>
                         @endif
                         <!-- /post meta -->
                         <div class="post-content">
-                            <p>{!! $dataa->text !!}</p>
+                            <p>{!! $data->text !!}</p>
                         </div>
-                    @endforeach
 
                     </section>
                     <!-- /section -->
@@ -55,12 +52,33 @@
                 
                 <aside class="col-lg-4" id="sidebar">
                     <div class="box_detail booking">
-                        <div >
-                            <a href="">
-                            <h5 class="d-inline">Selanjutnya</h5>
-                            <br>    
-                            <p>Pengenalan Front-End Developer <i class=" icon-left"></i> </p>
-                        </a>
+                        <div>
+                            @if ($next == null)
+                                @if ($next_chapter == null)
+                                    <a href="/chapteruser/{{$slug_course}}">
+                                        <h5 class="d-inline">Akhir materi</h5>
+                                        <br>    
+                                        <p>{{$end_content->title}}
+                                            {{-- <i class="icon-left"></i>  --}}
+                                        </p>
+                                    </a>
+                                @else
+                                <a href="/contentuser/{{$next_chapter->slug ?? $end_content->name}}">
+                                    <h5 class="d-inline">Selanjutnya</h5>
+                                    <br>    
+                                    <p>{{$next_chapter->title ?? $end_content->title}}
+                                        <i class="icon-left"></i> 
+                                    </p>
+                                </a>
+                                @endif
+                            @else
+                                <a href="/contentuser/{{$next->slug}}">
+                                    <h5 class="d-inline">Selanjutnya</h5>
+                                    <br>    
+                                    <p>{{$next->title}}<i class=" icon-left"></i> </p>
+                                </a>
+                            @endif
+
                         </div>
                         {{-- <div id="message-contact-detail"></div>
                         <form method="post" action="assets/contact_detail.php" id="contact_detail" autocomplete="off">
