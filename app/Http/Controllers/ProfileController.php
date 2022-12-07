@@ -76,7 +76,7 @@ class ProfileController extends Controller
             $newImageName = str_replace('', '_', $remove_path);
             $public_id = date('Y-m-d_His') . '_' . $newImageName;
             $image_id = $folder . '/' . $public_id;
-            $result = Cloudinary::upload($images->getRealPath(), ['folder' => $folder, 'width' => 150, 'height' => 150, 'public_id' => $public_id])->getSecurePath();
+            $result = Cloudinary::upload($images->getRealPath(), ['folder' => $folder, 'width' => 350, 'height' => 500, 'public_id' => $public_id])->getSecurePath();
         }
 
         $data = $request->all();
@@ -110,7 +110,7 @@ class ProfileController extends Controller
             $newImageName = str_replace('', '_', $remove_path);
             $public_id = date('Y-m-d_His') . '_' . $newImageName;
             $image_id = $folder . '/' . $public_id;
-            $result = Cloudinary::upload($image->getRealPath(), ['folder' => $folder, 'width' => 150, 'height' => 150, 'public_id' => $public_id])->getSecurePath();
+            $result = Cloudinary::upload($image->getRealPath(), ['folder' => $folder, 'width' => 350, 'height' => 550, 'public_id' => $public_id])->getSecurePath();
 
             $user_detail = UserDetails::find($users->id);
 
