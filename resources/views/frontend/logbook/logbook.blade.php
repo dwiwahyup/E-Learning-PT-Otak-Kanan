@@ -30,12 +30,12 @@
                             <h5 class="mb-0">
                                 <a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i
                                         class="indicator ti-minus"></i>31 Oktober 2022</a>
-                            </h5>
+                            </h5>        
                         </div>
                         <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
                             <div class="row no-gutters ml-2 mt-2">
                             </div>
-                            <p class=""><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat Laporan
+                            <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded" >Buat Laporan
                                     Harian</a></p>
                             <p class="text-center">Laporan baru bisa dibuat setelah kamu mengisi semua laporan harian.
                             </p>
@@ -52,7 +52,7 @@
                         <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
                             <div class="row no-gutters ml-2 mt-2">
                             </div>
-                            <p class="btn-center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
+                            <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
                                     Laporan Harian</a></p>
                             <p class="text-center">Laporan baru bisa dibuat setelah kamu mengisi semua laporan harian.
                             </p>
@@ -68,7 +68,7 @@
                         <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
                             <div class="row no-gutters ml-2 mt-2">
                             </div>
-                            <p class="btn-center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
+                            <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
                                     Laporan Harian</a></p>
                             <p class="text-center">Laporan baru bisa dibuat setelah kamu mengisi semua laporan harian.
                             </p>
@@ -84,7 +84,7 @@
                         <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
                             <div class="row no-gutters ml-2 mt-2">
                             </div>
-                            <p class="btn-center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
+                           <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
                                     Laporan Harian</a></p>
                             <p class="text-center">Laporan baru bisa dibuat setelah kamu mengisi semua laporan harian.
                             </p>
@@ -100,7 +100,7 @@
                         <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
                             <div class="row no-gutters ml-2 mt-2">
                             </div>
-                            <p class="btn-center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
+                            <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
                                     Laporan Harian</a></p>
                             <p class="text-center">Laporan baru bisa dibuat setelah kamu mengisi semua laporan harian.
                             </p>
