@@ -151,10 +151,10 @@ class ProfileController extends Controller
 
     public function update_email(Request $request)
     {
-        // dd(Auth::user()->email);
+        // dd($request);
         $this->validate($request, [
             'old_email' => 'required|string',
-            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+            'new_email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'confirm_new_email' => 'required'
         ]);
         if (Auth::user()->email != $request->old_email) {
@@ -165,9 +165,9 @@ class ProfileController extends Controller
         }
 
         $user = User::find(Auth::user()->id);
-        $user->email = $request->email;
+        $user->email = $request->new_email;
         $user->save();
 
-        return redirect()->back()->with('succcess', 'new email has been updated');
+        return redirect()->back()->with('success', 'new email has been updated');
     }
 }
