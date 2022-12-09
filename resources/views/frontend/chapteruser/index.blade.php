@@ -49,7 +49,7 @@
                                 @endif" 
                                 role="tabpanel" data-parent="#{{$data->slug}}">
                                 @foreach ($data->contents as $item)
-                                    <div class="card-body">
+                                    <div class="card">
                                         <div class="box_list">
                                             {{-- list introduction content --}}
                                             <div class="row no-gutters">

@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
+            $table->string('slug', 70)->unique();
             $table->bigInteger('users_id');
             $table->string('email');
             $table->string('rating');

@@ -52,6 +52,7 @@ class ProgramController extends Controller
 
     public function update(Request $request, Program $program)
     {
+        // dd($program);
         $this->validate($request, [
             'nama' => 'required',
             'jumlah_sks' => 'required',

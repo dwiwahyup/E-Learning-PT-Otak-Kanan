@@ -129,7 +129,7 @@
                                     @endfor
                             </div>
                         </div>
-                        <p align="justify">{{$item->review}}</p>
+                        <p align="justify">{{Str::limit($item->review, 130)}}</p>
                     </a>
                 </div>
                 @endforeach

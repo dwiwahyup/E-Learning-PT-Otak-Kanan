@@ -59,10 +59,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'index', 'create', 'store'
         ]);
 
-        // route for profile user
         route::get('/my_logbooks/view', [UserLogbookController::class, 'show_logbook']);
 
+        // route for profile user
         Route::resource('MyProfile', UserProfileController::class);
+        route::post('/MyProfile/update/password', [UserProfileController::class, 'update_password']);
+        route::post('/MyProfile/update/email', [UserProfileController::class, 'update_email']);
+        route::post('/MyProfile/update/profile_image', [UserProfileController::class, 'update_image']);
     });
 });
 

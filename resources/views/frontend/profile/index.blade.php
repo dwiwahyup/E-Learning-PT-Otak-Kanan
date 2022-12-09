@@ -5,12 +5,13 @@
 <section class="hero_in general">
     <div class="wrapper">
         <div class="container">
-            <h1 class="fadeInUp"><span></span>Panagea blog</h1>
+            <h1 class="fadeInUp"><span></span>Profile</h1>
         </div>
     </div>
 </section>
 <div class="container margin_30_95">
     <div class="row">
+        
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
@@ -20,7 +21,7 @@
                         <div class="mt-3">
                             <h4>{{$user->name}}</h4>
                             <p class="text-secondary mb-1">{{$user->courses->name}}</p>
-                            <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                            <p class="text-muted font-size-sm">{{ Str::limit($user->user_details->address ?? "", 50)}}</p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +31,8 @@
             <div class="card">
                 <div class="card-body">
                     <form>
-                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <br>
+                        <h4 class="heading-small text-muted mb-4">User information</h4>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -104,6 +106,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 

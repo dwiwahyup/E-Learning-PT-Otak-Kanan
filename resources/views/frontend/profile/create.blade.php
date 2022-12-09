@@ -14,23 +14,24 @@
     <form action="{{route('MyProfile.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg"
-                            alt="Admin" class="rounded-circle" width="150">
-                        <div class="mt-3">
-                            <input type="file" class="form-control mt-5" name="profile_image" required>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://res.cloudinary.com/djbbzawzs/image/upload/v1669355293/picture_assets_frontend/avatar_twx4zp.jpg"
+                                alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <input type="file" class="form-control mt-5" name="profile_image" required>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-body">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
                         <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <hr>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-8">
@@ -75,11 +76,11 @@
 
                                 </div>
                                 {{-- <p> --}}
-                                    <button type="submit" class="btn_home_align mt-2 btn_1 rounded">
-                                        Save
-                                    </button>
-                                    {{-- <a class="btn_1 rounded"> --}}
-                                    {{-- </a> --}}
+                                <button type="submit" class="btn_home_align mt-2 btn_1 rounded">
+                                    Save
+                                </button>
+                                {{-- <a class="btn_1 rounded"> --}}
+                                {{-- </a> --}}
                                 {{-- </p> --}}
                             </div>
                         </div>
@@ -89,6 +90,7 @@
         </div>
     </form>
 </div>
+
 
 
 
