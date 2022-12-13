@@ -20,8 +20,10 @@
                             alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
                             <h4>{{$user->name}}</h4>
-                            <p class="text-secondary mb-1">{{$user->courses->name}}</p>
-                            <p class="text-muted font-size-sm">{{ Str::limit($user->user_details->address ?? "", 50)}}</p>
+                            
+                            <h6 class="text-secondary mb-1">{{$user->courses->name}}</h6>
+                            <hr>
+                            <p class="text-muted font-size-sm">{{ Str::limit($user->user_details->address ?? "", 100)}}</p>
                         </div>
                     </div>
                 </div>
@@ -33,6 +35,7 @@
                     <form>
                         <br>
                         <h4 class="heading-small text-muted mb-4">User information</h4>
+                        <hr class="hr-large">
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
