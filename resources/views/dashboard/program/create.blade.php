@@ -37,9 +37,9 @@
                                     <div class="form-group">
 
                                         <label for="inputState">Nama Program</label>
-                                        <select id="inputState" class="form-control" name="nama">
+                                        <select id="inputState" class="form-control" name="course_categories_id">
                                             @foreach ($data as $course)
-                                            <option>{{$course->name}}</option>
+                                            <option value="{{$course->id}}">{{$course->name}}</option>
                                             @endforeach
 
                                         </select>

@@ -163,7 +163,7 @@
 						</div>
 						<div class="form-group">
 							<label>New email</label>
-							<input class="form-control" name="email" type="email">
+							<input class="form-control" name="new_email" type="email">
 						</div>
 						<div class="form-group">
 							<label>Confirm new email</label>

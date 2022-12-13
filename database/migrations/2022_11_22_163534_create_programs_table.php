@@ -25,6 +25,7 @@ return new class extends Migration
             $table->LongText('rincian_kegiatan');
             $table->LongText('kriteria_peserta');
             $table->LongText('informasi_tambahan')->nullable();
+            $table->bigInteger('course_categories_id');
             $table->timestamps();
         });
     }

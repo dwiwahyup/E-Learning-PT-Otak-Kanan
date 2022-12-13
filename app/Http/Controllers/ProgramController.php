@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use App\Models\CourseCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
@@ -24,8 +26,9 @@ class ProgramController extends Controller
     }
     public function store(Request $request, Program $program)
     {
+        // dd($request);
         $this->validate($request, [
-            'nama' => 'required',
+            // 'nama' => 'required',
             'jumlah_sks' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required',
@@ -36,9 +39,14 @@ class ProgramController extends Controller
             // 'informasi_tambahan' => 'required',
         ]);
 
+        // get name course
+        $name = CourseCategory::where('id', $request->course_categories_id)->first()->name;
+        // dd($name);
+
         // insert requst to table
         $data = $request->all();
-        $data['slug'] = SlugService::createSlug(Program::class, 'slug', $request->nama);
+        $data['nama'] = $name;
+        $data['slug'] = SlugService::createSlug(Program::class, 'slug', $name);
         Program::create($data);
 
         return redirect('/dashboard/program')->with('success', 'new program has been added');
@@ -85,5 +93,17 @@ class ProgramController extends Controller
         // dd($program);
 
         return view('dashboard/program/preview', ['program' => $program]);
+    }
+
+    public function register_program(Request $request, $slug)
+    {
+        $course = CourseCategory::where('slug', $slug)->first()->id;
+
+        $user = User::find(Auth::user()->id);
+        $user->course_categories_id = $course;
+        $user->save();
+
+        return redirect('/chapteruser/' . $slug);
+        // dd($user);
     }
 }

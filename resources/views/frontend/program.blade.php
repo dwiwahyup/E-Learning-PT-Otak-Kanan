@@ -65,9 +65,15 @@
                                                     Periode Kegiatan : <strong>{{$data->tanggal_mulai}} -
                                                         {{$data->tanggal_selesai}} (4
                                                         Bulan)</strong></p>
-                                                <p class="btn_home">
-                                                    <a href="" class="btn_1">Register Now</a>
-                                                </p>
+                                                @if (Auth::user()->courses == null)
+                                                    <p class="btn_home">
+                                                        <form action="/program/register/{{$data->slug}}" method="POST">
+                                                            @csrf
+                                                            <button type="submit" class="btn_1">Register Now</button>
+                                                        </form>
+                                                    </p>
+                                                @endif
+                                                {{-- @dd(Auth->user()) --}}
                                             </div>
                                             <hr>
                                             <div class="reviews-container">

@@ -54,6 +54,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         //route for chapteruser
         Route::get('/chapteruser/{slug}', [ChapterUserController::class, 'index']);
 
+        // route for registration user for program
+        Route::post('/program/register/{slug}', [ProgramController::class, 'register_program']);
+
         // route for logbooks user
         Route::resource('my_logbooks', UserLogbookController::class)->only([
             'index', 'create', 'store'

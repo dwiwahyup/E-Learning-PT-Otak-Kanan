@@ -20,12 +20,14 @@
                     <span class="nav-link-text">My Profile</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{('/dashboard/user')}}">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                    <span class="nav-link-text">User</span>
-                </a>
-            </li>
+            @if (Auth::user()->roles == 'ADMIN')
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                    <a class="nav-link" href="{{('/dashboard/user')}}">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span class="nav-link-text">User</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="{{('/dashboard/coursecategory')}}">
                     <i class="fa fa-address-card-o" aria-hidden="true"></i>
@@ -38,18 +40,22 @@
                     <span class="nav-link-text">LogBook</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{('/dashboard/program')}}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="nav-link-text">Programs</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{('/dashboard/testimonial')}}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="nav-link-text">Testimonials</span>
-                </a>
-            </li>
+            @if (Auth::user()->roles = 'ADMIN')
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                    <a class="nav-link" href="{{('/dashboard/program')}}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span class="nav-link-text">Programs</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->roles = 'ADMIN')
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                    <a class="nav-link" href="{{('/dashboard/testimonial')}}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span class="nav-link-text">Testimonials</span>
+                    </a>
+                </li>
+            @endif
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">

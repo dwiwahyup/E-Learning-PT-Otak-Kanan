@@ -92,7 +92,7 @@
                 <a href="#0">
                     <div class="title">
                         <h4>{{$data->name}}
-                            <em>{{$data->courses->name}}</em>
+                            <em>{{$data->courses->name ?? "Coming soon"}}</em>
                             <hr>
                         </h4>
                     </div>
