@@ -40,7 +40,7 @@
                     <span class="nav-link-text">LogBook</span>
                 </a>
             </li>
-            @if (Auth::user()->roles = 'ADMIN')
+            @if (Auth::user()->roles == 'ADMIN')
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                     <a class="nav-link" href="{{('/dashboard/program')}}">
                         <i class="fa fa-user" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
                     </a>
                 </li>
             @endif
-            @if (Auth::user()->roles = 'ADMIN')
+            @if (Auth::user()->roles == 'ADMIN')
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                     <a class="nav-link" href="{{('/dashboard/testimonial')}}">
                         <i class="fa fa-user" aria-hidden="true"></i>
