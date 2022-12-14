@@ -35,6 +35,6 @@ class CourseCategory extends Model
 
     public function users()
     {
-        return $this->hasMany(User::class, 'course_catagories_id', 'id');
+        return $this->hasMany(User::class, 'course_categories_id', 'id');
     }
 }

@@ -43,7 +43,7 @@
                     <ul>
                         <li></li>
                         <li>
-                            <div class="score"><a href=""><strong>Start Now</strong></a></div>
+                            <div class="score"><a href="/chapteruser/{{$item->slug}}"><strong>Start Now</strong></a></div>
                         </li>
                     </ul>
                 </div>
