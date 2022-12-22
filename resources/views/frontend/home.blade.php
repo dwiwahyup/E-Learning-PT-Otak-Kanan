@@ -19,7 +19,7 @@
         <div class="main_title_2">
             <span><em></em></span>
             <h2>Our Course</h2>
-            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+            {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
         </div>
         <div id="reccomended" class="owl-carousel owl-theme">
             @foreach ($query as $item)
@@ -84,7 +84,7 @@
         <div class="main_title_2">
             <span><em></em></span>
             <h2>Our Mentors</h2>
-            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+            {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
         </div>
         <div id="carousel" class="owl-carousel owl-theme">
             @foreach ( $mentors as $data)
