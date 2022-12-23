@@ -52,7 +52,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="card">
-                    <div class="col-md-12" >
+                    <div class="col-md-12">
                         <div class="tab-content responsive-tab-content" id="v-pills-tabContent">
                             @foreach ($program as $data)
                             <div class="tab-pane fade show" id="v-pills-{{$data->slug}}" role="tabpanel"
@@ -128,8 +128,6 @@
                                 <h2>Description</h2>
                                 <h6>{{$data->kegiatan}}</h6>
                                 <p>{!! $data->rincian_kegiatan !!}</p>
-
-
                                 <h6>Kompetensi yang Dikembangakan</h6>
                                 <div class="container">
                                     @foreach ($data->kompetensi as $item)
@@ -141,7 +139,6 @@
                                     @endforeach
 
                                     @foreach ($data->kompetensi as $item)
-
                                     <!-- Modal -->
                                     <div class="modal fade" id="{{$item->slug}}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -174,7 +171,6 @@
                                         </div>
                                     </div>
                                     @endforeach
-
                                 </div>
                                 <br>
                                 <h6>Kriteria Peserta</h6>
