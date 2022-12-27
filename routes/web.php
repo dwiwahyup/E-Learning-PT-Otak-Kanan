@@ -5,7 +5,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\NavigasiController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\LogbookController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\KompetensiController;
 use App\Http\Controllers\ChapterUserController;
 use App\Http\Controllers\ContentUserController;
@@ -21,9 +19,9 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TestimonialUserController;
 use App\Http\Controllers\UserLogbookController;
 use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\CourseCategoryController;
-
+use App\Http\Controllers\ScheduleLogbookController;
+use App\Http\Controllers\SchedulePeriodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,11 +56,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/program/register/{slug}', [ProgramController::class, 'register_program']);
 
         // route for logbooks user
-        Route::resource('my_logbooks', UserLogbookController::class)->only([
-            'index', 'create', 'store'
-        ]);
-
-        route::get('/my_logbooks/view', [UserLogbookController::class, 'show_logbook']);
+        Route::resource('my_logbooks', UserLogbookController::class)->except(['create', 'store']);
+        Route::get('my_logbooks/create/{id}', [UserLogbookController::class, 'create']);
+        Route::post('my_logbooks/store/{id}', [UserLogbookController::class, 'store']);
 
         // route for profile user
         Route::resource('MyProfile', UserProfileController::class);
@@ -136,6 +132,10 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 
         //route for testimonial
         Route::resource('testimonial', TestimonialController::class);
+
+        // route for schedule period logbooks
+        Route::resource('schedule_periods', SchedulePeriodController::class);
+        Route::resource('schedule_periods.schedule_logbooks', ScheduleLogbookController::class);
     });
 });
 

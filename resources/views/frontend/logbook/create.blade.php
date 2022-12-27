@@ -17,23 +17,12 @@
         <div class="box_general padding_bottom">
             <div class="add-review">
                 <h5>Add LogBook</h5>
-                <form>
+                <form action="/my_logbooks/store/{{$id}}" method="POST">
+                    @csrf
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Name</label>
-                            <input type="text" name="name_review" id="name_review" placeholder="" class="form-control">
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Date</label>
-                                <input type="date" name="date" class="form-control datetimepicker"
-                                    name="Appointment_time">
-                            </div>
-                        </div>
-
                         <div class="form-group col-md-12">
                             <label>Description</label>
-                            <textarea name="review_text" id="review_text" class="form-control"
+                            <textarea name="description" class="form-control"
                                 style="height:130px;"></textarea>
                         </div>
                         <div class="form-group col-md-12 add_top_20">

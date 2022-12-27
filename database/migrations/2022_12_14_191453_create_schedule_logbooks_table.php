@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('logbooks', function (Blueprint $table) {
+        Schema::create('schedule_logbooks', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default(0);
-            $table->longText('description');
-            $table->bigInteger('users_id');
-            $table->bigInteger('schedule_logbooks_id');
+            $table->date('date');
+            $table->bigInteger('schedule_periods_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logbooks');
+        Schema::dropIfExists('schedule_logbooks');
     }
 };

@@ -87,15 +87,15 @@ class LogbookController extends Controller
 
         // join relation on table loogbooks and course_categories
         $users = User::with(['logbooks', 'courses'])->where('course_categories_id', $course->id)->get();
-        // dd($query);
+        // dd($users);
         return view('dashboard.logbook.students-logbooks', compact('users', 'course'));
     }
 
     public function list_logbooks_students($slug)
     {
-        $user = User::with('courses')->where('slug', $slug)->first();
-        // dd($user);
-        $query = Logbook::where('users_id', $user->id)->orderBy('id', 'DESC')->get();
+        $user = User::with(['courses'])->where('slug', $slug)->first();
+        $query = Logbook::with('schedules.periods')->where('users_id', $user->id)->orderBy('id', 'DESC')->get();
+        // dd($query);
 
         return view('dashboard.logbook.students-logbooks-show', compact('query', 'user'));
     }

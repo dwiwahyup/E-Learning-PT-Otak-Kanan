@@ -37,6 +37,7 @@
                             <tr>
                                 <th>Description</th>
                                 <th>Submited on</th>
+                                <th>Schedules</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -45,6 +46,7 @@
                             <tr>
                                 <th>Description</th>
                                 <th>Submited on</th>
+                                <th>Schedules</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -53,7 +55,8 @@
                             @foreach ($query as $item)
                             <tr>
                                 <td>{{$item->description}}</td>
-                                <td>{{$item->date}}</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->schedules->periods->period_name}}</td>
                                 <td>
                                     @if ($item->status == 0)
                                         Waiting

@@ -40,6 +40,12 @@
                     <span class="nav-link-text">LogBook</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                <a class="nav-link" href="{{('/dashboard/schedule_periods')}}">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <span class="nav-link-text">Schedule Logbooks</span>
+                </a>
+            </li>
             @if (Auth::user()->roles == 'ADMIN')
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                     <a class="nav-link" href="{{('/dashboard/program')}}">

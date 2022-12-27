@@ -72,4 +72,6 @@ class User extends Authenticatable
     {
         return $this->hasOne(Testimonial::class, 'users_id', 'id');
     }
+
+    // public function 
 }

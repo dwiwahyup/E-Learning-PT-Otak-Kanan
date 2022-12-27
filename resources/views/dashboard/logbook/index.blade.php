@@ -60,8 +60,8 @@
                                     <div class="d-flex">
                                         <a href="/dashboard/logbook/students/{{$data->slug}}"
                                             class="btn btn-success btn-md">Students logbook</a>
-                                        <a href="{{route('logbooks.create', $data->slug)}}"
-                                            class="btn btn-success btn-md ml-2">Create</a>
+                                        {{-- <a href="{{route('logbooks.schedule_logbooks.index',$data->slug)}}"
+                                            class="btn btn-success btn-md ml-2">Schedule</a> --}}
                                     </div>
                                 </td>
                             </tr>

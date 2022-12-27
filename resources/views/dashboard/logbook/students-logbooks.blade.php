@@ -36,7 +36,7 @@
                                 <th>Total Logbooks</th>
                                 <th>Logbooks waiting</th>
                                 <th>Logbooks approved</th>
-                                <th>Action</th>
+                                <th>Schedule</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -46,7 +46,7 @@
                                 <th>Total logbooks</th>
                                 <th>Logbooks waiting</th>
                                 <th>Logbooks approved</th>
-                                <th>Action</th>
+                                <th>Schedule</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -55,8 +55,18 @@
                                 <td>{{$index + 1}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>create {{$item->logbooks->count()}} logbooks</td>
-                                        <td>{{$item->logbooks->where('status', 0)->count()}} Waiting to approved</td>
-                                        <td>{{$item->logbooks->where('status', 1)->count()}} approved</td>
+                                <td>{{$item->logbooks->where('status', 0)->count()}} Waiting to approved</td>
+                                <td>{{$item->logbooks->where('status', 1)->count()}} approved</td>
+                                {{-- <td>
+                                    <div class="styled-select">
+                                        <select name="schedules">
+                                            <option selected>All</option>
+                                            @foreach ($item->logbooks as $item)
+                                                <option value="">{{$item->schedules->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </td> --}}
                                 <td>
                                     <div class="d-flex">
                                         <a href="/dashboard/logbook/students/show/{{$item->slug}}" class="btn btn-success btn-md">Detail logbooks</a>
