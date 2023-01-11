@@ -26,12 +26,14 @@
 
             <ul class="nav flex-column nav-pills nav-tabs-dropdown me-3" id="v-pills-tab" role="tablist"
                 aria-orientation="vertical">
-                <li class="nav-item">
-                    <a class="nav-link text-start active" href="#" id="v-pills-home-tab" data-bs-toggle="pill"
-                        data-bs-target="#v-pills-home" role="tab" aria-controls="v-pills-home"
-                        aria-selected="true">Home</a>
-                </li>
-                <li class="nav-item">
+                @foreach ($program as $index => $item)
+                    <li class="nav-item">
+                        <a class="nav-link text-start {{$index == 0 ? 'active' : ''}}" href="#" id="v-pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-{{$item->slug}}" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true">{{$item->nama}}</a>
+                    </li>
+                @endforeach
+                {{-- <li class="nav-item">
                     <a class="nav-link text-start" href="#" id="v-pills-profile-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
                         aria-selected="false">Profile</a>
@@ -40,18 +42,27 @@
                     <a class="nav-link text-start" href="#" id="v-pills-contact-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-contact" role="tab" aria-controls="v-pills-profile"
                         aria-selected="false">Contact</a>
-                </li>
+                </li> --}}
             </ul>
 
             <div class="tab-content responsive-tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab" tabindex="0">Home content</div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
+                    @foreach ($program as $index => $item)
+                    <div class="tab-pane fade
+                        @if ($index == 0)
+                        show active 
+                        @endif
+                    
+                    " id="v-{{$item->slug}}" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab" tabindex="0">
+                        {{$item->nama}}
+                    </div>
+                    @endforeach
+                </div>
+                {{-- <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
                     tabindex="0">Profile content</div>
                 <div class="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                    tabindex="0">Contact content</div>
+                    tabindex="0">Contact content</div> --}}
 
-            </div>
         </div>
     </div>
     <style>
