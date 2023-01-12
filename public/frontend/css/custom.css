@@ -54,6 +54,8 @@
 }
 
 
+
+/* style for program view*/
 .responsive-tab-menu .nav-pills .nav-link.active,
 .responsive-tab-menu .nav-pills .show>.nav-link {
     color: unset;
@@ -130,7 +132,7 @@
         border-color: transparent;
         position: relative;
         z-index: 1;
-        background: rgb(255, 255, 255);
+        background: rgb(175, 175, 175);
     }
 
     .nav-pills.nav-tabs-dropdown>li.active>a:focus,

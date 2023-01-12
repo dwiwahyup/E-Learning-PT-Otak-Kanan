@@ -88,7 +88,7 @@
                         <div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
                             <div class="row no-gutters ml-2 mt-2">
                             </div>
-                           <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
+                            <p align="center"><a href="{{url('/my_logbooks/create')}}" class="btn_1 rounded">Buat
                                     Laporan Harian</a></p>
                             <p class="text-center">Laporan baru bisa dibuat setelah kamu mengisi semua laporan harian.
                             </p>

@@ -5,12 +5,14 @@
     <section class="hero_single version_2">
         <div class="wrapper">
             <div class="container">
-                <h3>Start Your Carrer</h3>
-                <p>Expolore Your Interest and Upgrade Your Skills </p>
-                <br>
-                <p class="btn_home">
-                    <a href="/program/" class="btn_1 rounded">Join Now</a>
-                </p>
+                <div class="main_search">
+                    <h3>Start Your Carrer</h3>
+                    <p>Expolore Your Interest and Upgrade Your Skills </p>
+                    <br>
+                    <p class="btn_home">
+                        <a href="/program/" class="btn_1 rounded">Join Now</a>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
