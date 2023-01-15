@@ -19,7 +19,7 @@
                  located in the city of Surabaya and was officially named PT. OTAK KANAN in 2009.</p>
 			</div>
 			<div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
 					<a class="box_feat" href="#0">
 						<i class="pe-7s-culture"></i>
 						<h3>Head Office:</h3>
@@ -29,7 +29,7 @@
                         </br>
 					</a>
 				</div>
-				<div class="col-lg-4 col-md-6">
+				{{-- <div class="col-lg-4 col-md-6">
 					<a class="box_feat" href="#0">
 						<i class="pe-7s-credit"></i>
 						<h3>Bank Account:</h3>
@@ -38,8 +38,8 @@
                         </br>
                         </br>
 					</a>
-				</div>
-				<div class="col-lg-4 col-md-6">
+				</div> --}}
+				<div class="col-lg-6 col-md-6">
 					<a class="box_feat" href="#0">
 						<i class="pe-7s-help2"></i>
 						<h3>Call Center:</h3>

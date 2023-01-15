@@ -1,6 +1,7 @@
 /*-------- Blog --------*/
 article.blog {
-  min-height: 200px;
+  min-height: 100px;
+  padding: 10px;
   margin-bottom: 30px;
   background-color: #fff;
   overflow: hidden;

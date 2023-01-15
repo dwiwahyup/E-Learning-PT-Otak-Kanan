@@ -46,23 +46,12 @@
                             </a>
                         </li>
                         @endforeach
-                        {{-- <li class="nav-item">
-                            <a class="nav-link text-start" href="#" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-                                aria-selected="false">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-start" href="#" id="v-pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-contact" role="tab" aria-controls="v-pills-profile"
-                                aria-selected="false">Contact</a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="card">
                     <div class="col-md-12">
-
                         <div class="tab-content responsive-tab-content" id="v-pills-tabContent">
                             @foreach ($program as $index => $item)
                             <div class="tab-pane fade
@@ -145,7 +134,6 @@
                                     @endforeach
 
                                     @foreach ($item->kompetensi as $data)
-
                                     <!-- Modal -->
                                     <div class="modal fade" id="{{$data->slug}}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -179,30 +167,18 @@
                                     </div>
                                     @endforeach
                                 </div>
-                                    <br>
-                                    <h6>Kriteria Peserta</h6>
-                                    <p>{!! $item->kriteria_peserta !!}</p>
-                                    <h6>Infromasi Tambahan</h6>
-                                    <p>{!! $item->informasi_tambahan !!}</p>
-
-
+                                <br>
+                                <h6>Kriteria Peserta</h6>
+                                <p>{!! $item->kriteria_peserta !!}</p>
+                                <h6>Infromasi Tambahan</h6>
+                                <p>{!! $item->informasi_tambahan !!}</p>
                             </div>
                             @endforeach
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
-
-        {{-- <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                    tabindex="0">Profile content</div>
-                <div class="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                    tabindex="0">Contact content</div> --}}
-
     </div>
 
 
