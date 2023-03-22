@@ -51,7 +51,6 @@
                                 @foreach ($data->contents as $item)
                                     <div class="card">
                                         <div class="box_list">
-                                            {{-- list introduction content --}}
                                             <div class="row no-gutters">
                                                 <div class="col-lg-5">
                                                     <figure>
@@ -65,9 +64,10 @@
                                                 </div>
                                                 <div class="col-lg-7">
                                                     <div class="wrapper">
-                                                        {{-- <a href="#0" class="wish_bt"></a> --}}
                                                         <h3><a href="contentuser/{{$item->slug}}">{{$item->title}}</a></h3>
-                                                        <p> <strong>Deskripsi Content</strong> Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usuzril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
+                                                        <p> <strong>Deskripsi Content</strong> 
+                                                            {!! Str::limit($item->text, 300) !!}
+                                                        </p>
                                                         <hr>
                                                         <p class="btn_home">
                                                             <p class="btn_home_align"><a href="/contentuser/{{$item->slug}}" class="btn_1 rounded">Start Learn</a></p>
@@ -75,151 +75,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- end of list introduction content --}}
                                         </div>
-                                        <hr>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
                 @endforeach
-                <!-- /accordion payment -->
-                {{-- <h4 class="nomargin_top">HTMl</h4>
-                <div role="tablist" class="add_bottom_45 accordion_2" id="tips">
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne_tips" aria-expanded="true"><i
-                                        class="indicator ti-plus"></i>Introdocution</a>
-                            </h5>
-                        </div>
-                        <div id="collapseOne_tips" class="collapse" role="tabpanel" data-parent="#tips">
-                            <div class="card-body">
-                                <div class="box_list">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-5">
-                                            <figure>
-                                                <small>Historic</small>
-                                                <a href="{{url('/contentuser/')}}"><img
-                                                        src="https://res.cloudinary.com/djbbzawzs/image/upload/v1667293149/picture_assets_frontend/banner4_qxe9c8.jpg"
-                                                        class="img-fluid" alt="" width="800" height="533">
-                                                    <div class="read_more"><span>Read more</span></div>
-                                                </a>
-                                            </figure>
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <div class="wrapper">
-                                                <a href="#0" class="wish_bt"></a>
-                                                <h3><a href="{{url('/contentuser/')}}">Arc Triomphe</a></h3>
-                                                <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu
-                                                    zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu
-                                                    decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                                <span class="price">From <strong>$54</strong> /per person</span>
-                                            </div>
-                                            <ul>
-                                                <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                                                <li>
-                                                    <div class="score"><span>Superb<em>350
-                                                                Reviews</em></span><strong>8.9</strong></div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <!-- /accordion suggestions -->
-
-                {{-- <h4 class="nomargin_top">CSS</h4>
-                <div role="tablist" class="add_bottom_45 accordion_2" id="reccomendations">
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne_reccomendations" aria-expanded="true"><i
-                                        class="indicator ti-plus"></i>Introdocution</a>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne_reccomendations" class="collapse" role="tabpanel"
-                            data-parent="#reccomendations">
-                            <div class="card-body">
-                                <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                                    ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                    accusamus labore sustainable VHS.</p>
-                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
-                                    ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food
-                                    truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a
-                                    bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-                            </div>
-                        </div>
-                    </div> --}}
-                    <!-- /card -->
-                {{-- </div> --}}
-                <!-- /accordion Reccomendations -->
-
-                {{-- <h4 class="nomargin_top">Java Sscript</h4>
-                <div role="tablist" class="add_bottom_45 accordion_2" id="terms">
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne_terms" aria-expanded="true"><i
-                                        class="indicator ti-plus"></i>Introdocution</a>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne_terms" class="collapse" role="tabpanel" data-parent="#terms">
-                            <div class="card-body">
-                                <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                                    ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                    accusamus labore sustainable VHS.</p>
-                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
-                                    ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food
-                                    truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a
-                                    bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-                            </div>
-                        </div>
-                    </div> --}}
-                    <!-- /card -->
-                {{-- </div> --}}
-                <!-- /accordion Terms -->
-
-                {{-- <h4 class="nomargin_top">Vue JS</h4>
-                <div role="tablist" class="add_bottom_45 accordion_2" id="booking">
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne_booking" aria-expanded="true"><i
-                                        class="indicator ti-plus"></i>Introdocution</a>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne_booking" class="collapse" role="tabpanel" data-parent="#booking">
-                            <div class="card-body">
-                                <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                                    ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                    accusamus labore sustainable VHS.</p>
-                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
-                                    ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food
-                                    truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a
-                                    bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-                            </div>
-                        </div>
-                    </div> --}}
-                    <!-- /card -->
-                {{-- </div> --}}
-                <!-- /accordion Booking -->
             </div>
-            <!-- /col -->
         </div>
-        <!-- /row -->
     </div>
-    <!--/container-->
 </main>
-<!--/main-->
 @endsection

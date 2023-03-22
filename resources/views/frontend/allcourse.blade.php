@@ -3,7 +3,7 @@
 
 <main>
 
-    <section class="hero_in tours">
+    <section class="hero_in general">
         <div class="wrapper">
             <div class="container">
                 <h1 class="fadeInUp"><span></span>All Course</h1>
@@ -18,7 +18,6 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 isotope-item popular">
                     <div class="box_grid">
                         <figure>
-                            {{-- <a href="#0" class="wish_bt"></a> --}}
                             <a href="/chapteruser/{{$item->slug}}"><img src="{{ $item->image_url }}" class="img-fluid"
                                     alt="" width="800" height="533">
                                 <div class="read_more"><span>Read more</span></div>

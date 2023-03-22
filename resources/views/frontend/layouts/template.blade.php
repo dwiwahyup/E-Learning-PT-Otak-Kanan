@@ -11,7 +11,7 @@
     <title>PT OTAK KANAN</title>
 	{{-- <title> {{config('app.name')}}</title> --}}
     <!-- Favicons-->
-    <link href="{{ url('frontend/img/favicon.ico')}}"rel="shortcut icon"  type="image/x-icon">
+    <link href="{{ url('https://res.cloudinary.com/djbbzawzs/image/upload/v1673887767/picture_assets_frontend/cropped-ok-ico-32x32_e4lvma.png')}}"rel="shortcut icon"  type="image/x-icon">
     <link href="{{ url('frontend/img/apple-touch-icon-57x57-precomposed.png')}}"rel="apple-touch-icon" type="image/x-icon">
     <link href="{{ url('frontend/img/apple-touch-icon-72x72-precomposed.png')}}" rel="apple-touch-icon" type="image/x-icon" sizes="72x72">
     <link href="{{ url('frontend/img/apple-touch-icon-114x114-precomposed.png')}}"rel="apple-touch-icon" type="image/x-icon" sizes="114x114">

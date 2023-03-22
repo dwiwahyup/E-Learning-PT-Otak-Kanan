@@ -16,8 +16,7 @@
             <div class="container">
                 <ul class="clearfix">
                     <li><a href="#description" class="active">Description</a></li>
-                    {{-- <li><a href="#reviews">Reviews</a></li> --}}
-                    <li><a href="#sidebar">Contact</a></li>
+                    <li><a href="#sidebar"></a></li>
                 </ul>
             </div>
         </nav>
@@ -39,16 +38,12 @@
                         @else
                             <p><img alt="" class="img-fluid"  style="width: 800px; height: 400px;" src="{{$data->thumbnaile_url}}"></p>
                         @endif
-                        <!-- /post meta -->
                         <div class="post-content">
                             <p>{!! $data->text !!}</p>
                         </div>
-
                     </section>
-                    <!-- /section -->
                     <hr>
                 </div>
-                <!-- /col -->
                 <aside class="col-lg-4" id="sidebar">
                     <div class="box_detail booking">
                         <div>

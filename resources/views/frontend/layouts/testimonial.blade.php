@@ -18,7 +18,7 @@
                     <div class="col-lg-7">
                         <figure>
                             <a href="blog-post.html"><img
-                                    src="{{$data->users->courses->image_url ?? url('frontend/img/banner3.jpg')}}"
+                                    src="{{$data->users->courses->image_url ?? url('https://res.cloudinary.com/djbbzawzs/image/upload/v1673540850/picture_assets_frontend/124-1247377_website-development-auckland-web-development-png-images-hd_qzz4bh.png')}}"
                                     alt="">
                             </a>
                         </figure>

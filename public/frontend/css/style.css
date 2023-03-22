@@ -636,7 +636,7 @@ a.btn_1,
 .btn_1 {
   border: none;
   color: #fff;
-  background: #fc5b62;
+  background: #f99b1c;;
   outline: none;
   cursor: pointer;
   display: inline-block;
@@ -843,6 +843,7 @@ header.header.sticky {
 }
 header.header.sticky .logo_normal {
   display: none;
+  background-color: rgba(0, 0, 0, 0.45);
 }
 header.header.sticky .logo_sticky {
   display: inline-block;
@@ -1120,7 +1121,7 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
   }
 }
 .hero_in.general:before {
-  background: url(https://res.cloudinary.com/djbbzawzs/image/upload/v1667293171/picture_assets_frontend/banner_cmjr6b.jpg) center center no-repeat;
+  background: url(https://res.cloudinary.com/djbbzawzs/image/upload/v1673886063/picture_assets_frontend/10168_xxwq0b.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1131,7 +1132,7 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
   background-color: rgba(0, 0, 0, 0.6);
 }
 .hero_in.tours:before {
-  background: url(https://res.cloudinary.com/djbbzawzs/image/upload/v1667293171/picture_assets_frontend/banner_cmjr6b.jpg) center center no-repeat;
+  background: url(https://res.cloudinary.com/djbbzawzs/image/upload/v1673886063/picture_assets_frontend/10168_xxwq0b.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2328,7 +2329,7 @@ video {
   height: 620px;
 }
 .hero_single.version_2:before {
-  background: url(https://res.cloudinary.com/djbbzawzs/image/upload/v1673578228/picture_assets_frontend/WEB-DEVELOPMENT_dktfsp.png) center center no-repeat;
+  background: url(https://res.cloudinary.com/djbbzawzs/image/upload/v1673886023/picture_assets_frontend/5514_b9kftj.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -3265,8 +3266,8 @@ a.box_feat h3 {
   z-index: 9;
 }
 #carousel .item .title h4 {
-  background-color: #0054a6;
-  background-color: #0054a6;
+  background-color: #f99b1c;;
+  background-color: #f99b1c;;
   /* display: inline-block; */
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
@@ -3351,7 +3352,7 @@ a.box_feat h3 {
 }
 
 .score strong {
-  background-color: #0054a6;
+  background-color: #f99b1c;;
   color: #fff;
   line-height: 1;
   -webkit-border-radius: 5px 5px 5px 0;

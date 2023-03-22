@@ -4,7 +4,7 @@
     </div><!-- /Page Preload -->
     <div id="logo">
         <a href="{{url('/')}}">
-            <img src="{{ url('assets/dashboard/img/otakkanan.png')}}" width="150" height="36" alt=""
+            <img src="{{ url('https://res.cloudinary.com/djbbzawzs/image/upload/v1673893650/picture_assets_frontend/ebea2e53-54b4-4bd6-8c79-19d51332bd50-removebg-preview_ars5yy.png')}}" width="150" height="36" alt=""
                 class="logo_normal">
         </a>
     </div>

@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <div class="container container-custom margin_80_0">
+    <div class="container container-custom margin_60_0">
         <div class="main_title_2">
             <span><em></em></span>
             <h2>Our Course</h2>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="bg_color_1">
-        <div class="container container-custom margin_80_55">
+        <div class="container container-custom margin_60_55">
             <div class="main_title_2">
                 <h2>Why do you have to follow<br>
                     internship program at PT. Otak Kanan?</h2>
@@ -114,7 +114,7 @@
                 @foreach ($testimonials as $item)
                 <div class="col-lg-6">
                     <a class="box_news" href="#0">
-                        <figure><img src="{{$item->users->courses->image_url ?? url('frontend/img/news_home_1.jpg')}}"
+                        <figure><img src="{{$item->users->courses->image_url ?? url('https://res.cloudinary.com/djbbzawzs/image/upload/v1673540850/picture_assets_frontend/124-1247377_website-development-auckland-web-development-png-images-hd_qzz4bh.png')}}"
                                 alt="">
                         </figure>
                         <div class="info">
